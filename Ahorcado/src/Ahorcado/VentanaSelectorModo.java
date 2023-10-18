@@ -1,10 +1,12 @@
 package Ahorcado;
 
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -12,7 +14,7 @@ import javax.swing.SwingUtilities;
 
 public class VentanaSelectorModo extends JFrame{
 	JButton modoContrarreloj = new JButton("Modo Contrarreloj");
-	JButton modoMuerteSubita = new JButton("Modo Muerte Subita");
+	JButton modoMuerteSubita = new JButton("Modo Muerte Súbita");
 	JButton modo1vs1 = new JButton("Modo 1vs1");
 	JButton modoClasico = new JButton("Modo Clasico");
 	
@@ -23,7 +25,6 @@ public class VentanaSelectorModo extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
 			}
 		});
 		
@@ -54,7 +55,12 @@ public class VentanaSelectorModo extends JFrame{
 			}
 		});
 		
-		//DISEÑO DE LA VENTAN
+		//DISEÑO DE LA VENTANA
+		modoContrarreloj.setBackground(Color.WHITE);
+		modoMuerteSubita.setBackground(Color.WHITE);
+		modo1vs1.setBackground(Color.WHITE);
+		modoClasico.setBackground(Color.WHITE);
+		
 		JPanel panel= new JPanel(); 
 		panel.setLayout(new GridLayout(4,1));
 		
@@ -64,8 +70,8 @@ public class VentanaSelectorModo extends JFrame{
 		panel.add(modoClasico);
 		
 		this.add(panel);
-		this.setTitle("Selector de Modo");
-		this.setSize(400, 300);
+		this.setTitle("Selector de Modo de Juego");
+		this.setSize(800, 600);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
