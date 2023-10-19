@@ -1,4 +1,4 @@
-package Ahorcado;
+package main;
 
 public class VentanaPrincipal {
 	public static void main(String[] args) {
