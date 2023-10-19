@@ -1,6 +1,7 @@
 package Ahorcado;
 
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -45,7 +46,7 @@ public class VentanaModoClasico extends JFrame{
 		JPanel panelArriba = new JPanel();
 		panelArriba.setLayout(new BorderLayout());
 		JPanel panelBotones = new JPanel();
-		panelBotones.setLayout(new BorderLayout());
+		panelBotones.setLayout(new GridLayout(3,10));
 		
 		panelBotones.add(botonA);
 		panelBotones.add(botonB);
