@@ -13,10 +13,10 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public class VentanaSelectorModo extends JFrame{
-	JButton modoContrarreloj = new JButton("Modo Contrarreloj");
-	JButton modoMuerteSubita = new JButton("Modo Muerte Súbita");
-	JButton modo1vs1 = new JButton("Modo 1vs1");
-	JButton modoClasico = new JButton("Modo Clasico");
+	private JButton modoContrarreloj = new JButton("Modo Contrarreloj");
+	private JButton modoMuerteSubita = new JButton("Modo Muerte Súbita");
+	private JButton modo1vs1 = new JButton("Modo 1vs1");
+	private JButton modoClasico = new JButton("Modo Clasico");
 	
 	public VentanaSelectorModo(){	
 		//ACCIONES DE CADA BOTON (PARA ABIR EL RESTO DE VENATANAS)
