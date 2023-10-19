@@ -1,6 +1,3 @@
-/gui/
-/Ahorcado/
-/main/
 /domain/
-/io/
-/db/
+/gui/
+/main/
