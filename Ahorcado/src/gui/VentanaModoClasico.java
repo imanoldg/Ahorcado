@@ -46,8 +46,13 @@ public class VentanaModoClasico extends JFrame{
 	private JList<Usuario> listaTop = new JList<Usuario>();
 	
 	public VentanaModoClasico() {
+		JPanel panelGeneral = new JPanel();
+		panelGeneral.setLayout(new GridLayout(2,1));
 		JPanel panelArriba = new JPanel();
-		panelArriba.setLayout(new GridLayout(2,1));
+		panelArriba.setLayout(new GridLayout(1,2));
+		JPanel panelIzquierda = new JPanel();
+		panelIzquierda.setLayout(new GridLayout(2,1));
+		JPanel panelDerecha = new JPanel();
 		JPanel panelLista = new JPanel();
 		panelLista.setLayout(new GridLayout(1,1));
 		JPanel panelOpciones = new JPanel();
@@ -83,17 +88,23 @@ public class VentanaModoClasico extends JFrame{
 		panelAbecedario.add(botonY);
 		panelAbecedario.add(botonZ);
 		
-		this.add(panelAbecedario, BorderLayout.SOUTH);
-
 		panelLista.add(listaTop);
 		panelOpciones.add(botonInstrucciones);
 		panelOpciones.add(botonPalabraNueva);
 		panelOpciones.add(botonSalir);
 		
-		panelArriba.add(panelLista, BorderLayout.NORTH);
-		panelArriba.add(panelOpciones, BorderLayout.SOUTH);
+		panelIzquierda.add(panelLista, BorderLayout.NORTH);
+		panelIzquierda.add(panelOpciones, BorderLayout.SOUTH);
 		
-		this.add(panelArriba, BorderLayout.WEST);
+		panelArriba.add(panelIzquierda, BorderLayout.WEST);
+		panelArriba.add(panelDerecha, BorderLayout.EAST);
+		
+		
+		
+		panelGeneral.add(panelArriba, BorderLayout.NORTH);
+		panelGeneral.add(panelAbecedario, BorderLayout.SOUTH);
+
+		this.add(panelGeneral, BorderLayout.CENTER);
 		
 		this.setTitle("Modo Clásico");
 		this.setSize(800, 400);
