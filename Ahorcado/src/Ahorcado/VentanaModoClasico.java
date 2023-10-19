@@ -7,33 +7,33 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class VentanaModoClasico extends JFrame{
-	JButton botonA = new JButton("A");
-	JButton botonB = new JButton("B");
-	JButton botonC = new JButton("C");
-	JButton botonD = new JButton("D");
-	JButton botonE = new JButton("E");
-	JButton botonF = new JButton("F");
-	JButton botonG = new JButton("G");
-	JButton botonH = new JButton("H");
-	JButton botonI = new JButton("I");
-	JButton botonJ = new JButton("J");
-	JButton botonK = new JButton("K");
-	JButton botonL = new JButton("L");
-	JButton botonM = new JButton("M");
-	JButton botonN = new JButton("N");
-	JButton botonÑ = new JButton("Ñ");
-	JButton botonO = new JButton("O");
-	JButton botonP = new JButton("P");
-	JButton botonQ = new JButton("Q");
-	JButton botonR = new JButton("R");
-	JButton botonS = new JButton("S");
-	JButton botonT = new JButton("T");
-	JButton botonU = new JButton("U");
-	JButton botonV = new JButton("V");
-	JButton botonW = new JButton("W");
-	JButton botonX = new JButton("X");
-	JButton botonY = new JButton("Y");
-	JButton botonZ = new JButton("Z");
+	JButton botonA = new JButton("  A  ");
+	JButton botonB = new JButton("  B  ");
+	JButton botonC = new JButton("  C  ");
+	JButton botonD = new JButton("  D  ");
+	JButton botonE = new JButton("  E  "); 
+	JButton botonF = new JButton("  F  ");
+	JButton botonG = new JButton("  G  ");
+	JButton botonH = new JButton("  H  ");
+	JButton botonI = new JButton("  I  ");
+	JButton botonJ = new JButton("  J  ");
+	JButton botonK = new JButton("  K  ");
+	JButton botonL = new JButton("  L  ");
+	JButton botonM = new JButton("  M  ");
+	JButton botonN = new JButton("  N  ");
+	JButton botonÑ = new JButton("  Ñ  ");
+	JButton botonO = new JButton("  O  ");
+	JButton botonP = new JButton("  P  ");
+	JButton botonQ = new JButton("  Q  ");
+	JButton botonR = new JButton("  R  ");
+	JButton botonS = new JButton("  S  ");
+	JButton botonT = new JButton("  T  ");
+	JButton botonU = new JButton("  U  ");
+	JButton botonV = new JButton("  V  ");
+	JButton botonW = new JButton("  W  ");
+	JButton botonX = new JButton("  X  ");
+	JButton botonY = new JButton("  Y  ");
+	JButton botonZ = new JButton("  Z  ");
 	
 	JButton botonSalir = new JButton();
 	JButton botonPalabraNueva = new JButton();
@@ -45,7 +45,6 @@ public class VentanaModoClasico extends JFrame{
 		JPanel panelArriba = new JPanel();
 		panelArriba.setLayout(new BorderLayout());
 		JPanel panelBotones = new JPanel();
-		panelBotones.setLayout(new BorderLayout());
 		
 		panelBotones.add(botonA);
 		panelBotones.add(botonB);
@@ -75,12 +74,13 @@ public class VentanaModoClasico extends JFrame{
 		panelBotones.add(botonY);
 		panelBotones.add(botonZ);
 		
-		panelAbajo.add(panelBotones);
+		panelBotones.setBounds(100, 100, 100, 100);
 		
-		this.add(panelAbajo, BorderLayout.SOUTH);
+		this.add(panelBotones, BorderLayout.SOUTH);
+		
 		
 		this.setTitle("Modo Clásico");
-		this.setSize(800, 400);
+		this.setSize(800, 800);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}
