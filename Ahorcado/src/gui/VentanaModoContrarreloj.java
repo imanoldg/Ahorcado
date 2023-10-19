@@ -1,4 +1,4 @@
-package Ahorcado;
+package gui;
 
 public class VentanaModoContrarreloj {
 
