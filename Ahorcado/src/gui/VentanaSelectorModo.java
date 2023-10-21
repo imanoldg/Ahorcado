@@ -55,12 +55,7 @@ public class VentanaSelectorModo extends JFrame{
 			}
 		});
 		
-		//DISEÑO DE LA VENTANA
-		modoContrarreloj.setBackground(Color.WHITE);
-		modoMuerteSubita.setBackground(Color.WHITE);
-		modo1vs1.setBackground(Color.WHITE);
-		modoClasico.setBackground(Color.WHITE);
-		
+		//DISEÑO DE LA VENTANA		
 		JPanel panel= new JPanel(); 
 		panel.setLayout(new GridLayout(4,1));
 		
@@ -74,6 +69,8 @@ public class VentanaSelectorModo extends JFrame{
 		this.setSize(800, 600);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		this.setResizable(false);
+		this.setLocationRelativeTo(null);
 	}
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
