@@ -2,11 +2,15 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
 import domain.Usuario;
@@ -46,6 +50,10 @@ public class VentanaModoContrarreloj extends JFrame {
 	
 	private JList<Usuario> listaTop = new JList<Usuario>();
 	
+	private int contador;
+	private Thread hilo;
+	private boolean ejecutarHilo;
+	
 	public VentanaModoContrarreloj() {
 		JPanel panelGeneral = new JPanel();
 		panelGeneral.setLayout(new GridLayout(2,1));
@@ -60,6 +68,28 @@ public class VentanaModoContrarreloj extends JFrame {
 		panelOpciones.setLayout(new GridLayout(4,1));
 		JPanel panelAbecedario = new JPanel();
 		panelAbecedario.setLayout(new GridLayout(3,10));
+		
+		contador = 60;
+		JLabel etiqueta = new JLabel();
+		etiqueta.setHorizontalAlignment(SwingConstants.CENTER);//esta linea la he sacado buscando en la API como poner un texto centrado en una JLabel 
+															  //(https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/javax/swing/JLabel.html#setHorizontalAlignment(int))
+		//HILO PARA EL CRONOMETRO
+		hilo = new Thread() {
+			public void run(){
+				while (ejecutarHilo) {
+					contador--;
+					etiqueta.setText(contador + "");
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						System.out.println("Crono parado");
+					}
+				}
+			}
+		};
+		ejecutarHilo = true;
+		hilo.start();
+		
 		
 		panelAbecedario.add(botonA);
 		panelAbecedario.add(botonB);
@@ -90,8 +120,8 @@ public class VentanaModoContrarreloj extends JFrame {
 		panelAbecedario.add(botonZ);
 		
 		
-
 		panelLista.add(listaTop);
+		panelOpciones.add(etiqueta);
 		panelOpciones.add(botonInstrucciones);
 		panelOpciones.add(botonPalabraNueva);
 		panelOpciones.add(botonSalir);
@@ -110,10 +140,14 @@ public class VentanaModoContrarreloj extends JFrame {
 		this.add(panelGeneral, BorderLayout.CENTER);
 		
 		this.setTitle("Modo Contrarreloj");
-		this.setSize(800, 400);
+		this.setSize(1000, 600);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
+		this.setResizable(false);
+		this.setLocationRelativeTo(null);
 	}
+	
+	//ESTO ES SOLO PARA HACER PRUEBAS
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			
