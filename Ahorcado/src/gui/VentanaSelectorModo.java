@@ -24,7 +24,8 @@ public class VentanaSelectorModo extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				new VentanaModoContrarreloj();
+				dispose();
 			}
 		});
 		
@@ -32,8 +33,8 @@ public class VentanaSelectorModo extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
+				new VentanaModoMuerteSubita();
+				dispose();
 			}
 		});
 		
@@ -41,8 +42,8 @@ public class VentanaSelectorModo extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
+				new Ventana1vs1();
+				dispose();
 			}
 		});
 		
@@ -50,7 +51,8 @@ public class VentanaSelectorModo extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				new VentanaModoClasico();
+				dispose();
 				
 			}
 		});
@@ -59,10 +61,11 @@ public class VentanaSelectorModo extends JFrame{
 		JPanel panel= new JPanel(); 
 		panel.setLayout(new GridLayout(4,1));
 		
+		panel.add(modoClasico);
 		panel.add(modoContrarreloj);
 		panel.add(modoMuerteSubita);
 		panel.add(modo1vs1);
-		panel.add(modoClasico);
+		
 		
 		this.add(panel);
 		this.setTitle("Selector de Modo de Juego");
