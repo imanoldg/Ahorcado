@@ -39,7 +39,7 @@ public class VentanaModoClasico extends JFrame{
 	private JButton botonY = new JButton("Y");
 	private JButton botonZ = new JButton("Z");
 	
-	private JButton botonSalir = new JButton("  Salir  ");
+	private JButton botonSalir = new JButton("  Volver al selector de modo  ");
 	private JButton botonPalabraNueva = new JButton("  Palabra Nueva  ");
 	private JButton botonInstrucciones = new JButton("  Instrucciones  ");
 	
