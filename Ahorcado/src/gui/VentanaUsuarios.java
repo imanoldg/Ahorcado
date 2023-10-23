@@ -10,13 +10,14 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class VentanaUsuarios extends JFrame{
 	
 	private JLabel tituloJuego;
 	private JTextField user; 
-	private JTextField password;
+	private JPasswordField password;
 	private JLabel textoUser;
 	private JLabel textoPassword;
 	private JButton singIn;
@@ -46,7 +47,7 @@ public class VentanaUsuarios extends JFrame{
         user.setBounds(140, 65, 150, 20); 
         panelSesion.add(user);
 
-        password = new JTextField();
+        password = new JPasswordField();
         password.setBounds(140, 105, 150, 20); 
         panelSesion.add(password);
 		
