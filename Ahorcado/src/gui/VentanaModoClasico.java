@@ -107,10 +107,11 @@ public class VentanaModoClasico extends JFrame{
 		this.add(panelGeneral, BorderLayout.CENTER);
 		
 		this.setTitle("Modo Clásico");
-		this.setSize(800, 400);
+		this.setSize(1000, 600);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
 		this.setLocationRelativeTo(null);
+		this.setResizable(false);
 	}
 	
 	public static void main(String[] args) {

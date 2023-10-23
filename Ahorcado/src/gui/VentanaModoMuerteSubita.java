@@ -62,7 +62,7 @@ public class VentanaModoMuerteSubita extends JFrame{
 		JPanel panelAbecedario = new JPanel();
 		panelAbecedario.setLayout(new GridLayout(3,10));
 		
-		JLabel adivinadas = new JLabel("Palbras adivinadas: 0");
+		JLabel adivinadas = new JLabel("Palabras adivinadas: 0");
 		adivinadas.setHorizontalAlignment(SwingConstants.CENTER);//esta linea la he sacado buscando en la API como poner un texto centrado en una JLabel 
 		  //(https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/javax/swing/JLabel.html#setHorizontalAlignment(int))
 		
