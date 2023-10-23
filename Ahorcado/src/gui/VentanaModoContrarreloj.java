@@ -4,14 +4,24 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.beans.PropertyChangeListener;
 
+import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
+import javax.swing.event.MenuKeyEvent;
+import javax.swing.event.MenuKeyListener;
 
 import domain.Usuario;
 
@@ -44,12 +54,9 @@ public class VentanaModoContrarreloj extends JFrame {
 	private JButton botonY = new JButton("Y");
 	private JButton botonZ = new JButton("Z");
 	
-	private JButton botonSalir = new JButton("  Salir  ");
+	private JButton botonSalir = new JButton("  Volver al selector de modo  ");
 	private JButton botonPalabraNueva = new JButton("  Palabra Nueva  ");
-	private JButton botonInstrucciones = new JButton("  Instrucciones  ");
-	
-	private JList<Usuario> listaTop = new JList<Usuario>();
-	
+		
 	private int contador;
 	private Thread hilo;
 	private boolean ejecutarHilo;
@@ -60,14 +67,20 @@ public class VentanaModoContrarreloj extends JFrame {
 		JPanel panelArriba = new JPanel();
 		panelArriba.setLayout(new GridLayout(1,2));
 		JPanel panelIzquierda = new JPanel();
-		panelIzquierda.setLayout(new GridLayout(2,1));
+		panelIzquierda.setLayout(new GridLayout(7,1));
 		JPanel panelDerecha = new JPanel();
-		JPanel panelLista = new JPanel();
-		panelLista.setLayout(new GridLayout(1,1));
-		JPanel panelOpciones = new JPanel();
-		panelOpciones.setLayout(new GridLayout(4,1));
 		JPanel panelAbecedario = new JPanel();
 		panelAbecedario.setLayout(new GridLayout(3,10));
+		
+		JLabel contadorErrores = new JLabel();
+		JLabel errores = new JLabel("ERRORES:");
+		JLabel palabraOculta = new JLabel("_ _ _ _ _");
+		JLabel palabra = new JLabel("PALABRA OCULTA:");
+		contadorErrores.setHorizontalAlignment(SwingConstants.CENTER);
+		errores.setHorizontalAlignment(SwingConstants.CENTER);
+		palabraOculta.setHorizontalAlignment(SwingConstants.CENTER);
+		palabra.setHorizontalAlignment(SwingConstants.CENTER);
+
 		
 		contador = 60;
 		JLabel etiqueta = new JLabel();
@@ -78,7 +91,10 @@ public class VentanaModoContrarreloj extends JFrame {
 			public void run(){
 				while (ejecutarHilo) {
 					contador--;
-					etiqueta.setText(contador + "");
+					etiqueta.setText("Tiempo restante: " + contador + " segundos") ;
+					if (contador == 0) {
+						ejecutarHilo = false;
+					}
 					try {
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {
@@ -89,6 +105,38 @@ public class VentanaModoContrarreloj extends JFrame {
 		};
 		ejecutarHilo = true;
 		hilo.start();
+		
+		//Barra del menu
+		JMenuBar menu = new JMenuBar();
+		JMenu juego = new JMenu("Juego");
+		
+		JMenu opciones = new JMenu("Opciones");
+		
+		JMenuItem cerrarSesion = new JMenuItem("Cerrar Sesion");
+		JMenuItem cambiarFondo = new JMenuItem("Cambiar fondo del Juego");
+		JMenuItem ranking = new JMenu("Ranking");
+		JMenuItem instrucciones = new JMenu("Instrucciones");
+		
+		juego.add(ranking);
+		juego.add(instrucciones);
+		opciones.add(cerrarSesion);
+		opciones.add(cambiarFondo);
+
+		
+		menu.add(juego);
+		menu.add(opciones);
+
+		instrucciones.addMouseListener(new MouseAdapter() {
+						
+			@Override
+			public void mousePressed(MouseEvent e) {
+				new VentanaInstruccionesModoContrarreloj();
+				
+			}
+		});
+	
+		
+		
 		
 		
 		panelAbecedario.add(botonA);
@@ -120,14 +168,15 @@ public class VentanaModoContrarreloj extends JFrame {
 		panelAbecedario.add(botonZ);
 		
 		
-		panelLista.add(listaTop);
-		panelOpciones.add(etiqueta);
-		panelOpciones.add(botonInstrucciones);
-		panelOpciones.add(botonPalabraNueva);
-		panelOpciones.add(botonSalir);
 		
-		panelIzquierda.add(panelLista, BorderLayout.NORTH);
-		panelIzquierda.add(panelOpciones, BorderLayout.SOUTH);
+		panelIzquierda.add(botonPalabraNueva);
+		panelIzquierda.add(botonSalir);
+		panelIzquierda.add(palabra);
+		panelIzquierda.add(palabraOculta);
+		panelIzquierda.add(errores);
+		panelIzquierda.add(contadorErrores);
+		panelIzquierda.add(etiqueta);
+		
 		
 		panelArriba.add(panelIzquierda, BorderLayout.WEST);
 		panelArriba.add(panelDerecha, BorderLayout.EAST);
@@ -137,8 +186,9 @@ public class VentanaModoContrarreloj extends JFrame {
 		panelGeneral.add(panelArriba, BorderLayout.NORTH);
 		panelGeneral.add(panelAbecedario, BorderLayout.SOUTH);
 
-		this.add(panelGeneral, BorderLayout.CENTER);
 		
+		this.add(panelGeneral, BorderLayout.CENTER);
+		this.setJMenuBar(menu);
 		this.setTitle("Modo Contrarreloj");
 		this.setSize(1000, 600);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
