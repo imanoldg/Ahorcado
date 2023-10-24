@@ -14,8 +14,9 @@ public class VentanaInstruccionesModoContrarreloj extends JFrame{
 	public VentanaInstruccionesModoContrarreloj() {
 		JLabel instrucciones = new JLabel("<html><body>Este programa generara aleatoriamente una palabra "
 				+ "pero aparecera con espacios vacíos donde <br> deben ir los caracteres que la forman, "
-				+ "tu tendrás que adivinarla. Necesitarás adivinar la palabra con <br> la menor cantidad de letras posibles"
-				+ " para evitar ser 'ahorcado'. <html><body>");
+				+ "tu tendrás que adivinarla. Necesitarás adivinar la palabra lo <br> más rapido que puedas"
+				+ " para evitar ser 'ahorcado' ya que en este modo es contrarreloj y tendras un crónometro en pantalla,"
+				+ "cuando este cronometro llegue a 0, habrás perdido. <html><body>");
 		
 		instrucciones.setPreferredSize(new Dimension(800,600));
 		instrucciones.setHorizontalAlignment(SwingConstants.CENTER);

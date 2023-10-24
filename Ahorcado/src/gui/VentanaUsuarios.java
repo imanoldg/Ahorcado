@@ -68,8 +68,8 @@ public class VentanaUsuarios extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				VentanaSelectorModo v = new VentanaSelectorModo();
 				VentanaError vError = new VentanaError();
-				String u1 = "prueba";
-				String c1 = "prueba";
+				String u1 = "simon";
+				String c1 = "pelon";
 				String usuario = user.getText();
 				String contra = password.getText();
 				if((e.getSource() == singIn) && ((usuario.equals(u1)) && (contra.equals(c1)))) {
