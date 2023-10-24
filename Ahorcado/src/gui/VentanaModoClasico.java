@@ -101,8 +101,6 @@ public class VentanaModoClasico extends JFrame{
 			}
 		});
 		
-		
-		
 		panelAbecedario.add(botonA);
 		panelAbecedario.add(botonB);
 		panelAbecedario.add(botonC);

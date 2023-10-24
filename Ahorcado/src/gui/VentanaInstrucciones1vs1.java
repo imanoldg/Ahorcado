@@ -1,18 +1,30 @@
 package gui;
 
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class VentanaInstrucciones1vs1 extends JFrame {
 	public VentanaInstrucciones1vs1() {
-		JLabel instrucciones = new JLabel("INSTRUCCIONES MODO 1vs1");
+		JLabel instrucciones = new JLabel("<html><body>Este programa generara aleatoriamente una palabra "
+				+ "pero aparecera con espacios vacíos donde <br> deben ir los caracteres que la forman, "
+				+ "tu tendrás que adivinarla. Necesitarás adivinar la palabra con <br> la menor cantidad de letras posibles"
+				+ " para evitar ser 'ahorcado'. <html><body>");
 		
-		JPanel panel= new JPanel(); 
+		instrucciones.setPreferredSize(new Dimension(800,600));
+		instrucciones.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		panel.add(instrucciones);
+		JMenuBar barraTitulo = new JMenuBar();
+		JMenu titulo = new JMenu("INSTRUCCIONES MODO CLÁSICO");
+		barraTitulo.add(titulo);
 		
-		this.add(panel);
+		this.add(instrucciones);
+		this.setJMenuBar(barraTitulo);
 		this.setTitle("Instrucciones del Modo Contrarreloj");
 		this.setSize(800, 600);
 		this.setVisible(true);
