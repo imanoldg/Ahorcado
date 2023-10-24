@@ -2,8 +2,11 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 
 public class VentanaRegistro extends JFrame{
 	
@@ -16,21 +19,24 @@ public class VentanaRegistro extends JFrame{
 	private JPasswordField textoPassword1;
 	private JPasswordField textoPassword2;
 	private JButton botonRegistrar;
+	private JButton returnSingIn;
 	
 	public VentanaRegistro() {
 		
+		JPanel panelTitulo = new JPanel();
+		panelTitulo.setLayout(new GridLayout(1,1));
 		JPanel panel1 = new JPanel();
 		panel1.setLayout(null);
 		JPanel panel2 = new JPanel();
-		panel2.setLayout(new GridLayout(2,1));
+		panel2.setLayout(new GridLayout(1,2));
 		
 		titulo = new JLabel("Registro de usuario");
-		titulo.setBounds(130, 20, 300, 30);
-		panel1.add(titulo);
+		titulo.setHorizontalAlignment(SwingConstants.CENTER);
+		panelTitulo.add(titulo);
 		
-		error = new JLabel("la contraseña no es igual");
-		error.setVisible(false);
-		panel2.add(error);
+		//error = new JLabel("la contraseña no es igual");
+		//error.setVisible(false);
+		//panel2.add(error);
 		
 		
 		// usuario
@@ -70,10 +76,25 @@ public class VentanaRegistro extends JFrame{
         botonRegistrar = new JButton("Registrarse");
         panel2.add(botonRegistrar);
         
+        returnSingIn = new JButton("Volver");
+        returnSingIn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == returnSingIn) {
+					dispose();
+					VentanaUsuarios in = new VentanaUsuarios();
+					in.setVisible(true);
+				}
+			}
+		});
+        panel2.add(returnSingIn);
+        
         
 		// paneles y ventana
         
-		add(panel1);
+        add(panelTitulo, BorderLayout.NORTH);
+		add(panel1, BorderLayout.CENTER);
 		add(panel2, BorderLayout.SOUTH);
 		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);

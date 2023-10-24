@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 public class VentanaUsuarios extends JFrame{
 	
@@ -26,14 +27,18 @@ public class VentanaUsuarios extends JFrame{
 	
 	public VentanaUsuarios(){
 		
+		
+		
+		JPanel panelTitulo = new JPanel();
+		panelTitulo.setLayout(new GridLayout(1,1));
 		JPanel panelSesion = new JPanel();
 		panelSesion.setLayout(null);
 		JPanel inUp = new JPanel();
-		inUp.setLayout(new GridLayout(2,1));
+		inUp.setLayout(new GridLayout(1,2));
 		
-		tituloJuego = new JLabel("EL AHORCADO");
-        tituloJuego.setBounds(148, 20, 300, 30); 
-        add(tituloJuego);
+		tituloJuego = new JLabel("EL AHORCADO"); 
+		tituloJuego.setHorizontalAlignment(SwingConstants.CENTER);
+        panelTitulo.add(tituloJuego);
 
         textoUser = new JLabel("Usuario: ");
         textoUser.setBounds(90, 60, 200, 30); 
@@ -44,11 +49,11 @@ public class VentanaUsuarios extends JFrame{
         panelSesion.add(textoPassword);
 
         user = new JTextField();
-        user.setBounds(140, 65, 150, 20); 
+        user.setBounds(142, 65, 150, 20); 
         panelSesion.add(user);
 
         password = new JPasswordField();
-        password.setBounds(140, 105, 150, 20); 
+        password.setBounds(142, 105, 150, 20); 
         panelSesion.add(password);
 		
 		singIn = new JButton("Inciar sesión");
@@ -56,11 +61,21 @@ public class VentanaUsuarios extends JFrame{
 		inUp.add(singIn);
 		inUp.add(singUp);
 		
+		singUp.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == singUp) {
+					dispose();
+					VentanaRegistro reg = new VentanaRegistro();
+					reg.setVisible(true);
+				}
+			}
+		});
 		
+		add(panelTitulo, BorderLayout.NORTH);
 		add(panelSesion, BorderLayout.CENTER);
 		add(inUp, BorderLayout.SOUTH);
-		
-		
 		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
