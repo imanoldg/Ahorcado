@@ -73,9 +73,11 @@ public class Ventana1vs1 extends JFrame{
 	
 	private JButton botonSalirIzquierda = new JButton("  Volver al selector de modo  ");
 	private JButton botonPalabraNuevaIzquierda = new JButton("  Palabra Nueva  ");
+	private JButton botonResolverIzquierda = new JButton("  Resolver  ");
 	
 	private JButton botonSalirDerecha = new JButton("  Volver al selector de modo  ");
 	private JButton botonPalabraNuevaDerecha = new JButton("  Palabra Nueva  ");
+	private JButton botonResolverDerecha = new JButton("  Resolver  ");
 	
 	private int contador;
 	
@@ -88,7 +90,7 @@ public class Ventana1vs1 extends JFrame{
 		JPanel panelArribaIzquierda = new JPanel();
 		panelArribaIzquierda.setLayout(new GridLayout(1,2));
 		JPanel panelIzquierdaIzquierda = new JPanel();
-		panelIzquierdaIzquierda.setLayout(new GridLayout(6,1));
+		panelIzquierdaIzquierda.setLayout(new GridLayout(7,1));
 		JPanel panelDerechaIzquierda = new JPanel();
 		JPanel panelAbecedarioIzquierda = new JPanel();
 		panelAbecedarioIzquierda.setLayout(new GridLayout(3,10));
@@ -107,7 +109,7 @@ public class Ventana1vs1 extends JFrame{
 		JPanel panelArribaDerecha = new JPanel();
 		panelArribaDerecha.setLayout(new GridLayout(1,2));
 		JPanel panelIzquierdaDerecha = new JPanel();
-		panelIzquierdaDerecha.setLayout(new GridLayout(6,1));
+		panelIzquierdaDerecha.setLayout(new GridLayout(7,1));
 		JPanel panelDerechaDerecha = new JPanel();
 		JPanel panelAbecedarioDerecha = new JPanel();
 		panelAbecedarioDerecha.setLayout(new GridLayout(3,10));
@@ -210,6 +212,7 @@ public class Ventana1vs1 extends JFrame{
 		
 		panelIzquierdaIzquierda.add(botonPalabraNuevaIzquierda);
 		panelIzquierdaIzquierda.add(botonSalirIzquierda);
+		panelIzquierdaIzquierda.add(botonResolverIzquierda);
 		panelIzquierdaIzquierda.add(palabraIzquierda);
 		panelIzquierdaIzquierda.add(palabraOcultaIzquierda);
 		panelIzquierdaIzquierda.add(erroresIzquierda);
@@ -223,6 +226,7 @@ public class Ventana1vs1 extends JFrame{
 		
 		panelIzquierdaDerecha.add(botonPalabraNuevaDerecha);
 		panelIzquierdaDerecha.add(botonSalirDerecha);
+		panelIzquierdaDerecha.add(botonResolverDerecha);
 		panelIzquierdaDerecha.add(palabraDerecha);
 		panelIzquierdaDerecha.add(palabraOcultaDerecha);
 		panelIzquierdaDerecha.add(erroresDerecha);
@@ -244,7 +248,7 @@ public class Ventana1vs1 extends JFrame{
 		this.setJMenuBar(menu);
 		
 		this.setTitle("1 vs 1");
-		this.setSize(1920, 1080);
+		this.setSize(1280, 720);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setResizable(true);

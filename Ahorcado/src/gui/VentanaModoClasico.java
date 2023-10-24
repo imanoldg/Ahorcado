@@ -48,7 +48,7 @@ public class VentanaModoClasico extends JFrame{
 	
 	private JButton botonSalir = new JButton("  Volver al selector de modo  ");
 	private JButton botonPalabraNueva = new JButton("  Palabra Nueva  ");
-	
+	private JButton botonResolver = new JButton("  Resolver  ");
 	
 	
 	public VentanaModoClasico() {
@@ -57,7 +57,7 @@ public class VentanaModoClasico extends JFrame{
 		JPanel panelArriba = new JPanel();
 		panelArriba.setLayout(new GridLayout(1,2));
 		JPanel panelIzquierda = new JPanel();
-		panelIzquierda.setLayout(new GridLayout(6,1));
+		panelIzquierda.setLayout(new GridLayout(7,1));
 		JPanel panelDerecha = new JPanel();
 		JPanel panelAbecedario = new JPanel();
 		panelAbecedario.setLayout(new GridLayout(3,10));
@@ -132,6 +132,7 @@ public class VentanaModoClasico extends JFrame{
 		
 		panelIzquierda.add(botonPalabraNueva);
 		panelIzquierda.add(botonSalir);
+		panelIzquierda.add(botonResolver);
 		panelIzquierda.add(palabra);
 		panelIzquierda.add(palabraOculta);
 		panelIzquierda.add(errores);

@@ -99,7 +99,7 @@ public class VentanaModoMuerteSubita extends JFrame{
 						
 			@Override
 			public void mousePressed(MouseEvent e) {
-				new VenatanaInstruccionesModoMuerteSubita();
+				new VentanaInstruccionesModoMuerteSubita();
 				
 			}
 		});
