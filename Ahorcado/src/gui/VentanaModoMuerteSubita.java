@@ -49,7 +49,6 @@ public class VentanaModoMuerteSubita extends JFrame{
 	private JButton botonSalir = new JButton("  Volver al selector de modo  ");
 	private JButton botonPalabraNueva = new JButton("  Palabra Nueva  ");
 	
-	private JList<Usuario> listaTop = new JList<Usuario>();
 	
 	public VentanaModoMuerteSubita() {
 		JPanel panelGeneral = new JPanel();

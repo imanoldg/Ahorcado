@@ -2,11 +2,18 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import domain.Usuario;
 
@@ -41,9 +48,8 @@ public class VentanaModoClasico extends JFrame{
 	
 	private JButton botonSalir = new JButton("  Volver al selector de modo  ");
 	private JButton botonPalabraNueva = new JButton("  Palabra Nueva  ");
-	private JButton botonInstrucciones = new JButton("  Instrucciones  ");
 	
-	private JList<Usuario> listaTop = new JList<Usuario>();
+	
 	
 	public VentanaModoClasico() {
 		JPanel panelGeneral = new JPanel();
@@ -51,14 +57,51 @@ public class VentanaModoClasico extends JFrame{
 		JPanel panelArriba = new JPanel();
 		panelArriba.setLayout(new GridLayout(1,2));
 		JPanel panelIzquierda = new JPanel();
-		panelIzquierda.setLayout(new GridLayout(2,1));
+		panelIzquierda.setLayout(new GridLayout(6,1));
 		JPanel panelDerecha = new JPanel();
-		JPanel panelLista = new JPanel();
-		panelLista.setLayout(new GridLayout(1,1));
-		JPanel panelOpciones = new JPanel();
-		panelOpciones.setLayout(new GridLayout(4,1));
 		JPanel panelAbecedario = new JPanel();
 		panelAbecedario.setLayout(new GridLayout(3,10));
+		
+		JLabel contadorErrores = new JLabel();
+		JLabel errores = new JLabel("ERRORES:");
+		JLabel palabraOculta = new JLabel("_ _ _ _ _");
+		JLabel palabra = new JLabel("PALABRA OCULTA:");
+		contadorErrores.setHorizontalAlignment(SwingConstants.CENTER);
+		errores.setHorizontalAlignment(SwingConstants.CENTER);
+		palabraOculta.setHorizontalAlignment(SwingConstants.CENTER);
+		palabra.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		
+		//BARRA DE MENU
+		JMenuBar menu = new JMenuBar();
+		JMenu juego = new JMenu("Juego");
+		
+		JMenu opciones = new JMenu("Opciones");
+		
+		JMenuItem cerrarSesion = new JMenuItem("Cerrar Sesion");
+		JMenuItem cambiarFondo = new JMenuItem("Cambiar fondo del Juego");
+		JMenuItem ranking = new JMenu("Ranking");
+		JMenuItem instrucciones = new JMenu("Instrucciones");
+		
+		juego.add(ranking);
+		juego.add(instrucciones);
+		opciones.add(cerrarSesion);
+		opciones.add(cambiarFondo);
+
+				
+		menu.add(juego);
+		menu.add(opciones);
+
+		instrucciones.addMouseListener(new MouseAdapter() {
+						
+			@Override
+			public void mousePressed(MouseEvent e) {
+				new VentanaInstruccionesModoClasico();
+				
+			}
+		});
+		
+		
 		
 		panelAbecedario.add(botonA);
 		panelAbecedario.add(botonB);
@@ -88,13 +131,14 @@ public class VentanaModoClasico extends JFrame{
 		panelAbecedario.add(botonY);
 		panelAbecedario.add(botonZ);
 		
-		panelLista.add(listaTop);
-		panelOpciones.add(botonInstrucciones);
-		panelOpciones.add(botonPalabraNueva);
-		panelOpciones.add(botonSalir);
 		
-		panelIzquierda.add(panelLista, BorderLayout.NORTH);
-		panelIzquierda.add(panelOpciones, BorderLayout.SOUTH);
+		panelIzquierda.add(botonPalabraNueva);
+		panelIzquierda.add(botonSalir);
+		panelIzquierda.add(palabra);
+		panelIzquierda.add(palabraOculta);
+		panelIzquierda.add(errores);
+		panelIzquierda.add(contadorErrores);
+		
 		
 		panelArriba.add(panelIzquierda, BorderLayout.WEST);
 		panelArriba.add(panelDerecha, BorderLayout.EAST);
@@ -105,7 +149,7 @@ public class VentanaModoClasico extends JFrame{
 		panelGeneral.add(panelAbecedario, BorderLayout.SOUTH);
 
 		this.add(panelGeneral, BorderLayout.CENTER);
-		
+		this.setJMenuBar(menu);
 		this.setTitle("Modo Clásico");
 		this.setSize(1000, 600);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
