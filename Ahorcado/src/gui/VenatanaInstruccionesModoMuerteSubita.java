@@ -4,10 +4,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class VentanaInstruccionesModoContrarreloj extends JFrame{
-	
-	public VentanaInstruccionesModoContrarreloj() {
-		JLabel instrucciones = new JLabel("INSTRUCCIONES MODO CONTRERRELOJ");
+public class VenatanaInstruccionesModoMuerteSubita extends JFrame{
+	public VenatanaInstruccionesModoMuerteSubita() {
+		JLabel instrucciones = new JLabel("INSTRUCCIONES MODO MUERTE SUBITA");
 		
 		JPanel panel= new JPanel(); 
 		
@@ -22,6 +21,6 @@ public class VentanaInstruccionesModoContrarreloj extends JFrame{
 		this.setLocationRelativeTo(null);
 	}
 	public static void main(String[] args) {
-		new VentanaInstruccionesModoContrarreloj();
+		new VenatanaInstruccionesModoMuerteSubita();
 	}
 }
