@@ -70,7 +70,7 @@ public class VentanaSelectorModo extends JFrame{
 		this.add(panel);
 		this.setTitle("Selector de Modo de Juego");
 		this.setSize(800, 600);
-		this.setVisible(true);
+		//this.setVisible(true);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);

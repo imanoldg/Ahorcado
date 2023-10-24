@@ -3,9 +3,11 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -27,8 +29,6 @@ public class VentanaUsuarios extends JFrame{
 	
 	public VentanaUsuarios(){
 		
-		
-		
 		JPanel panelTitulo = new JPanel();
 		panelTitulo.setLayout(new GridLayout(1,1));
 		JPanel panelSesion = new JPanel();
@@ -36,9 +36,10 @@ public class VentanaUsuarios extends JFrame{
 		JPanel inUp = new JPanel();
 		inUp.setLayout(new GridLayout(1,2));
 		
-		tituloJuego = new JLabel("EL AHORCADO"); 
-		tituloJuego.setHorizontalAlignment(SwingConstants.CENTER);
-        panelTitulo.add(tituloJuego);
+		ImageIcon tituloImagen = new ImageIcon("resources/images/tituloAhorcadoFoto.png");
+		ImageIcon minImagen = new ImageIcon(tituloImagen.getImage().getScaledInstance(300, 80, Image.SCALE_SMOOTH));
+		JLabel labelTitulo = new JLabel(minImagen);
+		panelTitulo.add(labelTitulo, BorderLayout.NORTH);
 
         textoUser = new JLabel("Usuario: ");
         textoUser.setBounds(90, 60, 200, 30); 
@@ -61,6 +62,25 @@ public class VentanaUsuarios extends JFrame{
 		inUp.add(singIn);
 		inUp.add(singUp);
 		
+		singIn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaSelectorModo v = new VentanaSelectorModo();
+				VentanaError vError = new VentanaError();
+				String u1 = "prueba";
+				String c1 = "prueba";
+				String usuario = user.getText();
+				String contra = password.getText();
+				if((e.getSource() == singIn) && ((usuario.equals(u1)) && (contra.equals(c1)))) {
+					dispose();
+					v.setVisible(true);
+				}else {
+					vError.setVisible(true);
+				}				
+			}
+		});
+		
 		singUp.addActionListener(new ActionListener() {
 			
 			@Override
@@ -78,10 +98,10 @@ public class VentanaUsuarios extends JFrame{
 		add(inUp, BorderLayout.SOUTH);
 		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setVisible(true);
 		this.setBounds(0,0,400,500);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
+		this.setVisible(true);
 	}
 	
 	public static void main(String[] args) {
