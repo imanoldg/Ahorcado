@@ -244,7 +244,7 @@ public class Ventana1vs1 extends JFrame{
 		this.setJMenuBar(menu);
 		
 		this.setTitle("1 vs 1");
-		this.setSize(2000, 1200);
+		this.setSize(1920, 1080);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setResizable(true);
