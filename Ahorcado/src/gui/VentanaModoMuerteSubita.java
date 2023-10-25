@@ -104,6 +104,16 @@ public class VentanaModoMuerteSubita extends JFrame{
 			}
 		});
 		
+		cerrarSesion.addMouseListener(new MouseAdapter() {
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				new VentanaUsuarios();
+				dispose();
+				
+			}
+		});
+		
 		panelAbecedario.add(botonA);
 		panelAbecedario.add(botonB);
 		panelAbecedario.add(botonC);

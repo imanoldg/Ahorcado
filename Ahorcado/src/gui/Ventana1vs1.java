@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -148,6 +149,16 @@ public class Ventana1vs1 extends JFrame{
 			@Override
 			public void mousePressed(MouseEvent e) {
 				new VentanaInstrucciones1vs1();
+				
+			}
+		});
+		
+		cerrarSesion.addMouseListener(new MouseAdapter() {
+						
+			@Override
+			public void mousePressed(MouseEvent e) {
+				new VentanaUsuarios();
+				dispose();
 				
 			}
 		});

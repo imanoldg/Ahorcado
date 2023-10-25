@@ -101,6 +101,15 @@ public class VentanaModoClasico extends JFrame{
 			}
 		});
 		
+		cerrarSesion.addMouseListener(new MouseAdapter() {
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				new VentanaUsuarios();
+				dispose();
+				
+			}
+		});
 		panelAbecedario.add(botonA);
 		panelAbecedario.add(botonB);
 		panelAbecedario.add(botonC);

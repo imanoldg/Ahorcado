@@ -136,6 +136,15 @@ public class VentanaModoContrarreloj extends JFrame {
 			}
 		});
 	
+		cerrarSesion.addMouseListener(new MouseAdapter() {
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				new VentanaUsuarios();
+				dispose();
+				
+			}
+		});
 		
 		
 		
