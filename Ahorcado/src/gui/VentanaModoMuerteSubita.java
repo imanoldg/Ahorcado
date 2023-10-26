@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -50,24 +51,16 @@ public class VentanaModoMuerteSubita extends JFrame{
 	
 	private JButton botonSalir = new JButton("  Volver al selector de modo  ");
 	private JButton botonPalabraNueva = new JButton("  Palabra Nueva  ");
+	private JButton botonResolver = new JButton("  Resolver  ");
 	
 	
 	public VentanaModoMuerteSubita() {
-		botonSalir.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new VentanaSelectorModo();
-				dispose();
-			}
-		});
-
 		JPanel panelGeneral = new JPanel();
 		panelGeneral.setLayout(new GridLayout(2,1));
 		JPanel panelArriba = new JPanel();
 		panelArriba.setLayout(new GridLayout(1,2));
 		JPanel panelIzquierda = new JPanel();
-		panelIzquierda.setLayout(new GridLayout(7,1));
+		panelIzquierda.setLayout(new GridLayout(8,1));
 		JPanel panelDerecha = new JPanel();
 		JPanel panelAbecedario = new JPanel();
 		panelAbecedario.setLayout(new GridLayout(3,10));
@@ -125,6 +118,33 @@ public class VentanaModoMuerteSubita extends JFrame{
 			}
 		});
 		
+		cambiarFondo.addMouseListener(new MouseAdapter() {
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				new VentanaPersonalizar();
+				
+			}
+		});
+		
+		botonSalir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaSelectorModo();
+				dispose();
+			}
+		});
+		
+		botonResolver.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaResolver();
+				
+			}
+		});
+		
 		panelAbecedario.add(botonA);
 		panelAbecedario.add(botonB);
 		panelAbecedario.add(botonC);
@@ -156,6 +176,7 @@ public class VentanaModoMuerteSubita extends JFrame{
 
 		panelIzquierda.add(botonPalabraNueva);
 		panelIzquierda.add(botonSalir);
+		panelIzquierda.add(botonResolver);
 		panelIzquierda.add(palabra);
 		panelIzquierda.add(palabraOculta);
 		panelIzquierda.add(errores);
@@ -173,7 +194,7 @@ public class VentanaModoMuerteSubita extends JFrame{
 
 		this.add(panelGeneral, BorderLayout.CENTER);
 		this.setJMenuBar(menu);
-		this.setTitle("Modo Clásico");
+		this.setTitle("Modo Muerte Súbita");
 		this.setSize(1000, 600);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);

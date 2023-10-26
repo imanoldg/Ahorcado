@@ -66,7 +66,6 @@ public class VentanaUsuarios extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaSelectorModo v = new VentanaSelectorModo();
 				VentanaError vError = new VentanaError();
 				String u1 = "simon";
 				String c1 = "rodilla";
@@ -74,7 +73,7 @@ public class VentanaUsuarios extends JFrame{
 				String contra = password.getText();
 				if((e.getSource() == singIn) && ((usuario.equals(u1)) && (contra.equals(c1)))) {
 					dispose();
-					v.setVisible(true);
+					new VentanaSelectorModo();
 				}else {
 					vError.setVisible(true);
 				}				

@@ -62,16 +62,7 @@ public class VentanaModoContrarreloj extends JFrame {
 	private Thread hilo;
 	private boolean ejecutarHilo;
 	
-	public VentanaModoContrarreloj() {
-		botonSalir.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new VentanaSelectorModo();
-				dispose();
-			}
-		});
-		
+	public VentanaModoContrarreloj() {		
 		JPanel panelGeneral = new JPanel();
 		panelGeneral.setLayout(new GridLayout(2,1));
 		JPanel panelArriba = new JPanel();
@@ -155,7 +146,31 @@ public class VentanaModoContrarreloj extends JFrame {
 			}
 		});
 		
+		cambiarFondo.addMouseListener(new MouseAdapter() {
+			
+			public void mousePressed(MouseEvent e) {
+				new VentanaPersonalizar();
+				
+			}
+		});
 		
+		botonSalir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaSelectorModo();
+				dispose();
+			}
+		});
+		
+		botonResolver.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaResolver();
+				
+			}
+		});
 		
 		
 		panelAbecedario.add(botonA);

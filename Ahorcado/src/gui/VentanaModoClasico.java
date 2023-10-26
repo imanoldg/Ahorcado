@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -53,16 +54,7 @@ public class VentanaModoClasico extends JFrame{
 	private JButton botonResolver = new JButton("  Resolver  ");
 	
 	
-	public VentanaModoClasico() {
-		botonSalir.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new VentanaSelectorModo();
-				dispose();
-			}
-		});
-		
+	public VentanaModoClasico() {		
 		JPanel panelGeneral = new JPanel();
 		panelGeneral.setLayout(new GridLayout(2,1));
 		JPanel panelArriba = new JPanel();
@@ -121,6 +113,34 @@ public class VentanaModoClasico extends JFrame{
 				
 			}
 		});
+		
+		cambiarFondo.addMouseListener(new MouseAdapter() {
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				new VentanaPersonalizar();
+				
+			}
+		});
+		
+		botonSalir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaSelectorModo();
+				dispose();
+			}
+		});
+		
+		botonResolver.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaResolver();
+				
+			}
+		});
+		
 		panelAbecedario.add(botonA);
 		panelAbecedario.add(botonB);
 		panelAbecedario.add(botonC);

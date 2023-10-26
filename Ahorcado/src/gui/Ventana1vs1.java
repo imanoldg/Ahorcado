@@ -85,23 +85,6 @@ public class Ventana1vs1 extends JFrame{
 	private int contador;
 	
 	public Ventana1vs1() {
-		botonSalirIzquierda.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new VentanaSelectorModo();
-				dispose();
-			}
-		});
-		
-		botonSalirDerecha.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new VentanaSelectorModo();
-				dispose();
-			}
-		});
 		JPanel panelGeneral = new JPanel();
 		panelGeneral.setLayout(new GridLayout(1,2));
 		
@@ -182,6 +165,50 @@ public class Ventana1vs1 extends JFrame{
 			}
 		});
 		
+		cambiarFondo.addMouseListener(new MouseAdapter() {
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				new VentanaPersonalizar();
+				
+			}
+		});
+		
+		botonSalirIzquierda.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaSelectorModo();
+				dispose();
+			}
+		});
+		
+		botonSalirDerecha.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaSelectorModo();
+				dispose();
+			}
+		});
+		
+		botonResolverIzquierda.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaResolver();
+				
+			}
+		});
+		
+		botonResolverDerecha.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaResolver();
+				
+			}
+		});
 		
 		panelAbecedarioIzquierda.add(botonA);
 		panelAbecedarioIzquierda.add(botonB);
