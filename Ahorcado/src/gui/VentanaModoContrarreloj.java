@@ -63,6 +63,15 @@ public class VentanaModoContrarreloj extends JFrame {
 	private boolean ejecutarHilo;
 	
 	public VentanaModoContrarreloj() {
+		botonSalir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaSelectorModo();
+				dispose();
+			}
+		});
+		
 		JPanel panelGeneral = new JPanel();
 		panelGeneral.setLayout(new GridLayout(2,1));
 		JPanel panelArriba = new JPanel();

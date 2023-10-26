@@ -2,6 +2,8 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -83,6 +85,23 @@ public class Ventana1vs1 extends JFrame{
 	private int contador;
 	
 	public Ventana1vs1() {
+		botonSalirIzquierda.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaSelectorModo();
+				dispose();
+			}
+		});
+		
+		botonSalirDerecha.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaSelectorModo();
+				dispose();
+			}
+		});
 		JPanel panelGeneral = new JPanel();
 		panelGeneral.setLayout(new GridLayout(1,2));
 		
