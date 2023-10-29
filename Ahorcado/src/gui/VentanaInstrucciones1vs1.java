@@ -11,21 +11,37 @@ import javax.swing.SwingConstants;
 
 public class VentanaInstrucciones1vs1 extends JFrame {
 	public VentanaInstrucciones1vs1() {
-		JLabel instrucciones = new JLabel("<html><body>Este programa generara aleatoriamente una palabra "
-				+ "pero aparecera con espacios vacíos donde <br> deben ir los caracteres que la forman, "
-				+ "tu tendrás que adivinarla. Necesitarás adivinar la palabra con <br> la menor cantidad de letras posibles"
-				+ " para evitar ser 'ahorcado'. <html><body>");
+		JLabel instrucciones = new JLabel("<html><body>Jugadores: 2. <br> "
+				+ 	"Objetivo: Descubrir la palabra. <br>"
+				+ "<br>"
+				+ "<br>"
+				+ "Preparación: <br>"
+				+ "-Al inicio el programa generará aleatoriamente una palabra para cada uno de los jugadores y aparecerá con espacios vacios donde deberian ir los caracteres que la forman. <br>"
+				+ "<br>"
+				+ "<br>"
+				+ "Jugar: <br>"
+				+ "- Los jugadores pueden: Pedir una letra / Adivinar la palabra. <br>"
+				+ "-- Si la letra está, entonces el programa sustituye el espacio vacio por la letra en el lugar que ocupa en la palabra secreta. <br>"
+				+ "-- Si la letra no está, entonces el programa dibujará una parte del muñeco y apuntará un fallo. <br>"
+				+ "-- Este modo de juego va por turnos, por lo que en el primer turno se mostrara la interfaz del jugador 1 y en el siguiente la del jugador 2, y asi sucesivamente hasta que termine la partida. <br>"
+				+ "- Muñeco: El muñeco se dibuja en 6 partes (cabeza, torso, piernas y brazos), por lo que los jugadores tienen 6 posibildades de fallar. <br>"
+				+ "- Adivinar la Palabra: El jugador puede intentar adivinar la palabra secreta. <br>"
+				+ "-- Si acierta la palabra, entonces el programa completa la solución. <br>"
+				+ "-- Si no acierta la palabra, entonces el programa dibujará una parte del muñeco. <br>"
+				+ "Fin de la partida: <br>"
+				+ "- GANA el jugador que antes descubra la palabra. <br>"
+				+ "- PIERDE el jugador si se dibuja el muñeco completo en la horca<html><body>");
 		
 		instrucciones.setPreferredSize(new Dimension(800,600));
 		instrucciones.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JMenuBar barraTitulo = new JMenuBar();
-		JMenu titulo = new JMenu("INSTRUCCIONES MODO CLÁSICO");
+		JMenu titulo = new JMenu("INSTRUCCIONES MODO 1VS1");
 		barraTitulo.add(titulo);
 		
 		this.add(instrucciones);
 		this.setJMenuBar(barraTitulo);
-		this.setTitle("Instrucciones del Modo Contrarreloj");
+		this.setTitle("Instrucciones del Modo 1vs1");
 		this.setSize(800, 600);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);

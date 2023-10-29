@@ -75,14 +75,14 @@ public class Ventana1vs1 extends JFrame{
 	private JButton botonZ2 = new JButton("Z");
 	
 	private JButton botonSalirIzquierda = new JButton("  Volver al selector de modo  ");
-	private JButton botonPalabraNuevaIzquierda = new JButton("  Palabra Nueva  ");
+	private JButton botonListoIzquierda = new JButton("  Listo  ");
 	private JButton botonResolverIzquierda = new JButton("  Resolver  ");
 	
 	private JButton botonSalirDerecha = new JButton("  Volver al selector de modo  ");
-	private JButton botonPalabraNuevaDerecha = new JButton("  Palabra Nueva  ");
+	private JButton botonListoDerecha = new JButton("  Listo  ");
 	private JButton botonResolverDerecha = new JButton("  Resolver  ");
 	
-	private int contador;
+	private static int contador = 0;
 	
 	public Ventana1vs1() {
 		JPanel panelGeneral = new JPanel();
@@ -210,6 +210,24 @@ public class Ventana1vs1 extends JFrame{
 			}
 		});
 		
+		botonListoIzquierda.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				contador++;
+				
+			}
+		});
+		
+		botonListoDerecha.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				contador++;
+				
+			}
+		});
+		
 		panelAbecedarioIzquierda.add(botonA);
 		panelAbecedarioIzquierda.add(botonB);
 		panelAbecedarioIzquierda.add(botonC);
@@ -267,7 +285,7 @@ public class Ventana1vs1 extends JFrame{
 		panelAbecedarioDerecha.add(botonY2);
 		panelAbecedarioDerecha.add(botonZ2);
 		
-		panelIzquierdaIzquierda.add(botonPalabraNuevaIzquierda);
+		panelIzquierdaIzquierda.add(botonListoIzquierda);
 		panelIzquierdaIzquierda.add(botonSalirIzquierda);
 		panelIzquierdaIzquierda.add(botonResolverIzquierda);
 		panelIzquierdaIzquierda.add(palabraIzquierda);
@@ -281,7 +299,7 @@ public class Ventana1vs1 extends JFrame{
 		panelGeneralIzquierda.add(panelArribaIzquierda, BorderLayout.NORTH);
 		panelGeneralIzquierda.add(panelAbecedarioIzquierda, BorderLayout.SOUTH);
 		
-		panelIzquierdaDerecha.add(botonPalabraNuevaDerecha);
+		panelIzquierdaDerecha.add(botonListoDerecha);
 		panelIzquierdaDerecha.add(botonSalirDerecha);
 		panelIzquierdaDerecha.add(botonResolverDerecha);
 		panelIzquierdaDerecha.add(palabraDerecha);
@@ -299,7 +317,31 @@ public class Ventana1vs1 extends JFrame{
 		
 		panelGeneral.add(panelGeneralDerecha, BorderLayout.EAST);
 		panelGeneral.add(panelGeneralIzquierda, BorderLayout.WEST);
-
+		
+		
+		
+		if(contador /2 == 0) {
+			panelAbecedarioDerecha.setVisible(false);
+			botonListoDerecha.setVisible(false);
+			botonResolverDerecha.setVisible(false);
+			botonSalirDerecha.setVisible(false);
+			
+			panelAbecedarioIzquierda.setVisible(true);
+			botonListoIzquierda.setVisible(true);
+			botonResolverIzquierda.setVisible(true);
+			botonSalirIzquierda.setVisible(true);
+		} else {
+			panelAbecedarioIzquierda.setVisible(false);
+			botonListoIzquierda.setVisible(false);
+			botonResolverIzquierda.setVisible(false);
+			botonSalirIzquierda.setVisible(false);
+			
+			panelAbecedarioDerecha.setVisible(true);
+			botonListoDerecha.setVisible(true);
+			botonResolverDerecha.setVisible(true);
+			botonSalirDerecha.setVisible(true);
+		}
+		
 		
 		this.add(panelGeneral, BorderLayout.CENTER);
 		this.setJMenuBar(menu);
