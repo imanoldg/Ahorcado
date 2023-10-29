@@ -100,7 +100,7 @@ public class Ventana1vs1 extends JFrame{
 		panelAbecedarioIzquierda.setLayout(new GridLayout(3,10));
 		
 		JLabel contadorErroresIzquierda = new JLabel();
-		JLabel erroresIzquierda = new JLabel("ERRORES: " + contador);
+		JLabel erroresIzquierda = new JLabel("ERRORES:");
 		JLabel palabraOcultaIzquierda = new JLabel("_ _ _ _ _");
 		JLabel palabraIzquierda = new JLabel("PALABRA OCULTA:");
 		contadorErroresIzquierda.setHorizontalAlignment(SwingConstants.CENTER);
