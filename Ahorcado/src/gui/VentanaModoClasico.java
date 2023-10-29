@@ -197,8 +197,5 @@ public class VentanaModoClasico extends JFrame{
 		this.setResizable(false);
 	}
 	
-	public static void main(String[] args) {
-		new VentanaModoClasico();
-	}
 	
 }

@@ -394,7 +394,4 @@ public class Ventana1vs1 extends JFrame{
 	
 	}
 	
-	public static void main(String[] args) {
-		new Ventana1vs1();
-	}
 }

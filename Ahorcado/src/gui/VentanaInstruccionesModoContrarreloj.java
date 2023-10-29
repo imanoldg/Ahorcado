@@ -48,7 +48,5 @@ public class VentanaInstruccionesModoContrarreloj extends JFrame{
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 	}	
-	public static void main(String[] args) {
-		new VentanaInstruccionesModoContrarreloj();
-	}
+	
 }

@@ -47,7 +47,5 @@ public class VentanaInstruccionesModoMuerteSubita extends JFrame{
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 	}
-	public static void main(String[] args) {
-		new VentanaInstruccionesModoMuerteSubita();
-	}
+	
 }

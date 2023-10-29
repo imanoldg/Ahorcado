@@ -32,7 +32,5 @@ public class VentanaError extends JFrame {
         this.setLocationRelativeTo(null);
     }
     
-    public static void main(String[] args) {
-        new VentanaError();
-    }
+    
 }

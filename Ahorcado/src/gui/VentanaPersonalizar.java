@@ -16,9 +16,5 @@ public class VentanaPersonalizar extends JFrame{
 		this.setResizable(false);
 	}
 	
-	
-	public static void main(String[] args) {
-		new VentanaPersonalizar();
-	}
-	
+		
 }
