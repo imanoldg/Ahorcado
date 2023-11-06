@@ -24,8 +24,13 @@ public class VentanaModoClasico extends JFrame{
 	
 	public JPanel crearTeclado() {
 		JPanel panelTeclado = new JPanel();
+		panelTeclado.setLayout(new GridLayout(3,10));
 		
 		for (int i = 65; i < 91; i++) {
+			if (i == 79) {
+				JButton boton = new JButton ("Ñ");
+				panelTeclado.add(boton);
+			}
 			char num = (char)i;
 			
 			JButton boton = new JButton (num + "");
@@ -48,7 +53,7 @@ public class VentanaModoClasico extends JFrame{
 		panelIzquierda.setLayout(new GridLayout(7,1));
 		JPanel panelDerecha = new JPanel();
 		JPanel panelAbecedario = new JPanel();
-		panelAbecedario.setLayout(new GridLayout(3,10));
+		panelAbecedario.setLayout(new GridLayout(1,1));
 		panelAbecedario.add(crearTeclado());
 		
 		JLabel contadorErrores = new JLabel();
@@ -154,6 +159,5 @@ public class VentanaModoClasico extends JFrame{
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 	}
-	
 	
 }
