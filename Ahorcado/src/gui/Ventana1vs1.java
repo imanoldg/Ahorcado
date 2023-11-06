@@ -74,6 +74,7 @@ public class Ventana1vs1 extends JFrame{
 	private JButton botonY2 = new JButton("Y");
 	private JButton botonZ2 = new JButton("Z");
 	
+	
 	private JButton botonSalirIzquierda = new JButton("  Volver al selector de modo  ");
 	private JButton botonListoIzquierda = new JButton("  Listo  ");
 	private JButton botonResolverIzquierda = new JButton("  Resolver  ");
@@ -210,11 +211,34 @@ public class Ventana1vs1 extends JFrame{
 			}
 		});
 		
+		
 		botonListoIzquierda.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				contador++;
+				
+				if(contador % 2 == 0) {
+					panelAbecedarioDerecha.setVisible(false);
+					botonListoDerecha.setVisible(false);
+					botonResolverDerecha.setVisible(false);
+					botonSalirDerecha.setVisible(false);
+					
+					panelAbecedarioIzquierda.setVisible(true);
+					botonListoIzquierda.setVisible(true);
+					botonResolverIzquierda.setVisible(true);
+					botonSalirIzquierda.setVisible(true);
+				} else {
+					panelAbecedarioIzquierda.setVisible(false);
+					botonListoIzquierda.setVisible(false);
+					botonResolverIzquierda.setVisible(false);
+					botonSalirIzquierda.setVisible(false);
+					
+					panelAbecedarioDerecha.setVisible(true);
+					botonListoDerecha.setVisible(true);
+					botonResolverDerecha.setVisible(true);
+					botonSalirDerecha.setVisible(true);
+				}
 				
 			}
 		});
@@ -225,8 +249,41 @@ public class Ventana1vs1 extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				contador++;
 				
+				if(contador % 2 == 0) {
+					panelAbecedarioDerecha.setVisible(false);
+					botonListoDerecha.setVisible(false);
+					botonResolverDerecha.setVisible(false);
+					botonSalirDerecha.setVisible(false);
+					
+					panelAbecedarioIzquierda.setVisible(true);
+					botonListoIzquierda.setVisible(true);
+					botonResolverIzquierda.setVisible(true);
+					botonSalirIzquierda.setVisible(true);
+				} else {
+					panelAbecedarioIzquierda.setVisible(false);
+					botonListoIzquierda.setVisible(false);
+					botonResolverIzquierda.setVisible(false);
+					botonSalirIzquierda.setVisible(false);
+					
+					panelAbecedarioDerecha.setVisible(true);
+					botonListoDerecha.setVisible(true);
+					botonResolverDerecha.setVisible(true);
+					botonSalirDerecha.setVisible(true);
+				}
+				
 			}
 		});
+		
+		panelAbecedarioDerecha.setVisible(false);
+		botonListoDerecha.setVisible(false);
+		botonResolverDerecha.setVisible(false);
+		botonSalirDerecha.setVisible(false);
+		
+		panelAbecedarioIzquierda.setVisible(true);
+		botonListoIzquierda.setVisible(true);
+		botonResolverIzquierda.setVisible(true);
+		botonSalirIzquierda.setVisible(true);
+		
 		
 		panelAbecedarioIzquierda.add(botonA);
 		panelAbecedarioIzquierda.add(botonB);
@@ -319,28 +376,8 @@ public class Ventana1vs1 extends JFrame{
 		panelGeneral.add(panelGeneralIzquierda, BorderLayout.WEST);
 		
 		
+	
 		
-		if(contador /2 == 0) {
-			panelAbecedarioDerecha.setVisible(false);
-			botonListoDerecha.setVisible(false);
-			botonResolverDerecha.setVisible(false);
-			botonSalirDerecha.setVisible(false);
-			
-			panelAbecedarioIzquierda.setVisible(true);
-			botonListoIzquierda.setVisible(true);
-			botonResolverIzquierda.setVisible(true);
-			botonSalirIzquierda.setVisible(true);
-		} else {
-			panelAbecedarioIzquierda.setVisible(false);
-			botonListoIzquierda.setVisible(false);
-			botonResolverIzquierda.setVisible(false);
-			botonSalirIzquierda.setVisible(false);
-			
-			panelAbecedarioDerecha.setVisible(true);
-			botonListoDerecha.setVisible(true);
-			botonResolverDerecha.setVisible(true);
-			botonSalirDerecha.setVisible(true);
-		}
 		
 		
 		this.add(panelGeneral, BorderLayout.CENTER);
@@ -357,7 +394,4 @@ public class Ventana1vs1 extends JFrame{
 	
 	}
 	
-	public static void main(String[] args) {
-		new Ventana1vs1();
-	}
 }

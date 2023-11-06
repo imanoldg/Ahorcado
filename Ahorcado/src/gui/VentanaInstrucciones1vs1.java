@@ -48,7 +48,5 @@ public class VentanaInstrucciones1vs1 extends JFrame {
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 	}
-	public static void main(String[] args) {
-		new VentanaInstrucciones1vs1();
-	}
+	
 }
