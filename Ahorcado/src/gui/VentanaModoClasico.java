@@ -22,7 +22,7 @@ import domain.Usuario;
 
 public class VentanaModoClasico extends JFrame{
 	
-	public JPanel crearTeclado() {
+	public static JPanel crearTeclado() {
 		JPanel panelTeclado = new JPanel();
 		panelTeclado.setLayout(new GridLayout(3,10));
 		
@@ -158,6 +158,10 @@ public class VentanaModoClasico extends JFrame{
 		this.setVisible(true);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
+	}
+	
+	public static void main(String[] args) {
+		new VentanaModoClasico();
 	}
 	
 }

@@ -18,62 +18,6 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 public class Ventana1vs1 extends JFrame{
-	private JButton botonA = new JButton("A");
-	private JButton botonB = new JButton("B");
-	private JButton botonC = new JButton("C");
-	private JButton botonD = new JButton("D");
-	private JButton botonE = new JButton("E");
-	private JButton botonF = new JButton("F");
-	private JButton botonG = new JButton("G");
-	private JButton botonH = new JButton("H");
-	private JButton botonI = new JButton("I");
-	private JButton botonJ = new JButton("J");
-	private JButton botonK = new JButton("K");
-	private JButton botonL = new JButton("L");
-	private JButton botonM = new JButton("M");
-	private JButton botonN = new JButton("N");
-	private JButton botonÑ = new JButton("Ñ");
-	private JButton botonO = new JButton("O");
-	private JButton botonP = new JButton("P");
-	private JButton botonQ = new JButton("Q");
-	private JButton botonR = new JButton("R");
-	private JButton botonS = new JButton("S");
-	private JButton botonT = new JButton("T");
-	private JButton botonU = new JButton("U");
-	private JButton botonV = new JButton("V");
-	private JButton botonW = new JButton("W");
-	private JButton botonX = new JButton("X");
-	private JButton botonY = new JButton("Y");
-	private JButton botonZ = new JButton("Z");
-	
-	private JButton botonA2 = new JButton("A");
-	private JButton botonB2 = new JButton("B");
-	private JButton botonC2 = new JButton("C");
-	private JButton botonD2 = new JButton("D");
-	private JButton botonE2 = new JButton("E");
-	private JButton botonF2 = new JButton("F");
-	private JButton botonG2 = new JButton("G");
-	private JButton botonH2 = new JButton("H");
-	private JButton botonI2 = new JButton("I");
-	private JButton botonJ2 = new JButton("J");
-	private JButton botonK2 = new JButton("K");
-	private JButton botonL2 = new JButton("L");
-	private JButton botonM2 = new JButton("M");
-	private JButton botonN2 = new JButton("N");
-	private JButton botonÑ2 = new JButton("Ñ");
-	private JButton botonO2 = new JButton("O");
-	private JButton botonP2 = new JButton("P");
-	private JButton botonQ2 = new JButton("Q");
-	private JButton botonR2 = new JButton("R");
-	private JButton botonS2 = new JButton("S");
-	private JButton botonT2 = new JButton("T");
-	private JButton botonU2 = new JButton("U");
-	private JButton botonV2 = new JButton("V");
-	private JButton botonW2 = new JButton("W");
-	private JButton botonX2 = new JButton("X");
-	private JButton botonY2 = new JButton("Y");
-	private JButton botonZ2 = new JButton("Z");
-	
 	
 	private JButton botonSalirIzquierda = new JButton("  Volver al selector de modo  ");
 	private JButton botonListoIzquierda = new JButton("  Listo  ");
@@ -98,6 +42,7 @@ public class Ventana1vs1 extends JFrame{
 		JPanel panelDerechaIzquierda = new JPanel();
 		JPanel panelAbecedarioIzquierda = new JPanel();
 		panelAbecedarioIzquierda.setLayout(new GridLayout(3,10));
+		panelAbecedarioIzquierda.add(VentanaModoClasico.crearTeclado());
 		
 		JLabel contadorErroresIzquierda = new JLabel();
 		JLabel erroresIzquierda = new JLabel("ERRORES:");
@@ -117,6 +62,7 @@ public class Ventana1vs1 extends JFrame{
 		JPanel panelDerechaDerecha = new JPanel();
 		JPanel panelAbecedarioDerecha = new JPanel();
 		panelAbecedarioDerecha.setLayout(new GridLayout(3,10));
+		panelAbecedarioDerecha.add(VentanaModoClasico.crearTeclado());
 		
 		JLabel contadorErroresDerecha = new JLabel();
 		JLabel erroresDerecha = new JLabel("ERRORES:");
@@ -283,64 +229,6 @@ public class Ventana1vs1 extends JFrame{
 		botonListoIzquierda.setVisible(true);
 		botonResolverIzquierda.setVisible(true);
 		botonSalirIzquierda.setVisible(true);
-		
-		
-		panelAbecedarioIzquierda.add(botonA);
-		panelAbecedarioIzquierda.add(botonB);
-		panelAbecedarioIzquierda.add(botonC);
-		panelAbecedarioIzquierda.add(botonD);
-		panelAbecedarioIzquierda.add(botonE);
-		panelAbecedarioIzquierda.add(botonF);
-		panelAbecedarioIzquierda.add(botonG);
-		panelAbecedarioIzquierda.add(botonH);
-		panelAbecedarioIzquierda.add(botonI);
-		panelAbecedarioIzquierda.add(botonJ);
-		panelAbecedarioIzquierda.add(botonK);
-		panelAbecedarioIzquierda.add(botonL);
-		panelAbecedarioIzquierda.add(botonM);
-		panelAbecedarioIzquierda.add(botonN);
-		panelAbecedarioIzquierda.add(botonÑ);
-		panelAbecedarioIzquierda.add(botonO);
-		panelAbecedarioIzquierda.add(botonP);
-		panelAbecedarioIzquierda.add(botonQ);
-		panelAbecedarioIzquierda.add(botonR);
-		panelAbecedarioIzquierda.add(botonS);
-		panelAbecedarioIzquierda.add(botonT);
-		panelAbecedarioIzquierda.add(botonU);
-		panelAbecedarioIzquierda.add(botonV);
-		panelAbecedarioIzquierda.add(botonW);
-		panelAbecedarioIzquierda.add(botonX);
-		panelAbecedarioIzquierda.add(botonY);
-		panelAbecedarioIzquierda.add(botonZ);
-		
-		
-		panelAbecedarioDerecha.add(botonA2);
-		panelAbecedarioDerecha.add(botonB2);
-		panelAbecedarioDerecha.add(botonC2);
-		panelAbecedarioDerecha.add(botonD2);
-		panelAbecedarioDerecha.add(botonE2);
-		panelAbecedarioDerecha.add(botonF2);
-		panelAbecedarioDerecha.add(botonG2);
-		panelAbecedarioDerecha.add(botonH2);
-		panelAbecedarioDerecha.add(botonI2);
-		panelAbecedarioDerecha.add(botonJ2);
-		panelAbecedarioDerecha.add(botonK2);
-		panelAbecedarioDerecha.add(botonL2);
-		panelAbecedarioDerecha.add(botonM2);
-		panelAbecedarioDerecha.add(botonN2);
-		panelAbecedarioDerecha.add(botonÑ2);
-		panelAbecedarioDerecha.add(botonO2);
-		panelAbecedarioDerecha.add(botonP2);
-		panelAbecedarioDerecha.add(botonQ2);
-		panelAbecedarioDerecha.add(botonR2);
-		panelAbecedarioDerecha.add(botonS2);
-		panelAbecedarioDerecha.add(botonT2);
-		panelAbecedarioDerecha.add(botonU2);
-		panelAbecedarioDerecha.add(botonV2);
-		panelAbecedarioDerecha.add(botonW2);
-		panelAbecedarioDerecha.add(botonX2);
-		panelAbecedarioDerecha.add(botonY2);
-		panelAbecedarioDerecha.add(botonZ2);
 		
 		panelIzquierdaIzquierda.add(botonListoIzquierda);
 		panelIzquierdaIzquierda.add(botonSalirIzquierda);
