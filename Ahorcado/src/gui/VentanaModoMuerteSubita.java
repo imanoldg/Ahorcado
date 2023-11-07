@@ -37,7 +37,7 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico{
 		JPanel panelDerecha = new JPanel();
 		JPanel panelAbecedario = new JPanel();
 		panelAbecedario.setLayout(new GridLayout(1,1));
-		panelAbecedario.add(crearTeclado());
+	
 		
 		JLabel contadorErrores = new JLabel();
 		JLabel errores = new JLabel("ERRORES:");
@@ -146,6 +146,10 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico{
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
+	}
+	
+	public static void main(String[] args) {
+		new VentanaModoMuerteSubita();
 	}
 	
 }

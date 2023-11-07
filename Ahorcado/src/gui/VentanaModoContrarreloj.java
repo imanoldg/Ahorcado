@@ -48,7 +48,7 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 		JPanel panelDerecha = new JPanel();
 		JPanel panelAbecedario = new JPanel();
 		panelAbecedario.setLayout(new GridLayout(1,1));
-		panelAbecedario.add(crearTeclado());
+		
 		
 		JLabel contadorErrores = new JLabel();
 		JLabel errores = new JLabel("ERRORES:");
