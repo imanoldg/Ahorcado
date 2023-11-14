@@ -25,7 +25,7 @@ import javax.swing.event.MenuKeyListener;
 
 import domain.Usuario;
 
-public class VentanaModoContrarreloj extends VentanaModoClasico {
+public class VentanaModoContrarreloj extends JFrame{
 
 	
 	
@@ -162,7 +162,7 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 		panelArriba.add(panelIzquierda, BorderLayout.WEST);
 		panelArriba.add(panelDerecha, BorderLayout.EAST);
 		
-		
+		panelAbecedario.add(VentanaModoClasico.crearTeclado());
 		
 		panelGeneral.add(panelArriba, BorderLayout.NORTH);
 		panelGeneral.add(panelAbecedario, BorderLayout.SOUTH);
@@ -178,5 +178,7 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 		this.setLocationRelativeTo(null);
 	}
 	
-	
+	public static void main(String[] args) {
+		new VentanaModoContrarreloj();
+	}
 }

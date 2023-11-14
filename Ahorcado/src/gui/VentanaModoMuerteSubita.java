@@ -20,7 +20,7 @@ import javax.swing.SwingConstants;
 
 import domain.Usuario;
 
-public class VentanaModoMuerteSubita extends VentanaModoClasico{
+public class VentanaModoMuerteSubita extends JFrame{
 	
 	private JButton botonSalir = new JButton("  Volver al selector de modo  ");
 	private JButton botonPalabraNueva = new JButton("  Palabra Nueva  ");
@@ -132,7 +132,7 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico{
 		panelArriba.add(panelIzquierda, BorderLayout.WEST);
 		panelArriba.add(panelDerecha, BorderLayout.EAST);
 		
-		
+		panelAbecedario.add(VentanaModoClasico.crearTeclado());
 		
 		panelGeneral.add(panelArriba, BorderLayout.NORTH);
 		panelGeneral.add(panelAbecedario, BorderLayout.SOUTH);

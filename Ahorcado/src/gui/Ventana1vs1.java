@@ -41,7 +41,7 @@ public class Ventana1vs1 extends JFrame{
 		panelIzquierdaIzquierda.setLayout(new GridLayout(7,1));
 		JPanel panelDerechaIzquierda = new JPanel();
 		JPanel panelAbecedarioIzquierda = new JPanel();
-		panelAbecedarioIzquierda.setLayout(new GridLayout(3,10));
+		panelAbecedarioIzquierda.setLayout(new GridLayout(1,0));
 		panelAbecedarioIzquierda.add(VentanaModoClasico.crearTeclado());
 		
 		JLabel contadorErroresIzquierda = new JLabel();
@@ -61,7 +61,7 @@ public class Ventana1vs1 extends JFrame{
 		panelIzquierdaDerecha.setLayout(new GridLayout(7,1));
 		JPanel panelDerechaDerecha = new JPanel();
 		JPanel panelAbecedarioDerecha = new JPanel();
-		panelAbecedarioDerecha.setLayout(new GridLayout(3,10));
+		panelAbecedarioDerecha.setLayout(new GridLayout(1,0));
 		panelAbecedarioDerecha.add(VentanaModoClasico.crearTeclado());
 		
 		JLabel contadorErroresDerecha = new JLabel();
@@ -282,4 +282,7 @@ public class Ventana1vs1 extends JFrame{
 	
 	}
 	
+	public static void main(String[] args) {
+		new Ventana1vs1();
+	}
 }
