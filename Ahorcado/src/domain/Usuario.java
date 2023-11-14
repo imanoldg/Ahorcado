@@ -1,28 +1,20 @@
 package domain;
 
 public class Usuario {
+	public int cod;
 	public String nombre;
-	public String apellido;
 	public String contraseña;
 	public int puntuacion;
 	
 	//Constructor con argumentos
-	public Usuario(String nombre, String apellido, String contraseña, int puntuacion) {
+	public Usuario(int cod, String nombre, String contraseña, int puntuacion) {
 		super();
+		this.cod = cod;
 		this.nombre = nombre;
-		this.apellido = apellido;
 		this.contraseña = contraseña;
 		this.puntuacion = puntuacion;
 	}
 	
-	//Constructor vacio
-	public Usuario() {
-		super();
-		this.nombre = "Usuario sin nombre";
-		this.apellido = "";
-		this.contraseña = "Usuario sin contraseña";
-		this.puntuacion = 0;
-	}
 
 	public String getNombre() {
 		return nombre;
@@ -32,12 +24,12 @@ public class Usuario {
 		this.nombre = nombre;
 	}
 
-	public String getApellido() {
-		return apellido;
+	public int getCod() {
+		return cod;
 	}
 
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
+	public void setCod(int cod) {
+		this.cod = cod;
 	}
 
 	public String getContraseña() {
@@ -58,7 +50,7 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario: " + nombre + apellido + "; Puntuacion: " + puntuacion;
+		return "Usuario: " + nombre  + "; Puntuacion: " + puntuacion;
 	}
 	
 	
