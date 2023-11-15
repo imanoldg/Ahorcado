@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
+import javax.swing.JColorChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -96,7 +98,12 @@ public class VentanaModoMuerteSubita extends JFrame{
 			
 			@Override
 			public void mousePressed(MouseEvent e) {
-				new VentanaPersonalizar();
+				Color color = JColorChooser.showDialog(panelGeneral, "Paleta de colores", getForeground());
+				
+				if (color != null) {
+					panelIzquierda.setBackground(color);
+					panelDerecha.setBackground(color);
+				}
 				
 			}
 		});
