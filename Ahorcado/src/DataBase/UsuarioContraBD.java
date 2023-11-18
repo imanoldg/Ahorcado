@@ -10,6 +10,7 @@ import java.sql.Statement;
 
 public class UsuarioContraBD {{
 	
+	
 	try {
 		Class.forName("org.sqlite.JDBC");
 	}catch(ClassNotFoundException e1) {
@@ -34,5 +35,5 @@ public class UsuarioContraBD {{
 		System.out.println("error");
 		}
 	System.out.println("Programa terminado");
-}
-}
+
+}}
