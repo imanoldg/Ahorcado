@@ -45,7 +45,7 @@ public class VentanaModoMuerteSubita extends JFrame{
 		
 		JLabel contadorErrores = new JLabel();
 		JLabel errores = new JLabel("ERRORES:");
-		JLabel palabraOculta = new JLabel(CargarPalabras.cargarPalabras("resources/data/palabras.csv"));
+		JLabel palabraOculta = new JLabel(VentanaModoClasico.ocultarPalabra(CargarPalabras.cargarPalabras("resources/data/palabras.csv")));
 		JLabel palabra = new JLabel("PALABRA OCULTA:");
 		contadorErrores.setHorizontalAlignment(SwingConstants.CENTER);
 		errores.setHorizontalAlignment(SwingConstants.CENTER);

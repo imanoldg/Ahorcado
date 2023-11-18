@@ -40,6 +40,18 @@ public class VentanaModoClasico extends JFrame{
 		return panelTeclado;
 	}
 	
+	public static String ocultarPalabra(String palabra) {
+        int longitud = palabra.length();
+        StringBuilder cadenaOculta = new StringBuilder();
+
+        for (int i = 0; i < longitud; i++) {
+            cadenaOculta.append(" _ ");
+        }
+
+        return cadenaOculta.toString();
+    }
+	
+	
 	private JButton botonSalir = new JButton("  Volver al selector de modo  ");
 	private JButton botonPalabraNueva = new JButton("  Palabra Nueva  ");
 	private JButton botonResolver = new JButton("  Resolver  ");
@@ -59,12 +71,13 @@ public class VentanaModoClasico extends JFrame{
 		
 		JLabel contadorErrores = new JLabel();
 		JLabel errores = new JLabel("ERRORES:");
-		JLabel palabraOculta = new JLabel(CargarPalabras.cargarPalabras("resources/data/palabras.csv"));
+		JLabel palabraOculta = new JLabel(ocultarPalabra(CargarPalabras.cargarPalabras("resources/data/palabras.csv")));
 		JLabel palabra = new JLabel("PALABRA OCULTA:");
 		contadorErrores.setHorizontalAlignment(SwingConstants.CENTER);
 		errores.setHorizontalAlignment(SwingConstants.CENTER);
 		palabraOculta.setHorizontalAlignment(SwingConstants.CENTER);
 		palabra.setHorizontalAlignment(SwingConstants.CENTER);
+		
 		
 		
 		//BARRA DE MENU
