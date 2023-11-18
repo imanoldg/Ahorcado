@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.FileNotFoundException;
 
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
@@ -18,6 +19,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+
+import io.CargarPalabras;
 
 public class Ventana1vs1 extends JFrame{
 	
@@ -31,7 +34,7 @@ public class Ventana1vs1 extends JFrame{
 	
 	private static int contador = 0;
 	
-	public Ventana1vs1() {
+	public Ventana1vs1() throws FileNotFoundException {
 		JPanel panelGeneral = new JPanel();
 		panelGeneral.setLayout(new GridLayout(1,2));
 		
@@ -48,7 +51,7 @@ public class Ventana1vs1 extends JFrame{
 		
 		JLabel contadorErroresIzquierda = new JLabel();
 		JLabel erroresIzquierda = new JLabel("ERRORES:");
-		JLabel palabraOcultaIzquierda = new JLabel("_ _ _ _ _");
+		JLabel palabraOcultaIzquierda = new JLabel(CargarPalabras.cargarPalabras("resources/data/palabras.csv"));
 		JLabel palabraIzquierda = new JLabel("PALABRA OCULTA:");
 		contadorErroresIzquierda.setHorizontalAlignment(SwingConstants.CENTER);
 		erroresIzquierda.setHorizontalAlignment(SwingConstants.CENTER);
@@ -68,7 +71,7 @@ public class Ventana1vs1 extends JFrame{
 		
 		JLabel contadorErroresDerecha = new JLabel();
 		JLabel erroresDerecha = new JLabel("ERRORES:");
-		JLabel palabraOcultaDerecha = new JLabel("_ _ _ _ _");
+		JLabel palabraOcultaDerecha = new JLabel(CargarPalabras.cargarPalabras("resources/data/palabras.csv"));
 		JLabel palabraDerecha = new JLabel("PALABRA OCULTA:");
 		contadorErroresDerecha.setHorizontalAlignment(SwingConstants.CENTER);
 		erroresDerecha.setHorizontalAlignment(SwingConstants.CENTER);
@@ -291,7 +294,7 @@ public class Ventana1vs1 extends JFrame{
 	
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		new Ventana1vs1();
 	}
 }

@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.FileNotFoundException;
 
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
@@ -21,6 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import domain.Usuario;
+import io.CargarPalabras;
 
 public class VentanaModoMuerteSubita extends JFrame{
 	
@@ -29,7 +31,7 @@ public class VentanaModoMuerteSubita extends JFrame{
 	private JButton botonResolver = new JButton("  Resolver  ");
 	
 	
-	public VentanaModoMuerteSubita() {
+	public VentanaModoMuerteSubita() throws FileNotFoundException {
 		JPanel panelGeneral = new JPanel();
 		panelGeneral.setLayout(new GridLayout(2,1));
 		JPanel panelArriba = new JPanel();
@@ -43,7 +45,7 @@ public class VentanaModoMuerteSubita extends JFrame{
 		
 		JLabel contadorErrores = new JLabel();
 		JLabel errores = new JLabel("ERRORES:");
-		JLabel palabraOculta = new JLabel("_ _ _ _ _");
+		JLabel palabraOculta = new JLabel(CargarPalabras.cargarPalabras("resources/data/palabras.csv"));
 		JLabel palabra = new JLabel("PALABRA OCULTA:");
 		contadorErrores.setHorizontalAlignment(SwingConstants.CENTER);
 		errores.setHorizontalAlignment(SwingConstants.CENTER);
@@ -155,7 +157,7 @@ public class VentanaModoMuerteSubita extends JFrame{
 		this.setLocationRelativeTo(null);
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		new VentanaModoMuerteSubita();
 	}
 	

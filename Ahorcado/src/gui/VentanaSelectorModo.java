@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -24,7 +25,12 @@ public class VentanaSelectorModo extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new VentanaModoContrarreloj();
+				try {
+					new VentanaModoContrarreloj();
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				dispose();
 			}
 		});
@@ -33,7 +39,12 @@ public class VentanaSelectorModo extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new VentanaModoMuerteSubita();
+				try {
+					new VentanaModoMuerteSubita();
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				dispose();
 			}
 		});
@@ -42,7 +53,12 @@ public class VentanaSelectorModo extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new Ventana1vs1();
+				try {
+					new Ventana1vs1();
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				dispose();
 			}
 		});
@@ -51,7 +67,12 @@ public class VentanaSelectorModo extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new VentanaModoClasico();
+				try {
+					new VentanaModoClasico();
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				dispose();
 				
 			}

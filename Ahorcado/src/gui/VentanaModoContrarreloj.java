@@ -9,6 +9,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.beans.PropertyChangeListener;
+import java.io.FileNotFoundException;
 
 import javax.swing.Action;
 import javax.swing.JButton;
@@ -26,6 +27,7 @@ import javax.swing.event.MenuKeyEvent;
 import javax.swing.event.MenuKeyListener;
 
 import domain.Usuario;
+import io.CargarPalabras;
 
 public class VentanaModoContrarreloj extends JFrame{
 
@@ -39,7 +41,7 @@ public class VentanaModoContrarreloj extends JFrame{
 	private Thread hilo;
 	private boolean ejecutarHilo;
 	
-	public VentanaModoContrarreloj() {		
+	public VentanaModoContrarreloj() throws FileNotFoundException {		
 
 		JPanel panelGeneral = new JPanel();
 		panelGeneral.setLayout(new GridLayout(2,1));
@@ -54,7 +56,7 @@ public class VentanaModoContrarreloj extends JFrame{
 		
 		JLabel contadorErrores = new JLabel();
 		JLabel errores = new JLabel("ERRORES:");
-		JLabel palabraOculta = new JLabel("_ _ _ _ _");
+		JLabel palabraOculta = new JLabel(CargarPalabras.cargarPalabras("resources/data/palabras.csv"));
 		JLabel palabra = new JLabel("PALABRA OCULTA:");
 		contadorErrores.setHorizontalAlignment(SwingConstants.CENTER);
 		errores.setHorizontalAlignment(SwingConstants.CENTER);
@@ -185,7 +187,7 @@ public class VentanaModoContrarreloj extends JFrame{
 		this.setLocationRelativeTo(null);
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		new VentanaModoContrarreloj();
 	}
 }
