@@ -51,7 +51,7 @@ public class Ventana1vs1 extends JFrame{
 		
 		JLabel contadorErroresIzquierda = new JLabel();
 		JLabel erroresIzquierda = new JLabel("ERRORES:");
-		JLabel palabraOcultaIzquierda = new JLabel(VentanaModoClasico.ocultarPalabra(CargarPalabras.cargarPalabras("resources/data/palabras.csv")));
+		JLabel palabraOcultaIzquierda = new JLabel(VentanaModoClasico.ocultarPalabra());
 		JLabel palabraIzquierda = new JLabel("PALABRA OCULTA:");
 		contadorErroresIzquierda.setHorizontalAlignment(SwingConstants.CENTER);
 		erroresIzquierda.setHorizontalAlignment(SwingConstants.CENTER);
@@ -71,7 +71,7 @@ public class Ventana1vs1 extends JFrame{
 		
 		JLabel contadorErroresDerecha = new JLabel();
 		JLabel erroresDerecha = new JLabel("ERRORES:");
-		JLabel palabraOcultaDerecha = new JLabel(VentanaModoClasico.ocultarPalabra(CargarPalabras.cargarPalabras("resources/data/palabras.csv")));
+		JLabel palabraOcultaDerecha = new JLabel(VentanaModoClasico.ocultarPalabra());
 		JLabel palabraDerecha = new JLabel("PALABRA OCULTA:");
 		contadorErroresDerecha.setHorizontalAlignment(SwingConstants.CENTER);
 		erroresDerecha.setHorizontalAlignment(SwingConstants.CENTER);

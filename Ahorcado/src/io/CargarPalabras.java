@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 
 public class CargarPalabras {
-	public static String cargarPalabras(String fichero) throws FileNotFoundException {
+	public static List<String> cargarPalabras(String fichero) throws FileNotFoundException {
 		
 		List<String> listaPalabras = new ArrayList<>();
 		
@@ -19,11 +19,8 @@ public class CargarPalabras {
 			listaPalabras.add(scanner.nextLine());
 		}
 		scanner.close();
-		
-		Random aleatorio = new Random();
-		int numeroAleatorio = aleatorio.nextInt(listaPalabras.size());
-		
-		return listaPalabras.get(numeroAleatorio).toUpperCase();
+			
+		return listaPalabras;
 	}
 	
 }

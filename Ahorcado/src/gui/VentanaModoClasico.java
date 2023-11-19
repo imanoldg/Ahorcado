@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.FileNotFoundException;
+import java.util.List;
+import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
@@ -40,8 +42,15 @@ public class VentanaModoClasico extends JFrame{
 		return panelTeclado;
 	}
 	
-	public static String ocultarPalabra(String palabra) {
-        int longitud = palabra.length();
+	public static String ocultarPalabra() throws FileNotFoundException {
+        List<String> listaPalabras = CargarPalabras.cargarPalabras("resources/data/palabras.csv") ;
+        
+        Random aleatorio = new Random();
+		int numeroAleatorio = aleatorio.nextInt(listaPalabras.size());
+		
+		String palabra = listaPalabras.get(numeroAleatorio).toUpperCase();
+		
+		int longitud = palabra.length();
         StringBuilder cadenaOculta = new StringBuilder();
 
         for (int i = 0; i < longitud; i++) {
@@ -71,7 +80,7 @@ public class VentanaModoClasico extends JFrame{
 		
 		JLabel contadorErrores = new JLabel();
 		JLabel errores = new JLabel("ERRORES:");
-		JLabel palabraOculta = new JLabel(ocultarPalabra(CargarPalabras.cargarPalabras("resources/data/palabras.csv")));
+		JLabel palabraOculta = new JLabel(ocultarPalabra());
 		JLabel palabra = new JLabel("PALABRA OCULTA:");
 		contadorErrores.setHorizontalAlignment(SwingConstants.CENTER);
 		errores.setHorizontalAlignment(SwingConstants.CENTER);
