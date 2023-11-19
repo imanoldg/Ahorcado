@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.Border;
 
+import DataBase.MetodosBD;
+
 public class VentanaRegistro extends JFrame{
 	
 	private JLabel titulo;
@@ -71,9 +73,18 @@ public class VentanaRegistro extends JFrame{
         	error.setVisible(true);
         }
         
+        
+        MetodosBD metodos = new MetodosBD();
         // Botón
         
         botonRegistrar = new JButton("Registrarse");
+        botonRegistrar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				metodos.guardar(textoUser.getText(), textoPassword1.getText());
+			}
+		});
         panel2.add(botonRegistrar);
         
         returnSingIn = new JButton("Volver");

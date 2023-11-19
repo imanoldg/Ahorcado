@@ -8,32 +8,28 @@ import java.sql.Statement;
 
 
 
-public class UsuarioContraBD {{
+public class UsuarioContraBD {
 	
+	public static String url = "jdb:sqlite:resources/db/Usuarios.db";
+	public static String org = "org.sqlite.JDBC";
 	
-	try {
-		Class.forName("org.sqlite.JDBC");
-	}catch(ClassNotFoundException e1) {
-		System.out.println("error");
-	}
-	
-	try {
-		Connection conn = DriverManager.getConnection("jdbc:sqlite:/resources/db/Usuarios.db");
-		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery("SELECT * FROM usuario");
+	public static Connection conectar() {
+		Connection conn = null;
 		
-		while (rs.next()) {
-			String nombre = rs.getString("nombre");
-			String contraseña = rs.getString("contraseña");
-			System.out.format("%d - %s, %s: %.2f €%n", nombre, contraseña);
-
-			
-	}
-		stmt.close();
-		conn.close();
-		} catch (SQLException e) {
-		System.out.println("error");
+		try {
+			Class.forName(org);
+		} catch (ClassNotFoundException e) {
+			System.out.println("error");
 		}
-	System.out.println("Programa terminado");
+		
+		try {
+			conn = (Connection) DriverManager.getConnection(url);
+			System.out.println("conexion ok");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return conn;
+		
+	}
 
-}}
+}
