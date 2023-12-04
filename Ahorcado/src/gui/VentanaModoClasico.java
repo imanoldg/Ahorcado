@@ -21,6 +21,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import domain.Palabra;
 import io.CargarPalabras;
 
 public class VentanaModoClasico extends JFrame{
@@ -76,7 +77,7 @@ public class VentanaModoClasico extends JFrame{
 	}
 	
 	public static String ocultarPalabra() throws FileNotFoundException {
-        List<String> listaPalabras = CargarPalabras.cargarPalabras("resources/data/palabras.csv") ;
+        List<Palabra> listaPalabras = CargarPalabras.cargarPalabras("resources/data/palabras.csv") ;
         
         Random aleatorio = new Random();
 		int numeroAleatorio = aleatorio.nextInt(listaPalabras.size());

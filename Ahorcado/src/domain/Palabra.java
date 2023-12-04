@@ -42,6 +42,18 @@ public class Palabra {
 	public String toString() {
 		return "Palabra: " + palabra + ", dificultad:" + dificultad;
 	}
+
+
+	public int length() {
+		// TODO Auto-generated method stub
+		return palabra.length();
+	}
+
+
+	public String toUpperCase() {
+		// TODO Auto-generated method stub
+		return palabra.toUpperCase();
+	}
 	
 	
 }
