@@ -73,7 +73,7 @@ public class VentanaModoContrarreloj extends JFrame{
 			public void run(){
 				while (ejecutarHilo) {
 					contador--;
-					etiqueta.setText("Tiempo restante: " + contador + " segundos") ;
+					etiqueta.setText("Tiempo restante: " + contador + " segundos") ; // usar invoke later
 					if (contador == 0) {
 						ejecutarHilo = false;
 					}
