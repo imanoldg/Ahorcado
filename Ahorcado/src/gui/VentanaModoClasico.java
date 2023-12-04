@@ -29,6 +29,8 @@ public class VentanaModoClasico extends JFrame{
 		JPanel panelTeclado = new JPanel();
 		panelTeclado.setLayout(new GridLayout(3,10));
 		
+		
+		
 		for (int i = 65; i < 91; i++) {
 			if (i == 79) {
 				JButton boton = new JButton ("Ñ");
@@ -38,7 +40,38 @@ public class VentanaModoClasico extends JFrame{
 			
 			JButton boton = new JButton (num + "");
 			panelTeclado.add(boton);
+			
+			boton.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					try {
+						String palabra = ocultarPalabra();
+						int errores = 0;
+						for (int j = 0; j < palabra.length(); j++) {
+							
+							if(boton.getText().charAt(0) == palabra.charAt(j)) {
+								palabra.replace(palabra.charAt(j), boton.getText().charAt(0));
+								boton.setBackground(Color.GREEN);
+								boton.setEnabled(false);
+							} else {
+								boton.setEnabled(false);
+								boton.setBackground(Color.red);
+								errores++;
+							}
+							
+						}
+						
+					} catch (FileNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+				}
+			});
+			
 		}
+		
 		return panelTeclado;
 	}
 	
@@ -59,7 +92,6 @@ public class VentanaModoClasico extends JFrame{
 
         return cadenaOculta.toString();
     }
-	
 	
 	private JButton botonSalir = new JButton("  Volver al selector de modo  ");
 	private JButton botonPalabraNueva = new JButton("  Palabra Nueva  ");
