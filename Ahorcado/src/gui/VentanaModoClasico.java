@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.FileNotFoundException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -26,7 +27,39 @@ import io.CargarPalabras;
 
 public class VentanaModoClasico extends JFrame{
 	
-	public static JPanel crearTeclado() {
+	private JButton botonSalir = new JButton("  Volver al selector de modo  ");
+	private JButton botonPalabraNueva = new JButton("  Palabra Nueva  ");
+	private JButton botonResolver = new JButton("  Resolver  ");
+	private static String palabraSeleccionada = SeleccionarPalabra();
+	private static JLabel palabraOculta = new JLabel(ocultarPalabra(palabraSeleccionada));
+	
+	char[] pene;
+	
+	public static String SeleccionarPalabra() {
+        List<Palabra> listaPalabras = CargarPalabras.cargarPalabras("resources/data/palabras.csv") ;
+        
+        Random aleatorio = new Random();
+		int numeroAleatorio = aleatorio.nextInt(listaPalabras.size());
+		
+		String palabra = listaPalabras.get(numeroAleatorio).getPalabra().toUpperCase();
+		
+		return palabra;
+	}
+	
+	public static String ocultarPalabra(String palabra) {
+		int longitud = palabra.length();
+        StringBuilder cadenaOculta = new StringBuilder();
+
+        for (int i = 0; i < longitud; i++) {
+        	cadenaOculta.append(" _ ");
+        }
+        
+        return cadenaOculta.toString();
+   
+    }
+
+	
+	public JPanel crearTeclado() {
 		JPanel panelTeclado = new JPanel();
 		panelTeclado.setLayout(new GridLayout(3,10));
 		
@@ -42,61 +75,38 @@ public class VentanaModoClasico extends JFrame{
 			JButton boton = new JButton (num + "");
 			panelTeclado.add(boton);
 			
-			boton.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					try {
-						String palabra = ocultarPalabra();
-						int errores = 0;
-						for (int j = 0; j < palabra.length(); j++) {
-							
-							if(boton.getText().charAt(0) == palabra.charAt(j)) {
-								palabra.replace(palabra.charAt(j), boton.getText().charAt(0));
-								boton.setBackground(Color.GREEN);
-								boton.setEnabled(false);
-							} else {
-								boton.setEnabled(false);
-								boton.setBackground(Color.red);
-								errores++;
-							}
-							
-						}
-						
-					} catch (FileNotFoundException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					
-				}
-			});
+			boton.addActionListener(new BotonActionListener());
 			
 		}
 		
 		return panelTeclado;
 	}
 	
-	public static String ocultarPalabra() throws FileNotFoundException {
-        List<Palabra> listaPalabras = CargarPalabras.cargarPalabras("resources/data/palabras.csv") ;
-        
-        Random aleatorio = new Random();
-		int numeroAleatorio = aleatorio.nextInt(listaPalabras.size());
-		
-		String palabra = listaPalabras.get(numeroAleatorio).toUpperCase();
-		
-		int longitud = palabra.length();
-        StringBuilder cadenaOculta = new StringBuilder();
+	private class BotonActionListener implements ActionListener{
 
-        for (int i = 0; i < longitud; i++) {
-            cadenaOculta.append(" _ ");
-        }
-
-        return cadenaOculta.toString();
-    }
-	
-	private JButton botonSalir = new JButton("  Volver al selector de modo  ");
-	private JButton botonPalabraNueva = new JButton("  Palabra Nueva  ");
-	private JButton botonResolver = new JButton("  Resolver  ");
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			JButton boton = (JButton) e.getSource();
+			int errores = 0;
+			
+			for (int j = 0; j < palabraSeleccionada.length(); j++) {
+				
+				if(boton.getText().charAt(0) == palabraSeleccionada.charAt(j)) {
+					palabraOculta.getText().replace((char) palabraOculta.getText().indexOf(boton.getText().charAt(0)), boton.getText().charAt(0));
+					boton.setBackground(Color.GREEN);
+					boton.setEnabled(false);
+					
+				} else {
+					boton.setEnabled(false);
+					boton.setBackground(Color.red);
+					errores++;
+				}
+				
+			}
+			
+		}
+		
+	}
 	
 	
 	public VentanaModoClasico() throws FileNotFoundException {		
@@ -113,7 +123,6 @@ public class VentanaModoClasico extends JFrame{
 		
 		JLabel contadorErrores = new JLabel();
 		JLabel errores = new JLabel("ERRORES:");
-		JLabel palabraOculta = new JLabel(ocultarPalabra());
 		JLabel palabra = new JLabel("PALABRA OCULTA:");
 		contadorErrores.setHorizontalAlignment(SwingConstants.CENTER);
 		errores.setHorizontalAlignment(SwingConstants.CENTER);

@@ -56,7 +56,7 @@ public class VentanaModoContrarreloj extends JFrame{
 		
 		JLabel contadorErrores = new JLabel();
 		JLabel errores = new JLabel("ERRORES:");
-		JLabel palabraOculta = new JLabel(VentanaModoClasico.ocultarPalabra());
+		JLabel palabraOculta = new JLabel(VentanaModoClasico.ocultarPalabra(2));
 		JLabel palabra = new JLabel("PALABRA OCULTA:");
 		contadorErrores.setHorizontalAlignment(SwingConstants.CENTER);
 		errores.setHorizontalAlignment(SwingConstants.CENTER);
