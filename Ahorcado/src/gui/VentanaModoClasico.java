@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -31,9 +31,9 @@ public class VentanaModoClasico extends JFrame{
 	private JButton botonPalabraNueva = new JButton("  Palabra Nueva  ");
 	private JButton botonResolver = new JButton("  Resolver  ");
 	private static String palabraSeleccionada = SeleccionarPalabra();
-	private static JLabel palabraOculta = new JLabel(ocultarPalabra(palabraSeleccionada));
-	
-	char[] pene;
+	private static StringBuilder textoLabel = ocultarPalabra(palabraSeleccionada);
+	private static List<Character> letrasPalabra = new ArrayList<>(añadirLetras());
+	private static JLabel palabraOculta = new JLabel(textoLabel.toString());
 	
 	public static String SeleccionarPalabra() {
         List<Palabra> listaPalabras = CargarPalabras.cargarPalabras("resources/data/palabras.csv") ;
@@ -46,18 +46,23 @@ public class VentanaModoClasico extends JFrame{
 		return palabra;
 	}
 	
-	public static String ocultarPalabra(String palabra) {
+	public static List<Character> añadirLetras() {
+		List<Character> lista = new ArrayList<>();
+		
+		for (int i = 0; i < palabraSeleccionada.length(); i++) {
+			char letra = palabraSeleccionada.charAt(i);
+			lista.add(letra);
+		}
+		
+		return lista;
+	}
+	
+	public static StringBuilder ocultarPalabra(String palabra) {
 		int longitud = palabra.length();
-        StringBuilder cadenaOculta = new StringBuilder();
-
-        for (int i = 0; i < longitud; i++) {
-        	cadenaOculta.append(" _ ");
-        }
+        StringBuilder cadenaOculta = new StringBuilder(" _ ".repeat(longitud));
         
-        return cadenaOculta.toString();
-   
+        return cadenaOculta;
     }
-
 	
 	public JPanel crearTeclado() {
 		JPanel panelTeclado = new JPanel();
@@ -92,10 +97,10 @@ public class VentanaModoClasico extends JFrame{
 			for (int j = 0; j < palabraSeleccionada.length(); j++) {
 				
 				if(boton.getText().charAt(0) == palabraSeleccionada.charAt(j)) {
-					palabraOculta.getText().replace((char) palabraOculta.getText().indexOf(boton.getText().charAt(0)), boton.getText().charAt(0));
+					textoLabel.replace(j, j + 1, boton.getText());
+					palabraOculta.setText(textoLabel.toString());
 					boton.setBackground(Color.GREEN);
 					boton.setEnabled(false);
-					
 				} else {
 					boton.setEnabled(false);
 					boton.setBackground(Color.red);
@@ -231,6 +236,7 @@ public class VentanaModoClasico extends JFrame{
 	
 	public static void main(String[] args) throws FileNotFoundException {
 		new VentanaModoClasico();
+		System.out.println(letrasPalabra);
 	}
 	
 }

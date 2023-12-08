@@ -1,9 +1,3 @@
 /DataBase/
-/domain/
-/gui/
-<<<<<<< HEAD
-=======
 /io/
-/main/
-/test/
->>>>>>> branch 'master' of https://github.com/imanoldg/Ahorcado.git
+/gui/
