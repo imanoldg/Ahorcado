@@ -6,30 +6,32 @@ import java.sql.ResultSet;
 
 public class MetodosBD {
 	
-	public static UsuarioContraBD conexion = new UsuarioContraBD();
+	public static ConnectDB conexion = new ConnectDB();
 	
-	public static PreparedStatement sp;
-	public static ResultSet rs;
+	public static PreparedStatement ps;
+	public static ResultSet resultado;
 	public static String sql;
-	public static int result = 0;
+	public static int resultadoNumero = 0;
 	
-	public int guardar(String nombre, String password) {
+	public int guardar(int cod, String nombre, String password, int puntuacion) {
 		int resultado = 0;
 		Connection conexion = null;
 		
-		String saveStatement = ("INSERT INTO usuario (cod, nombre, contraseña, puntuación) VALUES (0,?,?,0)");
+		String sentenciaGuardar = ("INSERT INTO Usuario (cod, nombre, contraseña, puntuación) VALUES(?, ?, ?, ?)");
 		
 		try {
-			conexion = UsuarioContraBD.conectar();
-			sp = conexion.prepareStatement(saveStatement);
-			sp.setString(2,nombre);
-			sp.setString(3, password);
+			conexion = ConnectDB.conectar();
+			ps = conexion.prepareStatement(sentenciaGuardar);
+			ps.setInt(1, cod);
+			ps.setString(2, nombre);
+			ps.setString(3, password);
+			ps.setInt(4, puntuacion);
 			
+			resultado = ps.executeUpdate();
+			ps.close();
 			
-			resultado = sp.executeUpdate();
-			sp.close();
 		} catch (Exception e) {
-			System.out.println("error");
+			System.out.println(e);
 		}
 		
 		return resultado;

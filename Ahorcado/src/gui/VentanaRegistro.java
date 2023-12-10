@@ -12,6 +12,7 @@ import DataBase.MetodosBD;
 
 public class VentanaRegistro extends JFrame{
 	
+	
 	private JLabel titulo;
 	private JLabel user;
 	private JLabel password;
@@ -22,6 +23,8 @@ public class VentanaRegistro extends JFrame{
 	private JPasswordField textoPassword2;
 	private JButton botonRegistrar;
 	private JButton returnSingIn;
+	
+	MetodosBD metodos = new MetodosBD();
 	
 	public VentanaRegistro() {
 		
@@ -57,24 +60,28 @@ public class VentanaRegistro extends JFrame{
 		password.setBounds(69, 100, 200, 30);
 		panel1.add(password);
 		
+		/*
 		repPassword = new JLabel("Repetir contraseña: ");
 		repPassword.setBounds(26, 133, 200, 30);
 		panel1.add(repPassword);
+		*/
 		
 		textoPassword1 = new JPasswordField();
 		textoPassword1.setBounds(141, 105, 150, 20); 
         panel1.add(textoPassword1);
         
+        /*
         textoPassword2 = new JPasswordField();
         textoPassword2.setBounds(141, 138, 150, 20); 
         panel1.add(textoPassword2);
+        */
         
+        /*
         if (password.equals(repPassword)) {
         	error.setVisible(true);
         }
-        
-        
-        MetodosBD metodos = new MetodosBD();
+        */
+ 
         // Botón
         
         botonRegistrar = new JButton("Registrarse");
@@ -82,7 +89,14 @@ public class VentanaRegistro extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				metodos.guardar(textoUser.getText(), textoPassword1.getText());
+				
+				int i = metodos.guardar(0, textoUser.getText(), textoPassword1.getText(), 0);
+				
+				if (i > 0) {
+					JOptionPane.showMessageDialog(VentanaRegistro.this, "se ha guardado");
+				}else {
+					JOptionPane.showMessageDialog(VentanaRegistro.this, "no se ha podido guardar");
+				}
 			}
 		});
         panel2.add(botonRegistrar);
