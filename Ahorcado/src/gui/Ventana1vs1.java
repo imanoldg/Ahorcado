@@ -26,7 +26,7 @@ import io.CargarPalabras;
 
 public class Ventana1vs1 extends VentanaModoClasico {
 
-	private static int errores = 5;
+	private static int errores = 0;
 
 	private static String palabraSeleccionadaDerecha = SeleccionarPalabra();
 	private static StringBuilder textoLabelDerecha = ocultarPalabra(palabraSeleccionadaDerecha);

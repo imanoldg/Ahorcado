@@ -27,20 +27,22 @@ import io.CargarPalabras;
 
 public class VentanaModoClasico extends JFrame{
 	
+	public static int adivinada;
+	
 	private JButton botonSalir = new JButton("  Volver al selector de modo  ");
 	private JButton botonPalabraNueva = new JButton("  Palabra Nueva  ");
 	private JButton botonResolver = new JButton("  Resolver  ");
-	private static String palabraSeleccionada = SeleccionarPalabra();
-	private static StringBuilder textoLabel = ocultarPalabra(palabraSeleccionada);
-	private static List<Character> letrasPalabra = new ArrayList<>(añadirLetras());
-	private static JLabel palabraOculta = new JLabel(textoLabel.toString());
-	private static int errores = 5;
+	protected static String palabraSeleccionada = SeleccionarPalabra();
+	protected static StringBuilder textoLabel = ocultarPalabra(palabraSeleccionada);
+	protected static List<Character> letrasPalabra = new ArrayList<>(añadirLetras());
+	protected static JLabel palabraOculta = new JLabel(textoLabel.toString());
+	protected static int errores = 0;
 	
-	public static JPanel panelGeneral = new JPanel();
-	public static JPanel panelArriba = new JPanel();
-	public static JPanel panelIzquierda = new JPanel();
-	public static JPanel panelAbecedario = new JPanel();
-	public JPanel panelDerecha = new JPanel();
+	protected static JPanel panelGeneral = new JPanel();
+	protected static JPanel panelArriba = new JPanel();
+	protected static JPanel panelIzquierda = new JPanel();
+	protected static JPanel panelAbecedario = new JPanel();
+	protected JPanel panelDerecha = new JPanel();
 	
 	public static String SeleccionarPalabra() {
         List<Palabra> listaPalabras = CargarPalabras.cargarPalabras("resources/data/palabras.csv") ;
@@ -95,8 +97,12 @@ public class VentanaModoClasico extends JFrame{
 		return panelTeclado;
 	}
 	
-	public static boolean hasGanado() {
-		return palabraOculta.getText().equals(palabraSeleccionada);
+	public static void hasGanado(int num, int adivinadas) {
+		if(num == 0 && palabraOculta.getText().equals(palabraSeleccionada)) {
+			new VentanaHasGanadoClasico();
+		} else if (num == 1 && palabraOculta.getText().equals(palabraSeleccionada)) {
+			adivinadas++;
+		}
 	}
 	
 	public static boolean hasPerdido() {
@@ -129,22 +135,18 @@ public class VentanaModoClasico extends JFrame{
 				}
 				
 			}
-			
-			if (hasGanado()) {
-				new VentanaHasGanadoClasico();
-				
-			}
+		
+			hasGanado(0, adivinada);
 			
 			if (hasPerdido()) {
 				new VentanaHasPerdido();
 			}
-			
 		}
 		
 	}
 	
 	
-	public VentanaModoClasico() throws FileNotFoundException {	
+	protected VentanaModoClasico() throws FileNotFoundException {	
 		panelGeneral.setLayout(new GridLayout(2,1));
 		panelArriba.setLayout(new GridLayout(1,2));
 		panelIzquierda.setLayout(new GridLayout(7,1));
@@ -157,7 +159,6 @@ public class VentanaModoClasico extends JFrame{
 		errores.setHorizontalAlignment(SwingConstants.CENTER);
 		palabraOculta.setHorizontalAlignment(SwingConstants.CENTER);
 		palabra.setHorizontalAlignment(SwingConstants.CENTER);
-		
 		
 		
 		//BARRA DE MENU
@@ -243,7 +244,6 @@ public class VentanaModoClasico extends JFrame{
 			}
 		});
 		
-		
 		panelIzquierda.add(botonPalabraNueva);
 		panelIzquierda.add(botonSalir);
 		panelIzquierda.add(botonResolver);
@@ -254,7 +254,6 @@ public class VentanaModoClasico extends JFrame{
 		
 		panelArriba.add(panelIzquierda, BorderLayout.WEST);
 		panelArriba.add(panelDerecha, BorderLayout.EAST);
-		
 		
 		
 		panelGeneral.add(panelArriba, BorderLayout.NORTH);

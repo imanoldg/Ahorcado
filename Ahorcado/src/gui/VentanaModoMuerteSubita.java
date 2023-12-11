@@ -28,14 +28,17 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico{
 
 	private static int adivinadas = 0;
 	private static JLabel adivinadasLabel = new JLabel("Palabras adivinadas: " + adivinadas);
+	private static int errores = 0;
 	
 	public VentanaModoMuerteSubita() throws FileNotFoundException {
 		super();
 		adivinadasLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panelIzquierda.setLayout(new GridLayout(8,1));
 		
-		
+		System.out.println(letrasPalabra);
 		panelIzquierda.add(adivinadasLabel);
+		
+		hasGanado(1, adivinadas);
 		
 		setVisible(true);
 		setTitle("Modo Muerte Súbita");
