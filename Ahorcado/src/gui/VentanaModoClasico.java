@@ -36,6 +36,12 @@ public class VentanaModoClasico extends JFrame{
 	private static JLabel palabraOculta = new JLabel(textoLabel.toString());
 	private static int errores = 5;
 	
+	public static JPanel panelGeneral = new JPanel();
+	public static JPanel panelArriba = new JPanel();
+	public static JPanel panelIzquierda = new JPanel();
+	public static JPanel panelAbecedario = new JPanel();
+	public JPanel panelDerecha = new JPanel();
+	
 	public static String SeleccionarPalabra() {
         List<Palabra> listaPalabras = CargarPalabras.cargarPalabras("resources/data/palabras.csv") ;
         
@@ -65,7 +71,7 @@ public class VentanaModoClasico extends JFrame{
         return cadenaOculta;
     }
 	
-	public JPanel crearTeclado() {
+	public static JPanel crearTeclado() {
 		JPanel panelTeclado = new JPanel();
 		panelTeclado.setLayout(new GridLayout(3,10));
 		
@@ -94,10 +100,12 @@ public class VentanaModoClasico extends JFrame{
 	}
 	
 	public static boolean hasPerdido() {
-		return errores == 5;
+		if (errores == 5) return true;
+		return false;
 	}
 	
-	private class BotonActionListener implements ActionListener{
+	
+	public static class BotonActionListener implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -119,14 +127,16 @@ public class VentanaModoClasico extends JFrame{
 					boton.setBackground(Color.RED);
 					errores++;
 				}
-				if (hasGanado()) {
-					new VentanaHasGanadoClasico();
-					
-				}
 				
-				if (hasPerdido()) {
-					new VentanaHasPerdido();
-				}
+			}
+			
+			if (hasGanado()) {
+				new VentanaHasGanadoClasico();
+				
+			}
+			
+			if (hasPerdido()) {
+				new VentanaHasPerdido();
 			}
 			
 		}
@@ -134,22 +144,16 @@ public class VentanaModoClasico extends JFrame{
 	}
 	
 	
-	public VentanaModoClasico() throws FileNotFoundException {		
-		JPanel panelGeneral = new JPanel();
+	public VentanaModoClasico() throws FileNotFoundException {	
 		panelGeneral.setLayout(new GridLayout(2,1));
-		JPanel panelArriba = new JPanel();
 		panelArriba.setLayout(new GridLayout(1,2));
-		JPanel panelIzquierda = new JPanel();
 		panelIzquierda.setLayout(new GridLayout(7,1));
-		JPanel panelDerecha = new JPanel();
-		JPanel panelAbecedario = new JPanel();
+		
 		panelAbecedario.setLayout(new GridLayout(1,1));
 		panelAbecedario.add(crearTeclado());
 		
-		JLabel contadorErrores = new JLabel();
 		JLabel errores = new JLabel("ERRORES:");
 		JLabel palabra = new JLabel("PALABRA OCULTA:");
-		contadorErrores.setHorizontalAlignment(SwingConstants.CENTER);
 		errores.setHorizontalAlignment(SwingConstants.CENTER);
 		palabraOculta.setHorizontalAlignment(SwingConstants.CENTER);
 		palabra.setHorizontalAlignment(SwingConstants.CENTER);
@@ -226,6 +230,8 @@ public class VentanaModoClasico extends JFrame{
 			}
 		});
 		
+	
+		
 		
 		panelIzquierda.add(botonPalabraNueva);
 		panelIzquierda.add(botonSalir);
@@ -233,7 +239,6 @@ public class VentanaModoClasico extends JFrame{
 		panelIzquierda.add(palabra);
 		panelIzquierda.add(palabraOculta);
 		panelIzquierda.add(errores);
-		panelIzquierda.add(contadorErrores);
 		
 		
 		panelArriba.add(panelIzquierda, BorderLayout.WEST);
@@ -253,6 +258,7 @@ public class VentanaModoClasico extends JFrame{
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 	}
+	
 	
 	public static void main(String[] args) throws FileNotFoundException {
 		new VentanaModoClasico();
