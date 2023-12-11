@@ -230,7 +230,18 @@ public class VentanaModoClasico extends JFrame{
 			}
 		});
 		
-	
+		botonPalabraNueva.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String palabraNueva = SeleccionarPalabra();
+				palabraSeleccionada = palabraNueva;
+				textoLabel = ocultarPalabra(palabraSeleccionada);
+				letrasPalabra.clear();
+				letrasPalabra.addAll(añadirLetras());
+				palabraOculta.setText(textoLabel.toString());;
+			}
+		});
 		
 		
 		panelIzquierda.add(botonPalabraNueva);
