@@ -59,7 +59,7 @@ public class VentanaModoClasico extends JFrame{
 	
 	public static StringBuilder ocultarPalabra(String palabra) {
 		int longitud = palabra.length();
-        StringBuilder cadenaOculta = new StringBuilder(" _ ".repeat(longitud));
+        StringBuilder cadenaOculta = new StringBuilder("-".repeat(longitud));
         
         return cadenaOculta;
     }
@@ -74,6 +74,7 @@ public class VentanaModoClasico extends JFrame{
 			if (i == 79) {
 				JButton boton = new JButton ("Ñ");
 				panelTeclado.add(boton);
+				boton.addActionListener(new BotonActionListener());
 			}
 			char num = (char)i;
 			
@@ -96,14 +97,18 @@ public class VentanaModoClasico extends JFrame{
 			
 			for (int j = 0; j < palabraSeleccionada.length(); j++) {
 				
-				if(boton.getText().charAt(0) == palabraSeleccionada.charAt(j)) {
+				if(boton.getText().charAt(0) == palabraSeleccionada.charAt(j) ) {
 					textoLabel.replace(j, j + 1, boton.getText());
 					palabraOculta.setText(textoLabel.toString());
-					boton.setBackground(Color.GREEN);
+					
+					if (letrasPalabra.contains(boton.getText().charAt(0))) {
+						boton.setBackground(Color.GREEN);
+						boton.setEnabled(false);
+					}
+					
+				} else if (palabraSeleccionada.charAt(j) != boton.getText().charAt(0) && boton.getBackground() != Color.GREEN){
 					boton.setEnabled(false);
-				} else {
-					boton.setEnabled(false);
-					boton.setBackground(Color.red);
+					boton.setBackground(Color.RED);
 					errores++;
 				}
 				
