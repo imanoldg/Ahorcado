@@ -34,6 +34,7 @@ public class VentanaModoClasico extends JFrame{
 	private static StringBuilder textoLabel = ocultarPalabra(palabraSeleccionada);
 	private static List<Character> letrasPalabra = new ArrayList<>(añadirLetras());
 	private static JLabel palabraOculta = new JLabel(textoLabel.toString());
+	private static int errores = 5;
 	
 	public static String SeleccionarPalabra() {
         List<Palabra> listaPalabras = CargarPalabras.cargarPalabras("resources/data/palabras.csv") ;
@@ -88,12 +89,19 @@ public class VentanaModoClasico extends JFrame{
 		return panelTeclado;
 	}
 	
+	public static boolean hasGanado() {
+		return palabraOculta.getText().equals(palabraSeleccionada);
+	}
+	
+	public static boolean hasPerdido() {
+		return errores == 5;
+	}
+	
 	private class BotonActionListener implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			JButton boton = (JButton) e.getSource();
-			int errores = 0;
 			
 			for (int j = 0; j < palabraSeleccionada.length(); j++) {
 				
@@ -111,7 +119,14 @@ public class VentanaModoClasico extends JFrame{
 					boton.setBackground(Color.RED);
 					errores++;
 				}
+				if (hasGanado()) {
+					new VentanaHasGanadoClasico();
+					
+				}
 				
+				if (hasPerdido()) {
+					new VentanaHasPerdido();
+				}
 			}
 			
 		}
