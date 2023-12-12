@@ -24,33 +24,85 @@ import javax.swing.SwingConstants;
 import domain.Usuario;
 import io.CargarPalabras;
 
-public class VentanaModoMuerteSubita extends VentanaModoClasico{
+public class VentanaModoMuerteSubita extends VentanaModoClasico {
 
-	private static int adivinadas = 0;
-	private static JLabel adivinadasLabel = new JLabel("Palabras adivinadas: " + adivinadas);
-	private static int errores = 0;
+	private int adivinadas = 0;
+	private JLabel adivinadasLabel = new JLabel("Palabras adivinadas: " + adivinadas);
+	private int errores = 0;
+
+	private boolean hasGanadoSubita() {
+		if (palabraOculta.getText().equals(palabraSeleccionada)) {
+			return true;
+		}
+
+		return false;
+	}
 	
+
+	private class BotonSubitaListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			JButton boton = (JButton) e.getSource();
+
+			for (int j = 0; j < palabraSeleccionada.length(); j++) {
+
+				if (boton.getText().charAt(0) == palabraSeleccionada.charAt(j)) {
+					textoLabel.replace(j, j + 1, boton.getText());
+					palabraOculta.setText(textoLabel.toString());
+
+					if (letrasPalabra.contains(boton.getText().charAt(0))) {
+						boton.setBackground(Color.GREEN);
+						boton.setEnabled(false);
+					}
+
+				} else if (palabraSeleccionada.charAt(j) != boton.getText().charAt(0)
+						&& boton.getBackground() != Color.GREEN) {
+					boton.setEnabled(false);
+					boton.setBackground(Color.RED);
+					errores++;
+				}
+
+			}
+			
+			if (hasGanadoSubita()) {
+				adivinadas++;
+				adivinadasLabel.setText("Palabras adivinadas: " + adivinadas);
+				ReiniciarJuego();
+			}
+			
+			if (hasPerdido()) {
+				new VentanaHasPerdido();
+			}
+			
+			
+		}
+
+	}
+
 	public VentanaModoMuerteSubita() throws FileNotFoundException {
 		super();
 		adivinadasLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		panelIzquierda.setLayout(new GridLayout(8,1));
-		
+		panelIzquierda.setLayout(new GridLayout(8, 1));
+
+		panelAbecedario.removeAll();
+		panelAbecedario.add(crearTeclado(new BotonSubitaListener()));
+
 		System.out.println(letrasPalabra);
 		panelIzquierda.add(adivinadasLabel);
-		
-		hasGanado(1, adivinadas);
-		
+
 		setVisible(true);
 		setTitle("Modo Muerte Súbita");
+
 	}
-	
+
 	public static void main(String[] args) {
-			try {
-				new VentanaModoMuerteSubita();
-			} catch (FileNotFoundException e) {
-				System.out.println("Error: Archivo de palabras no encontrado");
-			}
-		
+		try {
+			new VentanaModoMuerteSubita();
+		} catch (FileNotFoundException e) {
+			System.out.println("Error: Archivo de palabras no encontrado");
+		}
+
 	}
-	
+
 }

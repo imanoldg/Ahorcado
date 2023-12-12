@@ -29,20 +29,22 @@ public class VentanaModoClasico extends JFrame{
 	
 	public static int adivinada;
 	
-	private JButton botonSalir = new JButton("  Volver al selector de modo  ");
-	private JButton botonPalabraNueva = new JButton("  Palabra Nueva  ");
-	private JButton botonResolver = new JButton("  Resolver  ");
+	public static JButton botonSalir = new JButton("  Volver al selector de modo  ");
+	public static JButton botonPalabraNueva = new JButton("  Palabra Nueva  ");
+	public static JButton botonResolver = new JButton("  Resolver  ");
 	protected static String palabraSeleccionada = SeleccionarPalabra();
 	protected static StringBuilder textoLabel = ocultarPalabra(palabraSeleccionada);
 	protected static List<Character> letrasPalabra = new ArrayList<>(añadirLetras());
 	protected static JLabel palabraOculta = new JLabel(textoLabel.toString());
-	protected static int errores = 0;
+	protected static JLabel errores = new JLabel("ERRORES:");
+	protected static JLabel palabra = new JLabel("PALABRA OCULTA:");
+	private static int contadorErrores = 0;
 	
 	protected static JPanel panelGeneral = new JPanel();
 	protected static JPanel panelArriba = new JPanel();
 	protected static JPanel panelIzquierda = new JPanel();
 	protected static JPanel panelAbecedario = new JPanel();
-	protected JPanel panelDerecha = new JPanel();
+	protected static JPanel panelDerecha = new JPanel();
 	
 	public static String SeleccionarPalabra() {
         List<Palabra> listaPalabras = CargarPalabras.cargarPalabras("resources/data/palabras.csv") ;
@@ -73,7 +75,34 @@ public class VentanaModoClasico extends JFrame{
         return cadenaOculta;
     }
 	
-	public static JPanel crearTeclado() {
+	public static void ReiniciarJuego() {
+		String palabraNueva = SeleccionarPalabra();
+		palabraSeleccionada = palabraNueva;
+		textoLabel = ocultarPalabra(palabraSeleccionada);
+		letrasPalabra.clear();
+		letrasPalabra.addAll(añadirLetras());
+		palabraOculta.setText(textoLabel.toString());;
+		panelAbecedario.removeAll();
+		panelAbecedario.add(crearTeclado(new BotonActionListener()));
+		panelArriba.removeAll();
+		panelIzquierda.removeAll();
+		
+		panelIzquierda.add(botonPalabraNueva);
+		panelIzquierda.add(botonSalir);
+		panelIzquierda.add(botonResolver);
+		panelIzquierda.add(palabra);
+		panelIzquierda.add(palabraOculta);
+		panelIzquierda.add(errores);
+		
+		panelArriba.add(panelIzquierda, BorderLayout.WEST);
+		panelArriba.add(panelDerecha, BorderLayout.EAST);
+		
+		panelGeneral.add(panelArriba, BorderLayout.NORTH);
+		panelGeneral.add(panelAbecedario, BorderLayout.SOUTH);
+
+	}
+	
+	public static JPanel crearTeclado(ActionListener action) {
 		JPanel panelTeclado = new JPanel();
 		panelTeclado.setLayout(new GridLayout(3,10));
 		
@@ -83,30 +112,35 @@ public class VentanaModoClasico extends JFrame{
 			if (i == 79) {
 				JButton boton = new JButton ("Ñ");
 				panelTeclado.add(boton);
-				boton.addActionListener(new BotonActionListener());
+				boton.addActionListener(action);
 			}
 			char num = (char)i;
 			
 			JButton boton = new JButton (num + "");
 			panelTeclado.add(boton);
+			Color DefaultColor = boton.getBackground();
 			
-			boton.addActionListener(new BotonActionListener());
+			boton.addActionListener(action);
+			
+			if (botonPalabraNueva.isSelected()) {
+				boton.setBackground(DefaultColor);
+			}
 			
 		}
 		
 		return panelTeclado;
 	}
 	
-	public static void hasGanado(int num, int adivinadas) {
-		if(num == 0 && palabraOculta.getText().equals(palabraSeleccionada)) {
-			new VentanaHasGanadoClasico();
-		} else if (num == 1 && palabraOculta.getText().equals(palabraSeleccionada)) {
-			adivinadas++;
+	private static boolean hasGanado() {
+		if (palabraOculta.getText().equals(palabraSeleccionada)){
+			return true;
 		}
+		
+		return false;
 	}
 	
 	public static boolean hasPerdido() {
-		if (errores == 5) return true;
+		if (contadorErrores == 5) return true;
 		return false;
 	}
 	
@@ -116,6 +150,7 @@ public class VentanaModoClasico extends JFrame{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			JButton boton = (JButton) e.getSource();
+			
 			
 			for (int j = 0; j < palabraSeleccionada.length(); j++) {
 				
@@ -131,16 +166,24 @@ public class VentanaModoClasico extends JFrame{
 				} else if (palabraSeleccionada.charAt(j) != boton.getText().charAt(0) && boton.getBackground() != Color.GREEN){
 					boton.setEnabled(false);
 					boton.setBackground(Color.RED);
-					errores++;
+					contadorErrores++;
 				}
 				
 			}
-		
-			hasGanado(0, adivinada);
+			
+			if (hasGanado()) {
+				new VentanaHasGanadoClasico();
+				ReiniciarJuego();
+				
+			}
 			
 			if (hasPerdido()) {
 				new VentanaHasPerdido();
+				ReiniciarJuego();
 			}
+			
+
+			
 		}
 		
 	}
@@ -152,10 +195,9 @@ public class VentanaModoClasico extends JFrame{
 		panelIzquierda.setLayout(new GridLayout(7,1));
 		
 		panelAbecedario.setLayout(new GridLayout(1,1));
-		panelAbecedario.add(crearTeclado());
+		panelAbecedario.add(crearTeclado(new BotonActionListener()));
 		
-		JLabel errores = new JLabel("ERRORES:");
-		JLabel palabra = new JLabel("PALABRA OCULTA:");
+
 		errores.setHorizontalAlignment(SwingConstants.CENTER);
 		palabraOculta.setHorizontalAlignment(SwingConstants.CENTER);
 		palabra.setHorizontalAlignment(SwingConstants.CENTER);
@@ -235,12 +277,7 @@ public class VentanaModoClasico extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String palabraNueva = SeleccionarPalabra();
-				palabraSeleccionada = palabraNueva;
-				textoLabel = ocultarPalabra(palabraSeleccionada);
-				letrasPalabra.clear();
-				letrasPalabra.addAll(añadirLetras());
-				palabraOculta.setText(textoLabel.toString());;
+				ReiniciarJuego();
 			}
 		});
 		

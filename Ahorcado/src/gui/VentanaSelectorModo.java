@@ -27,11 +27,12 @@ public class VentanaSelectorModo extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				try {
 					new VentanaModoContrarreloj();
+					VentanaModoClasico.ReiniciarJuego();
+					dispose();
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
 				}
-				dispose();
+				
 			}
 		});
 		
@@ -41,11 +42,12 @@ public class VentanaSelectorModo extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				try {
 					new VentanaModoMuerteSubita();
+					VentanaModoClasico.ReiniciarJuego();
+					dispose();
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
 				}
-				dispose();
+				
 			}
 		});
 		
@@ -55,11 +57,13 @@ public class VentanaSelectorModo extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				try {
 					new Ventana1vs1();
+					VentanaModoClasico.ReiniciarJuego();
+					dispose();
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				dispose();
+				
 			}
 		});
 		
@@ -69,11 +73,13 @@ public class VentanaSelectorModo extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				try {
 					new VentanaModoClasico();
+					VentanaModoClasico.ReiniciarJuego();
+					dispose();
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				dispose();
+				
 				
 			}
 		});

@@ -33,7 +33,7 @@ public class Ventana1vs1 extends VentanaModoClasico {
 	private static List<Character> letrasPalabraDerecha = new ArrayList<>(añadirLetras());
 	private static JLabel palabraOcultaDerecha = new JLabel(textoLabelDerecha.toString());
 
-	private JButton botonListoIzquierda = new JButton("  Listo  ");
+	private JButton botonListoIzquierda = botonPalabraNueva;
 
 	private JButton botonSalirDerecha = new JButton("  Volver al selector de modo  ");
 	private JButton botonListoDerecha = new JButton("  Listo  ");
@@ -44,6 +44,16 @@ public class Ventana1vs1 extends VentanaModoClasico {
 	public Ventana1vs1() throws FileNotFoundException {
 		super();
 
+		
+		//Para hacer esto he tenido ayuda de este articulo del foro: https://stackoverflow.com/questions/64526090/remove-an-actionlistener-from-jbutton
+		ActionListener[] listeners = botonPalabraNueva.getActionListeners();
+		
+		for (ActionListener listener : listeners) {
+		    botonPalabraNueva.removeActionListener(listener);
+		}
+		
+		botonListoIzquierda.setText("Listo");
+		
 		JPanel panelGeneral1vs1 = panelGeneral;
 		panelGeneral1vs1.setLayout(new GridLayout(1, 2));
 
@@ -66,7 +76,7 @@ public class Ventana1vs1 extends VentanaModoClasico {
 		JPanel panelDerechaDerecha = new JPanel();
 		JPanel panelAbecedarioDerecha = new JPanel();
 		panelAbecedarioDerecha.setLayout(new GridLayout(1, 0));
-		panelAbecedarioDerecha.add(crearTeclado());
+		panelAbecedarioDerecha.add(crearTeclado(new BotonActionListener()));
 
 		JLabel contadorErroresDerecha = new JLabel();
 		JLabel erroresDerecha = new JLabel("ERRORES:");
@@ -108,9 +118,13 @@ public class Ventana1vs1 extends VentanaModoClasico {
 
 					panelAbecedarioIzquierda.setVisible(true);
 					botonListoIzquierda.setVisible(true);
+					botonResolver.setVisible(true);
+					botonSalir.setVisible(true);
 				} else {
 					panelAbecedarioIzquierda.setVisible(false);
 					botonListoIzquierda.setVisible(false);
+					botonResolver.setVisible(false);
+					botonSalir.setVisible(false);
 
 					panelAbecedarioDerecha.setVisible(true);
 					botonListoDerecha.setVisible(true);
@@ -135,9 +149,13 @@ public class Ventana1vs1 extends VentanaModoClasico {
 
 					panelAbecedarioIzquierda.setVisible(true);
 					botonListoIzquierda.setVisible(true);
+					botonResolver.setVisible(true);
+					botonSalir.setVisible(true);
 				} else {
 					panelAbecedarioIzquierda.setVisible(false);
 					botonListoIzquierda.setVisible(false);
+					botonResolver.setVisible(false);
+					botonSalir.setVisible(false);
 
 					panelAbecedarioDerecha.setVisible(true);
 					botonListoDerecha.setVisible(true);
@@ -155,8 +173,6 @@ public class Ventana1vs1 extends VentanaModoClasico {
 		
 		panelAbecedarioIzquierda.setVisible(true);
 		botonListoIzquierda.setVisible(true);
-		
-		panelIzquierdaIzquierda.add(botonListoIzquierda);
 		
 		panelArribaIzquierda.add(panelIzquierdaIzquierda, BorderLayout.WEST);
 		panelArribaIzquierda.add(panelDerechaIzquierda, BorderLayout.EAST);

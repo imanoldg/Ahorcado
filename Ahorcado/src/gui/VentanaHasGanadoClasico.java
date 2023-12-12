@@ -14,6 +14,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class VentanaHasGanadoClasico extends JFrame {
+	
+	private void ReiniciarJuego(){
+		VentanaModoClasico.panelAbecedario.removeAll();
+		VentanaModoClasico.panelArriba.removeAll();
+		VentanaModoClasico.panelIzquierda.removeAll();
+	}
+	
+	
 	public VentanaHasGanadoClasico() {
 		JPanel panelGeneral = new JPanel();
 		panelGeneral.setLayout(new GridLayout(2,1));
@@ -56,6 +64,7 @@ public class VentanaHasGanadoClasico extends JFrame {
 					e1.printStackTrace();
 				}
 				dispose();
+				ReiniciarJuego();
 				
 			}
 		});
