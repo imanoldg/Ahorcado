@@ -35,6 +35,16 @@ public class VentanaModoContrarreloj extends VentanaModoClasico{
 	private Thread hilo;
 	private boolean ejecutarHilo;
 	
+	public class BotonContrarrelojListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
+	
 	public VentanaModoContrarreloj() throws FileNotFoundException {		
 
 		contador = 60;
@@ -67,5 +77,6 @@ public class VentanaModoContrarreloj extends VentanaModoClasico{
 	
 	public static void main(String[] args) throws FileNotFoundException {
 		new VentanaModoContrarreloj();
+		System.out.println(letrasPalabra);
 	}
 }

@@ -29,7 +29,7 @@ public class VentanaSelectorModo extends JFrame{
 		VentanaModoClasico.textoLabel = VentanaModoClasico.ocultarPalabra(VentanaModoClasico.palabraSeleccionada);
 		VentanaModoClasico.letrasPalabra.clear();
 		VentanaModoClasico.letrasPalabra.addAll(VentanaModoClasico.añadirLetras());
-		VentanaModoClasico.palabraOculta.setText(VentanaModoClasico.textoLabel.toString());;
+		VentanaModoClasico.palabraOculta.setText(VentanaModoClasico.textoLabel.toString());
 	}
 	
 	private void ReiniciarSubita() {
@@ -37,9 +37,20 @@ public class VentanaSelectorModo extends JFrame{
 		VentanaModoMuerteSubita.textoLabel = VentanaModoMuerteSubita.ocultarPalabra(VentanaModoMuerteSubita.palabraSeleccionada);
 		VentanaModoMuerteSubita.letrasPalabra.clear();
 		VentanaModoMuerteSubita.letrasPalabra.addAll(VentanaModoMuerteSubita.añadirLetras());
-		VentanaModoMuerteSubita.palabraOculta.setText(VentanaModoMuerteSubita.textoLabel.toString());;
+		VentanaModoMuerteSubita.palabraOculta.setText(VentanaModoMuerteSubita.textoLabel.toString());
 		VentanaModoMuerteSubita.panelAbecedario.removeAll();
 		VentanaModoMuerteSubita.adivinadasLabel.removeAll();
+	}
+	
+	private void ReiniciarContrarreloj() {
+		VentanaModoContrarreloj.panelAbecedario.removeAll();
+		VentanaModoContrarreloj.panelArriba.removeAll();
+		VentanaModoContrarreloj.panelIzquierda.removeAll();
+		VentanaModoContrarreloj.palabraSeleccionada = VentanaModoContrarreloj.SeleccionarPalabra();
+		VentanaModoContrarreloj.textoLabel = VentanaModoContrarreloj.ocultarPalabra(VentanaModoContrarreloj.palabraSeleccionada);
+		VentanaModoContrarreloj.letrasPalabra.clear();
+		VentanaModoContrarreloj.letrasPalabra.addAll(VentanaModoContrarreloj.añadirLetras());
+		VentanaModoContrarreloj.palabraOculta.setText(VentanaModoContrarreloj.textoLabel.toString());
 	}
 	
 	public VentanaSelectorModo(){	
@@ -49,6 +60,7 @@ public class VentanaSelectorModo extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
+					ReiniciarContrarreloj();
 					new VentanaModoContrarreloj();
 					dispose();
 				} catch (FileNotFoundException e1) {
