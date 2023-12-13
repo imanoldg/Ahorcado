@@ -29,34 +29,70 @@ import javax.swing.event.MenuKeyListener;
 import domain.Usuario;
 import io.CargarPalabras;
 
-public class VentanaModoContrarreloj extends VentanaModoClasico{
+public class VentanaModoContrarreloj extends VentanaModoClasico {
 
+	private int contadorErrores = 0;
 	private int contador;
 	private Thread hilo;
 	private boolean ejecutarHilo;
-	
-	public class BotonContrarrelojListener implements ActionListener{
+
+	public class BotonContrarrelojListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-	}
-	
-	public VentanaModoContrarreloj() throws FileNotFoundException {		
+			JButton boton = (JButton) e.getSource();
 
+			for (int j = 0; j < palabraSeleccionada.length(); j++) {
+
+				if (boton.getText().charAt(0) == palabraSeleccionada.charAt(j)) {
+					textoLabel.replace(j, j + 1, boton.getText());
+					palabraOculta.setText(textoLabel.toString());
+
+					if (letrasPalabra.contains(boton.getText().charAt(0))) {
+						boton.setBackground(Color.GREEN);
+						boton.setEnabled(false);
+					}
+
+				} else if (palabraSeleccionada.charAt(j) != boton.getText().charAt(0)
+						&& boton.getBackground() != Color.GREEN) {
+					boton.setEnabled(false);
+					boton.setBackground(Color.RED);
+					contadorErrores++;
+				}
+
+			}
+
+			if (hasGanado()) {
+				new VentanaHasGanadoClasico();
+				dispose();
+
+			}
+
+			if (hasPerdido()) {
+				new VentanaHasPerdido();
+				dispose();
+			}
+
+		}
+
+	}
+
+	public VentanaModoContrarreloj() throws FileNotFoundException {
+
+		panelAbecedario.removeAll();
+		panelAbecedario.add(crearTeclado(new BotonContrarrelojListener()));
+		
 		contador = 60;
 		JLabel etiqueta = new JLabel();
-		etiqueta.setHorizontalAlignment(SwingConstants.CENTER);//esta linea la he sacado buscando en la API como poner un texto centrado en una JLabel 
-															  //(https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/javax/swing/JLabel.html#setHorizontalAlignment(int))
-		//HILO PARA EL CRONOMETRO
+		etiqueta.setHorizontalAlignment(SwingConstants.CENTER);// esta linea la he sacado buscando en la API como poner
+																// un texto centrado en una JLabel
+																// (https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/javax/swing/JLabel.html#setHorizontalAlignment(int))
+		// HILO PARA EL CRONOMETRO
 		hilo = new Thread() {
-			public void run(){
+			public void run() {
 				while (ejecutarHilo) {
 					contador--;
-					etiqueta.setText("Tiempo restante: " + contador + " segundos") ; // usar invoke later
+					etiqueta.setText("Tiempo restante: " + contador + " segundos"); // usar invoke later
 					if (contador == 0) {
 						ejecutarHilo = false;
 					}
@@ -70,11 +106,11 @@ public class VentanaModoContrarreloj extends VentanaModoClasico{
 		};
 		ejecutarHilo = true;
 		hilo.start();
-		
+
 		panelIzquierda.add(etiqueta);
 		setTitle("Modo Contrarreloj");
 	}
-	
+
 	public static void main(String[] args) throws FileNotFoundException {
 		new VentanaModoContrarreloj();
 		System.out.println(letrasPalabra);
