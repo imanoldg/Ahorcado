@@ -26,7 +26,7 @@ import io.CargarPalabras;
 
 public class Ventana1vs1 extends VentanaModoClasico {
 
-	private static int errores = 0;
+	private static int erroresDerecha = 0;
 
 	private static String palabraSeleccionadaDerecha = SeleccionarPalabra();
 	private static StringBuilder textoLabelDerecha = ocultarPalabra(palabraSeleccionadaDerecha);
@@ -41,19 +41,60 @@ public class Ventana1vs1 extends VentanaModoClasico {
 
 	private static int contador = 0;
 
+	class BotonIzquierdaListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			JButton boton = (JButton) e.getSource();
+
+			for (int j = 0; j < palabraSeleccionadaDerecha.length(); j++) {
+
+				if (boton.getText().charAt(0) == palabraSeleccionadaDerecha.charAt(j)) {
+					textoLabelDerecha.replace(j, j + 1, boton.getText());
+					palabraOcultaDerecha.setText(textoLabelDerecha.toString());
+
+					if (letrasPalabraDerecha.contains(boton.getText().charAt(0))) {
+						boton.setBackground(Color.GREEN);
+						boton.setEnabled(false);
+					}
+
+				} else if (palabraSeleccionadaDerecha.charAt(j) != boton.getText().charAt(0)
+						&& boton.getBackground() != Color.GREEN) {
+					boton.setEnabled(false);
+					boton.setBackground(Color.RED);
+					erroresDerecha++;
+				}
+
+			}
+
+			if (hasGanado()) {
+				new VentanaHasGanadoClasico();
+				dispose();
+
+			}
+
+			if (hasPerdido()) {
+				new VentanaHasPerdido();
+				dispose();
+			}
+		}
+
+	}
+
 	public Ventana1vs1() throws FileNotFoundException {
 		super();
 
-		
-		//Para hacer esto he tenido ayuda de este articulo del foro: https://stackoverflow.com/questions/64526090/remove-an-actionlistener-from-jbutton
+		// Para hacer esto he tenido ayuda de este articulo del foro:
+		// https://stackoverflow.com/questions/64526090/remove-an-actionlistener-from-jbutton
 		ActionListener[] listeners = botonPalabraNueva.getActionListeners();
-		
+
 		for (ActionListener listener : listeners) {
-		    botonPalabraNueva.removeActionListener(listener);
+			botonPalabraNueva.removeActionListener(listener);
 		}
-		
+
 		botonListoIzquierda.setText("Listo");
-		
+
 		JPanel panelGeneral1vs1 = panelGeneral;
 		panelGeneral1vs1.setLayout(new GridLayout(1, 2));
 
@@ -76,7 +117,7 @@ public class Ventana1vs1 extends VentanaModoClasico {
 		JPanel panelDerechaDerecha = new JPanel();
 		JPanel panelAbecedarioDerecha = new JPanel();
 		panelAbecedarioDerecha.setLayout(new GridLayout(1, 0));
-		panelAbecedarioDerecha.add(crearTeclado(new BotonActionListener()));
+		panelAbecedarioDerecha.add(crearTeclado(new BotonIzquierdaListener()));
 
 		JLabel contadorErroresDerecha = new JLabel();
 		JLabel erroresDerecha = new JLabel("ERRORES:");
@@ -165,21 +206,21 @@ public class Ventana1vs1 extends VentanaModoClasico {
 
 			}
 		});
-		
+
 		panelAbecedarioDerecha.setVisible(false);
 		botonListoDerecha.setVisible(false);
 		botonResolverDerecha.setVisible(false);
 		botonSalirDerecha.setVisible(false);
-		
+
 		panelAbecedarioIzquierda.setVisible(true);
 		botonListoIzquierda.setVisible(true);
-		
+
 		panelArribaIzquierda.add(panelIzquierdaIzquierda, BorderLayout.WEST);
 		panelArribaIzquierda.add(panelDerechaIzquierda, BorderLayout.EAST);
-		
+
 		panelGeneralIzquierda.add(panelArribaIzquierda, BorderLayout.NORTH);
 		panelGeneralIzquierda.add(panelAbecedarioIzquierda, BorderLayout.SOUTH);
-		
+
 		panelIzquierdaDerecha.add(botonListoDerecha);
 		panelIzquierdaDerecha.add(botonSalirDerecha);
 		panelIzquierdaDerecha.add(botonResolverDerecha);
@@ -187,17 +228,18 @@ public class Ventana1vs1 extends VentanaModoClasico {
 		panelIzquierdaDerecha.add(palabraOcultaDerecha);
 		panelIzquierdaDerecha.add(erroresDerecha);
 		panelIzquierdaDerecha.add(contadorErroresDerecha);
-		
+
 		panelArribaDerecha.add(panelIzquierdaDerecha, BorderLayout.WEST);
 		panelArribaDerecha.add(panelDerechaDerecha, BorderLayout.EAST);
-		
+
 		panelGeneralDerecha.add(panelArribaDerecha, BorderLayout.NORTH);
 		panelGeneralDerecha.add(panelAbecedarioDerecha, BorderLayout.SOUTH);
-		
+
 		panelGeneral1vs1.add(panelGeneralDerecha, BorderLayout.EAST);
 		panelGeneral1vs1.add(panelGeneralIzquierda, BorderLayout.WEST);
-		
+
 		setTitle("Modo 1 vs 1");
+		setVisible(true);
 	}
 
 	public static void main(String[] args) throws FileNotFoundException {

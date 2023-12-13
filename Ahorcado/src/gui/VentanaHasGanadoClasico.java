@@ -15,12 +15,16 @@ import javax.swing.JPanel;
 
 public class VentanaHasGanadoClasico extends JFrame {
 	
-	private void ReiniciarJuego(){
+	private void ReiniciarJuego() {
 		VentanaModoClasico.panelAbecedario.removeAll();
 		VentanaModoClasico.panelArriba.removeAll();
 		VentanaModoClasico.panelIzquierda.removeAll();
+		VentanaModoClasico.palabraSeleccionada = VentanaModoClasico.SeleccionarPalabra();
+		VentanaModoClasico.textoLabel = VentanaModoClasico.ocultarPalabra(VentanaModoClasico.palabraSeleccionada);
+		VentanaModoClasico.letrasPalabra.clear();
+		VentanaModoClasico.letrasPalabra.addAll(VentanaModoClasico.añadirLetras());
+		VentanaModoClasico.palabraOculta.setText(VentanaModoClasico.textoLabel.toString());;
 	}
-	
 	
 	public VentanaHasGanadoClasico() {
 		JPanel panelGeneral = new JPanel();
@@ -58,14 +62,13 @@ public class VentanaHasGanadoClasico extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
+					ReiniciarJuego();
 					new VentanaModoClasico();
+					dispose();
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				dispose();
-				ReiniciarJuego();
-				
 			}
 		});
 		

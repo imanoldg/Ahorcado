@@ -30,8 +30,8 @@ public class VentanaHasPerdido extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new VentanaSelectorModo();
 				dispose();
+				new VentanaSelectorModo();
 				
 			}
 		});
@@ -41,7 +41,6 @@ public class VentanaHasPerdido extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				
 			}
 		});
 		

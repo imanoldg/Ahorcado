@@ -22,6 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import domain.Usuario;
+import gui.VentanaModoClasico.BotonActionListener;
 import io.CargarPalabras;
 
 public class VentanaModoMuerteSubita extends VentanaModoClasico {
@@ -29,16 +30,18 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 	private int adivinadas = 0;
 	private JLabel adivinadasLabel = new JLabel("Palabras adivinadas: " + adivinadas);
 	private int errores = 0;
-
-	private boolean hasGanadoSubita() {
-		if (palabraOculta.getText().equals(palabraSeleccionada)) {
-			return true;
-		}
-
-		return false;
-	}
 	
 
+	private void ReiniciarJuego() {
+		palabraSeleccionada = SeleccionarPalabra();
+		textoLabel = ocultarPalabra(palabraSeleccionada);
+		letrasPalabra.clear();
+		letrasPalabra.addAll(añadirLetras());
+		palabraOculta.setText(textoLabel.toString());;
+		panelAbecedario.removeAll();
+		panelAbecedario.add(crearTeclado(new BotonSubitaListener()));
+	}
+	
 	private class BotonSubitaListener implements ActionListener {
 
 		@Override
@@ -65,10 +68,10 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 
 			}
 			
-			if (hasGanadoSubita()) {
+			if (hasGanado()) {
+				ReiniciarJuego();
 				adivinadas++;
 				adivinadasLabel.setText("Palabras adivinadas: " + adivinadas);
-				ReiniciarJuego();
 			}
 			
 			if (hasPerdido()) {

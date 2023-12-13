@@ -19,6 +19,17 @@ public class VentanaSelectorModo extends JFrame{
 	private JButton modo1vs1 = new JButton("Modo 1vs1");
 	private JButton modoClasico = new JButton("Modo Clasico");
 	
+	private void ReiniciarClasico() {
+		VentanaModoClasico.panelAbecedario.removeAll();
+		VentanaModoClasico.panelArriba.removeAll();
+		VentanaModoClasico.panelIzquierda.removeAll();
+		VentanaModoClasico.palabraSeleccionada = VentanaModoClasico.SeleccionarPalabra();
+		VentanaModoClasico.textoLabel = VentanaModoClasico.ocultarPalabra(VentanaModoClasico.palabraSeleccionada);
+		VentanaModoClasico.letrasPalabra.clear();
+		VentanaModoClasico.letrasPalabra.addAll(VentanaModoClasico.añadirLetras());
+		VentanaModoClasico.palabraOculta.setText(VentanaModoClasico.textoLabel.toString());;
+	}
+	
 	public VentanaSelectorModo(){	
 		//ACCIONES DE CADA BOTON (PARA ABIR EL RESTO DE VENATANAS)
 		modoContrarreloj.addActionListener(new ActionListener() {
@@ -27,7 +38,6 @@ public class VentanaSelectorModo extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				try {
 					new VentanaModoContrarreloj();
-					VentanaModoClasico.ReiniciarJuego();
 					dispose();
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
@@ -42,7 +52,6 @@ public class VentanaSelectorModo extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				try {
 					new VentanaModoMuerteSubita();
-					VentanaModoClasico.ReiniciarJuego();
 					dispose();
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
@@ -57,7 +66,6 @@ public class VentanaSelectorModo extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				try {
 					new Ventana1vs1();
-					VentanaModoClasico.ReiniciarJuego();
 					dispose();
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
@@ -72,8 +80,8 @@ public class VentanaSelectorModo extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
+					ReiniciarClasico();
 					new VentanaModoClasico();
-					VentanaModoClasico.ReiniciarJuego();
 					dispose();
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
