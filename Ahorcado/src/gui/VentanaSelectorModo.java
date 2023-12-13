@@ -13,6 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import gui.VentanaModoMuerteSubita.BotonSubitaListener;
+
 public class VentanaSelectorModo extends JFrame{
 	private JButton modoContrarreloj = new JButton("Modo Contrarreloj");
 	private JButton modoMuerteSubita = new JButton("Modo Muerte Súbita");
@@ -28,6 +30,16 @@ public class VentanaSelectorModo extends JFrame{
 		VentanaModoClasico.letrasPalabra.clear();
 		VentanaModoClasico.letrasPalabra.addAll(VentanaModoClasico.añadirLetras());
 		VentanaModoClasico.palabraOculta.setText(VentanaModoClasico.textoLabel.toString());;
+	}
+	
+	private void ReiniciarSubita() {
+		VentanaModoMuerteSubita.palabraSeleccionada = VentanaModoMuerteSubita.SeleccionarPalabra();
+		VentanaModoMuerteSubita.textoLabel = VentanaModoMuerteSubita.ocultarPalabra(VentanaModoMuerteSubita.palabraSeleccionada);
+		VentanaModoMuerteSubita.letrasPalabra.clear();
+		VentanaModoMuerteSubita.letrasPalabra.addAll(VentanaModoMuerteSubita.añadirLetras());
+		VentanaModoMuerteSubita.palabraOculta.setText(VentanaModoMuerteSubita.textoLabel.toString());;
+		VentanaModoMuerteSubita.panelAbecedario.removeAll();
+		VentanaModoMuerteSubita.adivinadasLabel.removeAll();
 	}
 	
 	public VentanaSelectorModo(){	
@@ -51,6 +63,7 @@ public class VentanaSelectorModo extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
+					ReiniciarSubita();
 					new VentanaModoMuerteSubita();
 					dispose();
 				} catch (FileNotFoundException e1) {

@@ -27,8 +27,8 @@ import io.CargarPalabras;
 
 public class VentanaModoMuerteSubita extends VentanaModoClasico {
 
-	private int adivinadas = 0;
-	private JLabel adivinadasLabel = new JLabel("Palabras adivinadas: " + adivinadas);
+	private static int adivinadas = 0;
+	public static JLabel adivinadasLabel = new JLabel("Palabras adivinadas: " + adivinadas);
 	private int errores = 0;
 	
 
@@ -42,7 +42,7 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 		panelAbecedario.add(crearTeclado(new BotonSubitaListener()));
 	}
 	
-	private class BotonSubitaListener implements ActionListener {
+	public class BotonSubitaListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
