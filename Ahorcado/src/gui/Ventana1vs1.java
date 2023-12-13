@@ -26,20 +26,28 @@ import io.CargarPalabras;
 
 public class Ventana1vs1 extends VentanaModoClasico {
 
-	private static int erroresDerecha = 0;
+	public static int erroresDerecha = 0;
 
-	private static String palabraSeleccionadaDerecha = SeleccionarPalabra();
-	private static StringBuilder textoLabelDerecha = ocultarPalabra(palabraSeleccionadaDerecha);
-	private static List<Character> letrasPalabraDerecha = new ArrayList<>(añadirLetras());
-	private static JLabel palabraOcultaDerecha = new JLabel(textoLabelDerecha.toString());
+	public static JPanel panelArribaIzquierda = panelArriba;
+	public static JPanel panelIzquierdaIzquierda = panelIzquierda;
+	public static JPanel panelAbecedarioIzquierda = panelAbecedario;
+	
+	public static String palabraSeleccionadaDerecha = SeleccionarPalabra();
+	public static StringBuilder textoLabelDerecha = ocultarPalabra(palabraSeleccionadaDerecha);
+	public static List<Character> letrasPalabraDerecha = new ArrayList<>(añadirLetras());
+	public static JLabel palabraOcultaDerecha = new JLabel(textoLabelDerecha.toString());
+	public static JPanel panelArribaDerecha = new JPanel();
+	public static JPanel panelIzquierdaDerecha = new JPanel();
+	public static JPanel panelDerechaDerecha = new JPanel();
+	public static JPanel panelAbecedarioDerecha = new JPanel();
 
-	private JButton botonListoIzquierda = botonPalabraNueva;
+	public JButton botonListoIzquierda = botonPalabraNueva;
 
-	private JButton botonSalirDerecha = new JButton("  Volver al selector de modo  ");
-	private JButton botonListoDerecha = new JButton("  Listo  ");
-	private JButton botonResolverDerecha = new JButton("  Resolver  ");
+	public JButton botonSalirDerecha = new JButton("  Volver al selector de modo  ");
+	public JButton botonListoDerecha = new JButton("  Listo  ");
+	public JButton botonResolverDerecha = new JButton("  Resolver  ");
 
-	private static int contador = 0;
+	public static int contador = 0;
 
 	class BotonIzquierdaListener implements ActionListener {
 
@@ -87,9 +95,9 @@ public class Ventana1vs1 extends VentanaModoClasico {
 
 		// Para hacer esto he tenido ayuda de este articulo del foro:
 		// https://stackoverflow.com/questions/64526090/remove-an-actionlistener-from-jbutton
-		ActionListener[] listeners = botonPalabraNueva.getActionListeners();
+		ActionListener[] listenersPalabraNueva = botonPalabraNueva.getActionListeners();
 
-		for (ActionListener listener : listeners) {
+		for (ActionListener listener : listenersPalabraNueva) {
 			botonPalabraNueva.removeActionListener(listener);
 		}
 
@@ -97,25 +105,16 @@ public class Ventana1vs1 extends VentanaModoClasico {
 
 		JPanel panelGeneral1vs1 = panelGeneral;
 		panelGeneral1vs1.setLayout(new GridLayout(1, 2));
-
 		JPanel panelGeneralIzquierda = new JPanel();
 		panelGeneralIzquierda.setLayout(new GridLayout(2, 1));
-		JPanel panelArribaIzquierda = panelArriba;
 		panelArribaIzquierda.setLayout(new GridLayout(1, 2));
-		JPanel panelIzquierdaIzquierda = panelIzquierda;
 		panelIzquierdaIzquierda.setLayout(new GridLayout(7, 1));
-		JPanel panelAbecedarioIzquierda = panelAbecedario;
 		panelAbecedarioIzquierda.setLayout(new GridLayout(1, 0));
 		JPanel panelDerechaIzquierda = new JPanel();
-
 		JPanel panelGeneralDerecha = new JPanel();
 		panelGeneralDerecha.setLayout(new GridLayout(2, 1));
-		JPanel panelArribaDerecha = new JPanel();
 		panelArribaDerecha.setLayout(new GridLayout(1, 2));
-		JPanel panelIzquierdaDerecha = new JPanel();
 		panelIzquierdaDerecha.setLayout(new GridLayout(7, 1));
-		JPanel panelDerechaDerecha = new JPanel();
-		JPanel panelAbecedarioDerecha = new JPanel();
 		panelAbecedarioDerecha.setLayout(new GridLayout(1, 0));
 		panelAbecedarioDerecha.add(crearTeclado(new BotonIzquierdaListener()));
 
