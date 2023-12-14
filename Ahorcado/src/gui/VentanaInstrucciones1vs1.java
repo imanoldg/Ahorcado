@@ -27,10 +27,11 @@ public class VentanaInstrucciones1vs1 extends JFrame {
 				+ "- Muñeco: El muñeco se dibuja en 6 partes (cabeza, torso, piernas y brazos), por lo que los jugadores tienen 6 posibildades de fallar. <br>"
 				+ "- Adivinar la Palabra: El jugador puede intentar adivinar la palabra secreta. <br>"
 				+ "-- Si acierta la palabra, entonces el programa completa la solución. <br>"
-				+ "-- Si no acierta la palabra, entonces el programa dibujará una parte del muñeco. <br>"
+				+ "-- Si no acierta la palabra, perderas automaticamente. <br>"
+				+ "¡¡CUIDADO!!, Al intentar resolver la palabra se cerrara la ventana del juego, asi que si te atreves a adivinarla estate 100% seguro <br>"
 				+ "Fin de la partida: <br>"
 				+ "- GANA el jugador que antes descubra la palabra. <br>"
-				+ "- PIERDE el jugador si se dibuja el muñeco completo en la horca<html><body>");
+				+ "- PIERDE el jugador si se dibuja el muñeco completo en la horca o falla al intentar resolver la palabra<html><body>");
 		
 		instrucciones.setPreferredSize(new Dimension(800,600));
 		instrucciones.setHorizontalAlignment(SwingConstants.CENTER);

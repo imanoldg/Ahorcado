@@ -27,7 +27,8 @@ public class VentanaInstruccionesModoMuerteSubita extends JFrame{
 				+ "- Muñeco: El muñeco se dibuja en 6 partes (cabeza, torso, piernas y brazos), por lo que el jugador tiene 6 posibildades de fallar. <br>"
 				+ "- Adivinar la Palabra: El jugador puede intentar adivinar la palabra secreta. <br>"
 				+ "-- Si acierta la palabra, entonces el programa completa la solución y suma 1 punto a la puntuación del jugador. <br>"
-				+ "-- Si no acierta la palabra, entonces el programa dibujará una parte del muñeco. <br>"
+				+ "-- Si no acierta la palabra, perderas automaticamente."
+				+ "¡¡CUIDADO!!, Al intentar resolver la palabra se cerrara la ventana del juego, asi que si te atreves a adivinarla estate 100% seguro <br> <br>"
 				+ "Fin de la partida: <br>"
 				+ "- Se termina la partida cuando el muñeco este descubierto por completo<html><body>");
 		

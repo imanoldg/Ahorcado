@@ -142,7 +142,7 @@ public class Ventana1vs1 extends VentanaModoClasico {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new VentanaResolver();
+				new VentanaResolverClasico();
 
 			}
 		});

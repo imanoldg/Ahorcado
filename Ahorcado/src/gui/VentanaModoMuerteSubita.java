@@ -27,12 +27,12 @@ import io.CargarPalabras;
 
 public class VentanaModoMuerteSubita extends VentanaModoClasico {
 
-	private static int adivinadas = 0;
+	public static int adivinadas = 0;
 	public static JLabel adivinadasLabel = new JLabel("Palabras adivinadas: " + adivinadas);
-	private int errores = 0;
+	private static int errores = 0;
 	
 
-	private void ReiniciarJuego() {
+	public static void ReiniciarJuego() {
 		palabraSeleccionada = SeleccionarPalabra();
 		textoLabel = ocultarPalabra(palabraSeleccionada);
 		letrasPalabra.clear();
@@ -42,7 +42,7 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 		panelAbecedario.add(crearTeclado(new BotonSubitaListener()));
 	}
 	
-	public class BotonSubitaListener implements ActionListener {
+	public static class BotonSubitaListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -79,6 +79,7 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 			
 			if (hasPerdido()) {
 				new VentanaHasPerdido();
+				ReiniciarJuego();
 			}
 			
 			
@@ -100,6 +101,22 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 		setVisible(true);
 		setTitle("Modo Muerte Súbita");
 
+		ActionListener[] listeners = botonResolver.getActionListeners();
+		
+		for (ActionListener actionListener : listeners) {
+			botonResolver.removeActionListener(actionListener);
+		}
+		
+		botonResolver.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaResolverSubita();
+				dispose();
+				
+			}
+		});
+		
 	}
 
 	public static void main(String[] args) {

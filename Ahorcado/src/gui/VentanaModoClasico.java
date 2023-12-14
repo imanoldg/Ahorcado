@@ -28,7 +28,7 @@ import io.CargarPalabras;
 public class VentanaModoClasico extends JFrame{
 	
 	public static int adivinada;
-	
+
 	public static JButton botonSalir = new JButton("  Volver al selector de modo  ");
 	public static JButton botonPalabraNueva = new JButton("  Palabra Nueva  ");
 	public static JButton botonResolver = new JButton("  Resolver  ");
@@ -245,7 +245,8 @@ public class VentanaModoClasico extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new VentanaResolver();
+				new VentanaResolverClasico();
+				dispose();
 				
 			}
 		});
