@@ -55,6 +55,7 @@ public class VentanaSelectorModo extends JFrame{
 	}
 	
 	private void Reiniciar1vs1(){
+		Ventana1vs1.panelGeneral.removeAll();
 		Ventana1vs1.panelAbecedarioDerecha.removeAll();
 		Ventana1vs1.panelAbecedarioIzquierda.removeAll();
 		Ventana1vs1.panelArribaDerecha.removeAll();
