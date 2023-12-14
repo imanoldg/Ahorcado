@@ -140,9 +140,12 @@ public class VentanaModoClasico extends JFrame{
 				} else if (palabraSeleccionada.charAt(j) != boton.getText().charAt(0) && boton.getBackground() != Color.GREEN){
 					boton.setEnabled(false);
 					boton.setBackground(Color.RED);
-					contadorErrores++;
 				}
 				
+			}
+			
+			if (boton.getBackground() == Color.RED) {
+				contadorErrores++;
 			}
 			
 			if (hasGanado()) {

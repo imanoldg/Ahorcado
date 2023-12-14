@@ -63,9 +63,12 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 						&& boton.getBackground() != Color.GREEN) {
 					boton.setEnabled(false);
 					boton.setBackground(Color.RED);
-					errores++;
 				}
 
+			}
+			
+			if (boton.getBackground() == Color.RED) {
+				errores++;
 			}
 			
 			if (hasGanado()) {

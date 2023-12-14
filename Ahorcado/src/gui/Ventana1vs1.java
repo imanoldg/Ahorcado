@@ -71,9 +71,12 @@ public class Ventana1vs1 extends VentanaModoClasico {
 						&& boton.getBackground() != Color.GREEN) {
 					boton.setEnabled(false);
 					boton.setBackground(Color.RED);
-					erroresDerecha++;
 				}
 
+			}
+			
+			if (boton.getBackground() == Color.RED) {
+				erroresDerecha++;
 			}
 
 			if (hasGanado()) {

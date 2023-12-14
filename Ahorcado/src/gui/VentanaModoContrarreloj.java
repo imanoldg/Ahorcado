@@ -59,11 +59,14 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 						&& boton.getBackground() != Color.GREEN) {
 					boton.setEnabled(false);
 					boton.setBackground(Color.RED);
-					contadorErrores++;
 				}
 
 			}
 
+			if (boton.getBackground() == Color.RED) {
+				contadorErrores++;
+			}
+			
 			if (hasGanado()) {
 				new VentanaHasGanadoClasico();
 				dispose();
