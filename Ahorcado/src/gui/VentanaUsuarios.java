@@ -16,6 +16,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import DataBase.MetodosBD;
+
 public class VentanaUsuarios extends JFrame{
 	
 	private JLabel tituloJuego;
@@ -66,6 +68,9 @@ public class VentanaUsuarios extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				String busquedaUsuario = MetodosBD.buscarUsuario(user.getText(), password.getText());
+				
+				/*
 				VentanaError vError = new VentanaError();
 				String u1 = "simon";
 				String c1 = "rodilla";
@@ -76,7 +81,8 @@ public class VentanaUsuarios extends JFrame{
 					new VentanaSelectorModo();
 				}else {
 					vError.setVisible(true);
-				}				
+				}	
+				*/			
 			}
 		});
 		

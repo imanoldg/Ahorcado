@@ -36,4 +36,29 @@ public class MetodosBD {
 		
 		return resultado;
 	}
+	
+	public static String buscarUsuario(String nombre, String password) {
+		String usuarioBusqueda = null;
+		Connection conn = null;
+		
+		try {
+			conn = ConnectDB.conectar();
+			String buscar = ("SELECT nombre, contraseña FROM Usuario WHERE nombre = '" + nombre + "'");
+			ps = conn.prepareStatement(buscar);
+			resultado = ps.executeQuery();
+			
+			if(resultado.next()) {
+				String nombre1 = resultado.getString("nombre");
+				String pass = resultado.getString("contraseña");
+				usuarioBusqueda = (nombre1 + "" + pass);
+
+				conn.close();
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return usuarioBusqueda;
+	}
 }
