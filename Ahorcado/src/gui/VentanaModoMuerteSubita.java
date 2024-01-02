@@ -107,12 +107,26 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 			botonResolver.removeActionListener(actionListener);
 		}
 		
+		MouseListener[] mouseListeners = instrucciones.getMouseListeners();
+		
+		for (MouseListener mouseListener : mouseListeners) {
+			instrucciones.removeMouseListener(mouseListener);
+		}
+		
 		botonResolver.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new VentanaResolverSubita();
 				dispose();
+				
+			}
+		});
+		
+		instrucciones.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				new VentanaInstruccionesModoMuerteSubita();
 				
 			}
 		});

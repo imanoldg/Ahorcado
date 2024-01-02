@@ -94,7 +94,7 @@ public class Ventana1vs1 extends VentanaModoClasico {
 
 	public Ventana1vs1() throws FileNotFoundException {
 		super();
-
+		
 		// Para hacer esto he tenido ayuda de este articulo del foro:
 		// https://stackoverflow.com/questions/64526090/remove-an-actionlistener-from-jbutton
 		ActionListener[] listenersPalabraNueva = botonPalabraNueva.getActionListeners();
@@ -102,6 +102,20 @@ public class Ventana1vs1 extends VentanaModoClasico {
 		for (ActionListener listener : listenersPalabraNueva) {
 			botonPalabraNueva.removeActionListener(listener);
 		}
+		
+		MouseListener[] mouseListeners = instrucciones.getMouseListeners();
+		
+		for (MouseListener mouseListener : mouseListeners) {
+			instrucciones.removeMouseListener(mouseListener);
+		}
+		
+		instrucciones.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				new VentanaInstrucciones1vs1();
+				
+			}
+		});
 
 		botonListoIzquierda.setText("Listo");
 

@@ -45,6 +45,16 @@ public class VentanaModoClasico extends JFrame{
 	protected static JPanel panelAbecedario = new JPanel();
 	protected static JPanel panelDerecha = new JPanel();
 	
+	public static JMenuBar menu = new JMenuBar();
+	public static JMenu juego = new JMenu("Juego");
+	
+	public static JMenu opciones = new JMenu("Opciones");
+	
+	public static JMenuItem cerrarSesion = new JMenuItem("Cerrar Sesion");
+	public static JMenuItem cambiarFondo = new JMenuItem("Cambiar fondo del Juego");
+	public static JMenuItem ranking = new JMenu("Ranking");
+	public static JMenuItem instrucciones = new JMenu("Instrucciones");
+	
 	public static String SeleccionarPalabra() {
         List<Palabra> listaPalabras = CargarPalabras.cargarPalabras("resources/data/palabras.csv") ;
         
@@ -180,15 +190,7 @@ public class VentanaModoClasico extends JFrame{
 		
 		
 		//BARRA DE MENU
-		JMenuBar menu = new JMenuBar();
-		JMenu juego = new JMenu("Juego");
 		
-		JMenu opciones = new JMenu("Opciones");
-		
-		JMenuItem cerrarSesion = new JMenuItem("Cerrar Sesion");
-		JMenuItem cambiarFondo = new JMenuItem("Cambiar fondo del Juego");
-		JMenuItem ranking = new JMenu("Ranking");
-		JMenuItem instrucciones = new JMenu("Instrucciones");
 		
 		juego.add(ranking);
 		juego.add(instrucciones);
@@ -207,6 +209,7 @@ public class VentanaModoClasico extends JFrame{
 				
 			}
 		});
+		
 		
 		cerrarSesion.addMouseListener(new MouseAdapter() {
 			

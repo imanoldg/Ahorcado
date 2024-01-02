@@ -121,6 +121,20 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 			}
 		});
 		
+		MouseListener[] mouseListeners = instrucciones.getMouseListeners();
+		
+		for (MouseListener mouseListener : mouseListeners) {
+			instrucciones.removeMouseListener(mouseListener);
+		}
+		
+		instrucciones.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				new VentanaInstruccionesModoContrarreloj();
+				
+			}
+		});
+		
 		panelIzquierda.add(etiqueta);
 		setTitle("Modo Contrarreloj");
 		setVisible(true);
