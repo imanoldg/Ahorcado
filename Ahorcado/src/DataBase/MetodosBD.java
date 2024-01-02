@@ -37,7 +37,7 @@ public class MetodosBD {
 		return resultado;
 	}
 	
-	public static String buscarUsuario(String nombre, String password) {
+	public static String buscarUsuario(String nombre) {
 		String usuarioBusqueda = null;
 		Connection conn = null;
 		
@@ -60,5 +60,29 @@ public class MetodosBD {
 		}
 		
 		return usuarioBusqueda;
+	}
+	
+	public static String registeredUser(String usuario, String pass) {
+		String busquedaUsuario = null;
+		Connection conexion = null;
+		
+		try {
+			conexion = ConnectDB.conectar(); 
+			String sentenciaBuscarUsuario = ("SELECT nombre, contraseña FROM Usuario WHERE nombre = '" + usuario + "' AND contraseña = '" + pass + "'");
+			ps = conexion.prepareStatement(sentenciaBuscarUsuario);
+			
+			resultado = ps.executeQuery();
+			if(resultado.next()) {
+				busquedaUsuario = "usuario encontrado";
+			}else {
+				busquedaUsuario = "usuario no encontrado";
+			}
+			
+			conexion.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return busquedaUsuario;
 	}
 }

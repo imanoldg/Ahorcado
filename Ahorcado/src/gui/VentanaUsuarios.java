@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -64,13 +65,32 @@ public class VentanaUsuarios extends JFrame{
 		inUp.add(singIn);
 		inUp.add(singUp);
 		
+		MetodosBD metodos = new MetodosBD();
+		
 		singIn.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String busquedaUsuario = MetodosBD.buscarUsuario(user.getText(), password.getText());
+				String busquedaUsuaio = metodos.registeredUser(user.getText(), password.getText());
+				
+				if(user.getText().equals("root") && password.getText().equals("root")) {
+					JOptionPane.showMessageDialog(VentanaUsuarios.this, "has iniciado como admin");
+					
+				}else if (busquedaUsuaio.equals("usuario encontrado")) {
+					String usuarioBusqueda = metodos.buscarUsuario(user.getText());
+					JOptionPane.showMessageDialog(VentanaUsuarios.this, "Hola \n" + usuarioBusqueda);
+					VentanaSelectorModo v = new VentanaSelectorModo();	
+					v.setVisible(true);
+					dispose();
+					
+				}else {
+					JOptionPane.showMessageDialog(VentanaUsuarios.this, "Usuario no registrado");
+				}
 				
 				/*
+				String busquedaUsuario = MetodosBD.buscarUsuario(user.getText(), password.getText());
+				
+				
 				VentanaError vError = new VentanaError();
 				String u1 = "simon";
 				String c1 = "rodilla";
