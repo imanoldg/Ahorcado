@@ -33,7 +33,7 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 	private int contador;
 	private Thread hilo;
 	private boolean ejecutarHilo;
-	
+
 	public static JLabel etiqueta = new JLabel();
 
 	public class BotonContrarrelojListener implements ActionListener {
@@ -64,7 +64,7 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 			if (boton.getBackground() == Color.RED) {
 				contadorErrores++;
 			}
-			
+
 			if (hasGanado()) {
 				new VentanaHasGanadoContrarreloj();
 				dispose();
@@ -84,9 +84,9 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 
 		panelAbecedario.removeAll();
 		panelAbecedario.add(crearTeclado(new BotonContrarrelojListener()));
-		
+
 		contador = 60;
-		
+
 		etiqueta.setHorizontalAlignment(SwingConstants.CENTER);// esta linea la he sacado buscando en la API como poner
 																// un texto centrado en una JLabel
 																// (https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/javax/swing/JLabel.html#setHorizontalAlignment(int))
@@ -109,30 +109,45 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 		};
 		ejecutarHilo = true;
 		hilo.start();
-		
+
 		botonPalabraNueva.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				contador = 60;
 			}
 		});
-		
+
 		MouseListener[] mouseListeners = instrucciones.getMouseListeners();
-		
+		ActionListener[] listeners = botonResolver.getActionListeners();
+
 		for (MouseListener mouseListener : mouseListeners) {
 			instrucciones.removeMouseListener(mouseListener);
 		}
-		
+
+		for (ActionListener actionListener : listeners) {
+			botonResolver.removeActionListener(actionListener);
+		}
+
 		instrucciones.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				new VentanaInstruccionesModoContrarreloj();
-				
+
 			}
 		});
-		
+
+		botonResolver.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaResolverContrarreloj();
+				dispose();
+
+			}
+		});
+
 		panelIzquierda.add(etiqueta);
 		setTitle("Modo Contrarreloj");
 		setVisible(true);
