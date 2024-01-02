@@ -27,7 +27,7 @@ public class VentanaResolverSubita extends VentanaResolverClasico{
 					try {
 						ventanaModoMuerteSubita = new VentanaModoMuerteSubita();
 						ventanaModoMuerteSubita.dispose();
-						new VentanaHasPerdido();
+						new VentanaHasPerdidoClasico();
 						dispose();
 					} catch (FileNotFoundException e1) {
 						// TODO Auto-generated catch block

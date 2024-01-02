@@ -78,7 +78,7 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 			}
 			
 			if (hasPerdido()) {
-				new VentanaHasPerdido();
+				new VentanaHasPerdidoClasico();
 				ReiniciarJuego();
 			}
 			

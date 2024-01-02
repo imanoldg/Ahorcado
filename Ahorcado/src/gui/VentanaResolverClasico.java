@@ -33,7 +33,7 @@ public class VentanaResolverClasico extends JFrame{
 					new VentanaHasGanadoClasico();
 					dispose();
 				} else {
-					new VentanaHasPerdido();
+					new VentanaHasPerdidoClasico();
 				}
 				
 			}

@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class VentanaHasPerdido extends JFrame{
+public class VentanaHasPerdidoClasico extends JFrame{
 
 	private void ReiniciarJuego() {
 		VentanaModoClasico.panelAbecedario.removeAll();
@@ -25,7 +25,7 @@ public class VentanaHasPerdido extends JFrame{
 		VentanaModoClasico.palabraOculta.setText(VentanaModoClasico.textoLabel.toString());;
 	}
 	
-	public VentanaHasPerdido() {
+	public VentanaHasPerdidoClasico() {
 		JPanel panelGeneral = new JPanel();
 		panelGeneral.setLayout(new GridLayout(2,1));
 		JPanel panelAbajo = new JPanel();
@@ -91,7 +91,7 @@ public class VentanaHasPerdido extends JFrame{
 	}
 	
 	public static void main(String[] args) {
-		new VentanaHasPerdido();
+		new VentanaHasPerdidoClasico();
 	}
 }
 

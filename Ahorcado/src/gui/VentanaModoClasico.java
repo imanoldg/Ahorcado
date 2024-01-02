@@ -164,7 +164,7 @@ public class VentanaModoClasico extends JFrame{
 			}
 			
 			if (hasPerdido()) {
-				new VentanaHasPerdido();
+				new VentanaHasPerdidoClasico();
 				dispose();
 			}
 			

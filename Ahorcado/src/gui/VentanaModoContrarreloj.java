@@ -74,7 +74,7 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 			}
 
 			if (hasPerdido()) {
-				new VentanaHasPerdido();
+				new VentanaHasPerdidoClasico();
 				dispose();
 			}
 

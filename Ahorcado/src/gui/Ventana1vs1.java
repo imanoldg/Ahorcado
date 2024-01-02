@@ -85,7 +85,7 @@ public class Ventana1vs1 extends VentanaModoClasico {
 			}
 
 			if (hasPerdido()) {
-				new VentanaHasPerdido();
+				new VentanaHasPerdidoClasico();
 				dispose();
 			}
 		}
