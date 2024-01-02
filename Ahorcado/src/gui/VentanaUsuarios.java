@@ -78,7 +78,7 @@ public class VentanaUsuarios extends JFrame{
 					
 				}else if (busquedaUsuaio.equals("usuario encontrado")) {
 					String usuarioBusqueda = metodos.buscarUsuario(user.getText());
-					JOptionPane.showMessageDialog(VentanaUsuarios.this, "Hola \n" + usuarioBusqueda);
+					JOptionPane.showMessageDialog(VentanaUsuarios.this, "Bienvenid@" );
 					VentanaSelectorModo v = new VentanaSelectorModo();	
 					v.setVisible(true);
 					dispose();
