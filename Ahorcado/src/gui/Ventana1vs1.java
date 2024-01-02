@@ -31,7 +31,7 @@ public class Ventana1vs1 extends VentanaModoClasico {
 	public static JPanel panelArribaIzquierda = panelArriba;
 	public static JPanel panelIzquierdaIzquierda = panelIzquierda;
 	public static JPanel panelAbecedarioIzquierda = panelAbecedario;
-	
+
 	public static String palabraSeleccionadaDerecha = SeleccionarPalabra();
 	public static StringBuilder textoLabelDerecha = ocultarPalabra(palabraSeleccionadaDerecha);
 	public static List<Character> letrasPalabraDerecha = new ArrayList<>(añadirLetras());
@@ -47,6 +47,19 @@ public class Ventana1vs1 extends VentanaModoClasico {
 	public JButton botonResolverDerecha = new JButton("  Resolver  ");
 
 	public static int contador = 0;
+
+	public boolean hasPerdido1vs1() {
+		if (erroresDerecha == 5)
+			return true;
+		return false;
+	}
+
+	public boolean hasGanado1vs1() {
+		if (palabraOcultaDerecha.getText().equals(palabraSeleccionadaDerecha)) {
+			return true;
+		}
+		return false;
+	}
 
 	class BotonIzquierdaListener implements ActionListener {
 
@@ -73,19 +86,63 @@ public class Ventana1vs1 extends VentanaModoClasico {
 				}
 
 			}
-			
+
 			if (boton.getBackground() == Color.RED) {
 				erroresDerecha++;
 			}
 
+			if (hasGanado1vs1()) {
+				new VentanaHasGanado1vs1();
+				dispose();
+
+			}
+
+			if (hasPerdido1vs1()) {
+				new VentanaHasPerdido1vs1();
+				dispose();
+			}
+		}
+
+	}
+
+	class BotonDerechaListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			JButton boton = (JButton) e.getSource();
+
+			for (int j = 0; j < palabraSeleccionada.length(); j++) {
+
+				if (boton.getText().charAt(0) == palabraSeleccionada.charAt(j)) {
+					textoLabel.replace(j, j + 1, boton.getText());
+					palabraOculta.setText(textoLabel.toString());
+
+					if (letrasPalabra.contains(boton.getText().charAt(0))) {
+						boton.setBackground(Color.GREEN);
+						boton.setEnabled(false);
+					}
+
+				} else if (palabraSeleccionada.charAt(j) != boton.getText().charAt(0)
+						&& boton.getBackground() != Color.GREEN) {
+					boton.setEnabled(false);
+					boton.setBackground(Color.RED);
+				}
+
+			}
+
+			if (boton.getBackground() == Color.RED) {
+				contadorErrores++;
+			}
+
 			if (hasGanado()) {
-				new VentanaHasGanadoClasico();
+				new VentanaHasGanado1vs1();
 				dispose();
 
 			}
 
 			if (hasPerdido()) {
-				new VentanaHasPerdidoClasico();
+				new VentanaHasPerdido1vs1();
 				dispose();
 			}
 		}
@@ -93,8 +150,10 @@ public class Ventana1vs1 extends VentanaModoClasico {
 	}
 
 	public Ventana1vs1() throws FileNotFoundException {
-		super();
-		
+
+		panelAbecedario.removeAll();
+		panelAbecedario.add(crearTeclado(new BotonDerechaListener()));
+
 		// Para hacer esto he tenido ayuda de este articulo del foro:
 		// https://stackoverflow.com/questions/64526090/remove-an-actionlistener-from-jbutton
 		ActionListener[] listenersPalabraNueva = botonPalabraNueva.getActionListeners();
@@ -102,18 +161,18 @@ public class Ventana1vs1 extends VentanaModoClasico {
 		for (ActionListener listener : listenersPalabraNueva) {
 			botonPalabraNueva.removeActionListener(listener);
 		}
-		
+
 		MouseListener[] mouseListeners = instrucciones.getMouseListeners();
-		
+
 		for (MouseListener mouseListener : mouseListeners) {
 			instrucciones.removeMouseListener(mouseListener);
 		}
-		
+
 		instrucciones.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				new VentanaInstrucciones1vs1();
-				
+
 			}
 		});
 

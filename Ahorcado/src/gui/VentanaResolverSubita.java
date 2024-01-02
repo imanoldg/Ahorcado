@@ -17,7 +17,7 @@ public class VentanaResolverSubita extends VentanaResolverClasico{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (VentanaModoClasico.palabraSeleccionada.toUpperCase().equals(textoResolver.getText().toUpperCase())) {
+				if (VentanaModoMuerteSubita.palabraSeleccionada.toUpperCase().equals(textoResolver.getText().toUpperCase())) {
 					VentanaModoMuerteSubita.ReiniciarJuego();
 					VentanaModoMuerteSubita.adivinadas++;
 					VentanaModoMuerteSubita.adivinadasLabel.setText("Palabras adivinadas: " + VentanaModoMuerteSubita.adivinadas);
@@ -27,7 +27,7 @@ public class VentanaResolverSubita extends VentanaResolverClasico{
 					try {
 						ventanaModoMuerteSubita = new VentanaModoMuerteSubita();
 						ventanaModoMuerteSubita.dispose();
-						new VentanaHasPerdidoClasico();
+						new VentanaHasPerdidoSubita();
 						dispose();
 					} catch (FileNotFoundException e1) {
 						// TODO Auto-generated catch block

@@ -29,7 +29,6 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 
 	public static int adivinadas = 0;
 	public static JLabel adivinadasLabel = new JLabel("Palabras adivinadas: " + adivinadas);
-	private static int errores = 0;
 	
 
 	public static void ReiniciarJuego() {
@@ -68,7 +67,7 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 			}
 			
 			if (boton.getBackground() == Color.RED) {
-				errores++;
+				contadorErrores++;
 			}
 			
 			if (hasGanado()) {
@@ -78,7 +77,7 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 			}
 			
 			if (hasPerdido()) {
-				new VentanaHasPerdidoClasico();
+				new VentanaHasPerdidoSubita();
 				ReiniciarJuego();
 			}
 			
@@ -88,7 +87,7 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 	}
 
 	public VentanaModoMuerteSubita() throws FileNotFoundException {
-		super();
+		
 		adivinadasLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panelIzquierda.setLayout(new GridLayout(8, 1));
 

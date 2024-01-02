@@ -30,8 +30,6 @@ import domain.Usuario;
 import io.CargarPalabras;
 
 public class VentanaModoContrarreloj extends VentanaModoClasico {
-
-	private int contadorErrores = 0;
 	private int contador;
 	private Thread hilo;
 	private boolean ejecutarHilo;
@@ -68,13 +66,13 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 			}
 			
 			if (hasGanado()) {
-				new VentanaHasGanadoClasico();
+				new VentanaHasGanadoContrarreloj();
 				dispose();
 
 			}
 
 			if (hasPerdido()) {
-				new VentanaHasPerdidoClasico();
+				new VentanaHasPerdidoContrarreloj();
 				dispose();
 			}
 

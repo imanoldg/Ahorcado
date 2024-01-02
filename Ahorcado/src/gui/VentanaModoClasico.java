@@ -37,7 +37,7 @@ public class VentanaModoClasico extends JFrame{
 	public static JLabel palabraOculta = new JLabel(textoLabel.toString());
 	public static JLabel errores = new JLabel("ERRORES:");
 	public static JLabel palabra = new JLabel("PALABRA OCULTA:");
-	private static int contadorErrores = 0;
+	public static int contadorErrores = 0;
 	
 	protected static JPanel panelGeneral = new JPanel();
 	protected static JPanel panelArriba = new JPanel();
