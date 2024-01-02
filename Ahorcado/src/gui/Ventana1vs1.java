@@ -43,7 +43,6 @@ public class Ventana1vs1 extends VentanaModoClasico {
 
 	public JButton botonListoIzquierda = botonPalabraNueva;
 
-	public JButton botonSalirDerecha = new JButton("  Volver al selector de modo  ");
 	public JButton botonListoDerecha = new JButton("  Listo  ");
 	public JButton botonResolverDerecha = new JButton("  Resolver  ");
 
@@ -129,15 +128,6 @@ public class Ventana1vs1 extends VentanaModoClasico {
 		palabraOcultaDerecha.setHorizontalAlignment(SwingConstants.CENTER);
 		palabraDerecha.setHorizontalAlignment(SwingConstants.CENTER);
 
-		botonSalirDerecha.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new VentanaSelectorModo();
-				dispose();
-			}
-		});
-
 		botonResolverDerecha.addActionListener(new ActionListener() {
 
 			@Override
@@ -157,22 +147,18 @@ public class Ventana1vs1 extends VentanaModoClasico {
 					panelAbecedarioDerecha.setVisible(false);
 					botonListoDerecha.setVisible(false);
 					botonResolverDerecha.setVisible(false);
-					botonSalirDerecha.setVisible(false);
 
 					panelAbecedarioIzquierda.setVisible(true);
 					botonListoIzquierda.setVisible(true);
 					botonResolver.setVisible(true);
-					botonSalir.setVisible(true);
 				} else {
 					panelAbecedarioIzquierda.setVisible(false);
 					botonListoIzquierda.setVisible(false);
 					botonResolver.setVisible(false);
-					botonSalir.setVisible(false);
 
 					panelAbecedarioDerecha.setVisible(true);
 					botonListoDerecha.setVisible(true);
 					botonResolverDerecha.setVisible(true);
-					botonSalirDerecha.setVisible(true);
 				}
 
 			}
@@ -188,22 +174,18 @@ public class Ventana1vs1 extends VentanaModoClasico {
 					panelAbecedarioDerecha.setVisible(false);
 					botonListoDerecha.setVisible(false);
 					botonResolverDerecha.setVisible(false);
-					botonSalirDerecha.setVisible(false);
 
 					panelAbecedarioIzquierda.setVisible(true);
 					botonListoIzquierda.setVisible(true);
 					botonResolver.setVisible(true);
-					botonSalir.setVisible(true);
 				} else {
 					panelAbecedarioIzquierda.setVisible(false);
 					botonListoIzquierda.setVisible(false);
 					botonResolver.setVisible(false);
-					botonSalir.setVisible(false);
 
 					panelAbecedarioDerecha.setVisible(true);
 					botonListoDerecha.setVisible(true);
 					botonResolverDerecha.setVisible(true);
-					botonSalirDerecha.setVisible(true);
 				}
 
 			}
@@ -212,7 +194,6 @@ public class Ventana1vs1 extends VentanaModoClasico {
 		panelAbecedarioDerecha.setVisible(false);
 		botonListoDerecha.setVisible(false);
 		botonResolverDerecha.setVisible(false);
-		botonSalirDerecha.setVisible(false);
 
 		panelAbecedarioIzquierda.setVisible(true);
 		botonListoIzquierda.setVisible(true);
@@ -224,7 +205,6 @@ public class Ventana1vs1 extends VentanaModoClasico {
 		panelGeneralIzquierda.add(panelAbecedarioIzquierda, BorderLayout.SOUTH);
 
 		panelIzquierdaDerecha.add(botonListoDerecha);
-		panelIzquierdaDerecha.add(botonSalirDerecha);
 		panelIzquierdaDerecha.add(botonResolverDerecha);
 		panelIzquierdaDerecha.add(palabraDerecha);
 		panelIzquierdaDerecha.add(palabraOcultaDerecha);

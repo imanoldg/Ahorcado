@@ -33,20 +33,9 @@ public class VentanaHasGanadoClasico extends JFrame {
 		
 		ImageIcon imagen = new ImageIcon("");
 		JLabel labelImagen = new JLabel(imagen);
-
-		JButton botonSalir = new JButton("  Volver al selector de modo  ");
 		JButton botonCerrar = new JButton("  Cerrar el juego  ");
 		JButton botonVolverJugar = new JButton("  Volver a jugar  ");
 		
-		botonSalir.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new VentanaSelectorModo();
-				dispose();
-				
-			}
-		});
 		
 		botonCerrar.addActionListener(new ActionListener() {
 			
@@ -73,7 +62,6 @@ public class VentanaHasGanadoClasico extends JFrame {
 		});
 		
 		panelAbajo.add(botonVolverJugar);
-		panelAbajo.add(botonSalir);
 		panelAbajo.add(botonCerrar);
 
 		

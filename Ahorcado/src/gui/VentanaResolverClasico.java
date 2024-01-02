@@ -38,6 +38,7 @@ public class VentanaResolverClasico extends JFrame{
 				
 			}
 		});
+		
 
 		this.add(panel);
 		this.setTitle("Resolver Palabra");

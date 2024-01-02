@@ -29,7 +29,6 @@ public class VentanaModoClasico extends JFrame{
 	
 	public static int adivinada;
 
-	public static JButton botonSalir = new JButton("  Volver al selector de modo  ");
 	public static JButton botonPalabraNueva = new JButton("  Palabra Nueva  ");
 	public static JButton botonResolver = new JButton("  Resolver  ");
 	public static String palabraSeleccionada = SeleccionarPalabra();
@@ -232,14 +231,7 @@ public class VentanaModoClasico extends JFrame{
 			}
 		});
 		
-		botonSalir.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				new VentanaSelectorModo();
-			}
-		});
+
 		
 		botonResolver.addActionListener(new ActionListener() {
 			
@@ -266,7 +258,6 @@ public class VentanaModoClasico extends JFrame{
 		});
 		
 		panelIzquierda.add(botonPalabraNueva);
-		panelIzquierda.add(botonSalir);
 		panelIzquierda.add(botonResolver);
 		panelIzquierda.add(palabra);
 		panelIzquierda.add(palabraOculta);
