@@ -15,6 +15,9 @@ import javax.swing.JPanel;
 
 public class VentanaHasGanadoClasico extends JFrame {
 	
+	public static JButton botonCerrar = new JButton("  Cerrar el juego  ");
+	public static JButton botonVolverJugar = new JButton("  Volver a jugar  ");
+	
 	private void ReiniciarJuego() {
 		VentanaModoClasico.panelAbecedario.removeAll();
 		VentanaModoClasico.panelArriba.removeAll();
@@ -33,8 +36,6 @@ public class VentanaHasGanadoClasico extends JFrame {
 		
 		ImageIcon imagen = new ImageIcon("");
 		JLabel labelImagen = new JLabel(imagen);
-		JButton botonCerrar = new JButton("  Cerrar el juego  ");
-		JButton botonVolverJugar = new JButton("  Volver a jugar  ");
 		
 		
 		botonCerrar.addActionListener(new ActionListener() {
