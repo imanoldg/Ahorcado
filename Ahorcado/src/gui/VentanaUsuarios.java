@@ -129,38 +129,5 @@ public class VentanaUsuarios extends JFrame{
 		this.setVisible(true);
 	}
 	
-	public void formato() {
-		JTextField user; 
-		JPasswordField password;
-		JLabel textoUser;
-		JLabel textoPassword;
-				
-		JPanel panelSesion = new JPanel();
-		panelSesion.setLayout(null);
-				
-		textoUser = new JLabel("Usuario: ");
-		textoUser.setBounds(90, 60, 200, 30); 
-		panelSesion.add(textoUser);
-
-		textoPassword = new JLabel("Contraseña: ");
-		textoPassword.setBounds(68, 100, 200, 30); 
-		panelSesion.add(textoPassword);
-
-		user = new JTextField();
-		user.setBounds(142, 65, 150, 20); 
-		panelSesion.add(user);
-
-		password = new JPasswordField();
-		password.setBounds(142, 105, 150, 20); 
-		panelSesion.add(password);
-
-		add(panelSesion, BorderLayout.CENTER);
-
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setBounds(0,0,400,500);
-		this.setResizable(false);
-		this.setLocationRelativeTo(null);
-		this.setVisible(true);
-			
-	}
+	
 }

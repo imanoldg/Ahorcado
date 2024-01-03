@@ -6,20 +6,23 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-public class VentanaBorrarUsuario extends VentanaUsuarios {
+public class VentanaBorrarUsuario extends JFrame {
 	
 	private JButton volverInicio;
 	private JButton borrar;
+
 	private JTextField user; 
 	private JPasswordField password;
 	private JLabel textoUser;
 	private JLabel textoPassword;
+	
 	
 	public VentanaBorrarUsuario() {
 		
 		
 		JPanel panelSesion = new JPanel();
 		panelSesion.setLayout(null);
+		
 		JPanel panelVolverBorrar = new JPanel();
 		panelVolverBorrar.setLayout(new GridLayout(1,2));
 		
@@ -38,11 +41,14 @@ public class VentanaBorrarUsuario extends VentanaUsuarios {
         password = new JPasswordField();
         password.setBounds(142, 105, 150, 20); 
         panelSesion.add(password);
+        
+        
 		
         borrar = new JButton("Eliminar");
 		volverInicio = new JButton("Volver al inicio");
-		panelVolverBorrar.add(volverInicio);
 		panelVolverBorrar.add(borrar);
+		panelVolverBorrar.add(volverInicio);
+		
 		
 		borrar.addActionListener(new ActionListener() {
 			
@@ -63,14 +69,17 @@ public class VentanaBorrarUsuario extends VentanaUsuarios {
 			}
 		});
 		
+		
 		add(panelSesion, BorderLayout.CENTER);
 		add(panelVolverBorrar, BorderLayout.SOUTH);
+		
 		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setBounds(0,0,400,500);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
+		
 	}
 	
 	
