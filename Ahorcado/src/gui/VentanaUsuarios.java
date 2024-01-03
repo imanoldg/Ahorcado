@@ -28,6 +28,7 @@ public class VentanaUsuarios extends JFrame{
 	private JLabel textoPassword;
 	private JButton singIn;
 	private JButton singUp;
+	private JButton gestionarUsuario;
 	
 	
 	public VentanaUsuarios(){
@@ -37,7 +38,7 @@ public class VentanaUsuarios extends JFrame{
 		JPanel panelSesion = new JPanel();
 		panelSesion.setLayout(null);
 		JPanel inUp = new JPanel();
-		inUp.setLayout(new GridLayout(1,2));
+		inUp.setLayout(new GridLayout(1,3));
 		
 		ImageIcon tituloImagen = new ImageIcon("resources/images/tituloAhorcadoFoto.png");
 		ImageIcon minImagen = new ImageIcon(tituloImagen.getImage().getScaledInstance(300, 80, Image.SCALE_SMOOTH));
@@ -62,8 +63,22 @@ public class VentanaUsuarios extends JFrame{
 		
 		singIn = new JButton("Inciar sesión");
 		singUp = new JButton("Registrarse");
+		gestionarUsuario = new JButton("Gestionar");
 		inUp.add(singIn);
 		inUp.add(singUp);
+		inUp.add(gestionarUsuario);
+		
+		gestionarUsuario.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaGestionUsuario ges = new VentanaGestionUsuario();
+				ges.setVisible(true);
+				dispose();
+				
+				
+			}
+		});
 		
 		MetodosBD metodos = new MetodosBD();
 		
