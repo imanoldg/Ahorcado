@@ -17,6 +17,10 @@ public class MetodosBD {
 		int resultado = 0;
 		Connection conexion = null;
 		
+		 if (existeNombre(nombre)) {  
+		        return resultado;
+		    }
+		
 		String sentenciaGuardar = ("INSERT INTO Usuario (cod, nombre, contraseña, puntuación) VALUES(?, ?, ?, ?)");
 		
 		try {
@@ -35,6 +39,27 @@ public class MetodosBD {
 		}
 		
 		return resultado;
+	}
+	
+	private boolean existeNombre(String nombre) {
+		Connection conexion = null;
+		
+		try {
+			conexion = ConnectDB.conectar();
+			String consulta = "SELECT nombre FROM Usuario WHERE nombre = ?";
+			ps = conexion.prepareStatement(consulta);
+			ps.setString(1, nombre);
+			resultado = ps.executeQuery();
+			
+			conexion.close();
+			
+			return resultado.next();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+			return false;
+		}
+		
 	}
 	
 	public static String buscarUsuario(String nombre) {

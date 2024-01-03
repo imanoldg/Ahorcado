@@ -93,9 +93,9 @@ public class VentanaRegistro extends JFrame{
 				int i = metodos.guardar(0, textoUser.getText(), textoPassword1.getText(), 0);
 				
 				if (i > 0) {
-					JOptionPane.showMessageDialog(VentanaRegistro.this, "se ha guardado");
+					JOptionPane.showMessageDialog(VentanaRegistro.this, "se ha guardado correctamente");
 				}else {
-					JOptionPane.showMessageDialog(VentanaRegistro.this, "no se ha podido guardar");
+					JOptionPane.showMessageDialog(VentanaRegistro.this, "no se ha podido guardar o el usuario ya existe");
 				}
 			}
 		});
