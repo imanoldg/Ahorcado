@@ -17,6 +17,9 @@ public class VentanaHasPerdidoClasico extends JFrame{
 	public static JButton botonCerrar = new JButton("  Cerrar el juego  ");
 	public static JButton botonVolverJugar = new JButton("  Volver a jugar  ");
 	
+	protected ImageIcon imagen = new ImageIcon("resources/images/HasPerdido.png");
+	protected JLabel labelImagen = new JLabel(imagen);
+	
 	private void ReiniciarJuego() {
 		VentanaModoClasico.panelAbecedario.removeAll();
 		VentanaModoClasico.panelArriba.removeAll();
@@ -32,11 +35,6 @@ public class VentanaHasPerdidoClasico extends JFrame{
 		JPanel panelGeneral = new JPanel();
 		panelGeneral.setLayout(new GridLayout(2,1));
 		JPanel panelAbajo = new JPanel();
-		
-		ImageIcon imagen = new ImageIcon("");
-		JLabel labelImagen = new JLabel(imagen);
-		
-		
 		
 		botonCerrar.addActionListener(new ActionListener() {
 			
@@ -73,7 +71,7 @@ public class VentanaHasPerdidoClasico extends JFrame{
 		
 		this.add(panelGeneral, BorderLayout.CENTER);
 		this.setTitle("Has Perdido");
-		this.setSize(600,400);
+		this.pack();
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
 		this.setLocationRelativeTo(null);

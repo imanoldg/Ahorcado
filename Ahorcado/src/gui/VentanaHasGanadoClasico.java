@@ -18,6 +18,9 @@ public class VentanaHasGanadoClasico extends JFrame {
 	public static JButton botonCerrar = new JButton("  Cerrar el juego  ");
 	public static JButton botonVolverJugar = new JButton("  Volver a jugar  ");
 	
+	protected ImageIcon imagenHasGanado = new ImageIcon("resources/images/HasGanado.png");
+	protected JLabel labelImagen = new JLabel(imagenHasGanado);
+	
 	private void ReiniciarJuego() {
 		VentanaModoClasico.panelAbecedario.removeAll();
 		VentanaModoClasico.panelArriba.removeAll();
@@ -33,9 +36,6 @@ public class VentanaHasGanadoClasico extends JFrame {
 		JPanel panelGeneral = new JPanel();
 		panelGeneral.setLayout(new GridLayout(2,1));
 		JPanel panelAbajo = new JPanel();
-		
-		ImageIcon imagen = new ImageIcon("");
-		JLabel labelImagen = new JLabel(imagen);
 		
 		
 		botonCerrar.addActionListener(new ActionListener() {
@@ -72,7 +72,7 @@ public class VentanaHasGanadoClasico extends JFrame {
 		
 		this.add(panelGeneral, BorderLayout.CENTER);
 		this.setTitle("Has Ganado");
-		this.setSize(600,400);
+		this.pack();
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
 		this.setLocationRelativeTo(null);
