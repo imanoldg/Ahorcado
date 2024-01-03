@@ -84,13 +84,15 @@ public class VentanaRegistro extends JFrame{
  
         // Botón
         
+        MetodosBD metodos = new MetodosBD();
         botonRegistrar = new JButton("Registrarse");
         botonRegistrar.addActionListener(new ActionListener() {
+        
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				int i = metodos.guardar(0, textoUser.getText(), textoPassword1.getText(), 0);
+				int i = metodos.guardar(MetodosBD.generarNuevoCod(MetodosBD.generarCod()), textoUser.getText(), textoPassword1.getText(), 0);
 				
 				if (i > 0) {
 					JOptionPane.showMessageDialog(VentanaRegistro.this, "se ha guardado correctamente");

@@ -41,6 +41,62 @@ public class MetodosBD {
 		return resultado;
 	}
 	
+	public static int generarCod() {
+		double numero = 10000 + Math.random() * 90000;
+		return (int) numero;
+	}
+	
+	public static int generarNuevoCod(int randomCod) {
+		Connection conexion = null;
+		
+		while (existeCod(randomCod)) {
+			if (existeCod(randomCod)) {
+				randomCod = generarCod();
+			}else {
+				break;
+			}
+		}
+		
+		try {
+			conexion = ConnectDB.conectar();
+			String consulta = ("SELECT cod FROM Usuario WHERE cod = '" + randomCod + "'");
+			ps = conexion.prepareStatement(consulta);
+			ps.setInt(1, randomCod);
+			resultado = ps.executeQuery();
+			
+			conexion.close();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return randomCod;
+	}
+	
+	
+	public static boolean existeCod(int codigo) {
+		Connection conexion = null;
+		
+		try {
+			conexion = ConnectDB.conectar();
+			String consulta = "SELECT cod FROM Usuario WHERE cod = ?";
+			ps = conexion.prepareStatement(consulta);
+			ps.setInt(1, codigo);
+			resultado = ps.executeQuery();
+			
+			conexion.close();
+			
+			return resultado.next();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+			return false;
+		}
+		
+	}
+	
+	
+	
 	private boolean existeNombre(String nombre) {
 		Connection conexion = null;
 		
