@@ -86,6 +86,8 @@ public class VentanaUsuarios extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				VentanaError vError = new VentanaError();
 				String busquedaUsuaio = metodos.registeredUser(user.getText(), password.getText());
 				
 				if(user.getText().equals("root") && password.getText().equals("root")) {
@@ -99,25 +101,8 @@ public class VentanaUsuarios extends JFrame{
 					dispose();
 					
 				}else {
-					JOptionPane.showMessageDialog(VentanaUsuarios.this, "Usuario no registrado");
-				}
-				
-				/*
-				String busquedaUsuario = MetodosBD.buscarUsuario(user.getText(), password.getText());
-				
-				
-				VentanaError vError = new VentanaError();
-				String u1 = "simon";
-				String c1 = "rodilla";
-				String usuario = user.getText();
-				String contra = password.getText();
-				if((e.getSource() == singIn) && ((usuario.equals(u1)) && (contra.equals(c1)))) {
-					dispose();
-					new VentanaSelectorModo();
-				}else {
 					vError.setVisible(true);
-				}	
-				*/			
+				}		
 			}
 		});
 		
@@ -144,5 +129,38 @@ public class VentanaUsuarios extends JFrame{
 		this.setVisible(true);
 	}
 	
-	
+	public void formato() {
+		JTextField user; 
+		JPasswordField password;
+		JLabel textoUser;
+		JLabel textoPassword;
+				
+		JPanel panelSesion = new JPanel();
+		panelSesion.setLayout(null);
+				
+		textoUser = new JLabel("Usuario: ");
+		textoUser.setBounds(90, 60, 200, 30); 
+		panelSesion.add(textoUser);
+
+		textoPassword = new JLabel("Contraseña: ");
+		textoPassword.setBounds(68, 100, 200, 30); 
+		panelSesion.add(textoPassword);
+
+		user = new JTextField();
+		user.setBounds(142, 65, 150, 20); 
+		panelSesion.add(user);
+
+		password = new JPasswordField();
+		password.setBounds(142, 105, 150, 20); 
+		panelSesion.add(password);
+
+		add(panelSesion, BorderLayout.CENTER);
+
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setBounds(0,0,400,500);
+		this.setResizable(false);
+		this.setLocationRelativeTo(null);
+		this.setVisible(true);
+			
+	}
 }
