@@ -63,6 +63,20 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 
 			if (boton.getBackground() == Color.RED) {
 				contadorErrores++;
+				
+				if (contadorErrores == 1) {
+					etiquetaAhorcado.setIcon(Ahorcado_STAGE1);
+				}else if (contadorErrores == 2) {
+					etiquetaAhorcado.setIcon(Ahorcado_STAGE2);
+				} else if (contadorErrores == 3) {
+					etiquetaAhorcado.setIcon(Ahorcado_STAGE3);
+				} else if (contadorErrores == 4) {
+					etiquetaAhorcado.setIcon(Ahorcado_STAGE4);
+				} else if (contadorErrores == 5) {
+					etiquetaAhorcado.setIcon(Ahorcado_STAGE5);
+				} else{
+					etiquetaAhorcado.setIcon(Ahorcado_STAGE6);
+				}
 			}
 
 			if (hasGanado()) {

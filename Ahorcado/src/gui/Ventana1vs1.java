@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JFrame;
@@ -28,17 +29,21 @@ public class Ventana1vs1 extends VentanaModoClasico {
 
 	public static int erroresDerecha = 0;
 
+	//Label del ahorcado del jugador 2
+	private JLabel etiquetaAhorcado2 = new JLabel(Ahorcado_STAGE0);
+	
 	public static JPanel panelArribaIzquierda = panelArriba;
 	public static JPanel panelIzquierdaIzquierda = panelIzquierda;
 	public static JPanel panelAbecedarioIzquierda = panelAbecedario;
+	public static JPanel panelDerechaIzquierda = panelDerecha;
 
 	public static String palabraSeleccionadaDerecha = SeleccionarPalabra();
 	public static StringBuilder textoLabelDerecha = ocultarPalabra(palabraSeleccionadaDerecha);
 	public static List<Character> letrasPalabraDerecha = new ArrayList<>(añadirLetras());
 	public static JLabel palabraOcultaDerecha = new JLabel(textoLabelDerecha.toString());
 	public static JPanel panelArribaDerecha = new JPanel();
-	public static JPanel panelIzquierdaDerecha = new JPanel();
 	public static JPanel panelDerechaDerecha = new JPanel();
+	public static JPanel panelIzquierdaDerecha = new JPanel();
 	public static JPanel panelAbecedarioDerecha = new JPanel();
 
 	public JButton botonListoIzquierda = botonPalabraNueva;
@@ -47,7 +52,7 @@ public class Ventana1vs1 extends VentanaModoClasico {
 	public static int contador = 0;
 
 	public boolean hasPerdido1vs1() {
-		if (erroresDerecha == 5)
+		if (erroresDerecha == 6)
 			return true;
 		return false;
 	}
@@ -87,6 +92,20 @@ public class Ventana1vs1 extends VentanaModoClasico {
 
 			if (boton.getBackground() == Color.RED) {
 				erroresDerecha++;
+				
+				if (erroresDerecha == 1) {
+					etiquetaAhorcado2.setIcon(Ahorcado_STAGE1);
+				}else if (erroresDerecha == 2) {
+					etiquetaAhorcado2.setIcon(Ahorcado_STAGE2);
+				} else if (erroresDerecha == 3) {
+					etiquetaAhorcado2.setIcon(Ahorcado_STAGE3);
+				} else if (erroresDerecha == 4) {
+					etiquetaAhorcado2.setIcon(Ahorcado_STAGE4);
+				} else if (erroresDerecha == 5) {
+					etiquetaAhorcado2.setIcon(Ahorcado_STAGE5);
+				} else{
+					etiquetaAhorcado2.setIcon(Ahorcado_STAGE6);
+				}
 			}
 
 			if (hasGanado1vs1()) {
@@ -131,6 +150,20 @@ public class Ventana1vs1 extends VentanaModoClasico {
 
 			if (boton.getBackground() == Color.RED) {
 				contadorErrores++;
+				
+				if (contadorErrores == 1) {
+					etiquetaAhorcado.setIcon(Ahorcado_STAGE1);
+				}else if (contadorErrores == 2) {
+					etiquetaAhorcado.setIcon(Ahorcado_STAGE2);
+				} else if (contadorErrores == 3) {
+					etiquetaAhorcado.setIcon(Ahorcado_STAGE3);
+				} else if (contadorErrores == 4) {
+					etiquetaAhorcado.setIcon(Ahorcado_STAGE4);
+				} else if (contadorErrores == 5) {
+					etiquetaAhorcado.setIcon(Ahorcado_STAGE5);
+				} else{
+					etiquetaAhorcado.setIcon(Ahorcado_STAGE6);
+				}
 			}
 
 			if (hasGanado()) {
@@ -263,6 +296,8 @@ public class Ventana1vs1 extends VentanaModoClasico {
 		panelIzquierdaDerecha.add(palabraOcultaDerecha);
 		panelIzquierdaDerecha.add(erroresDerecha);
 		panelIzquierdaDerecha.add(contadorErroresDerecha);
+		
+		panelDerechaDerecha.add(etiquetaAhorcado2);
 
 		panelArribaDerecha.add(panelIzquierdaDerecha, BorderLayout.WEST);
 		panelArribaDerecha.add(panelDerechaDerecha, BorderLayout.EAST);
