@@ -3,7 +3,6 @@ package DataBase;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 // he aprendido ha guardar usuarios en la base de datos gracias a unos videos de YT: https://www.youtube.com/watch?v=V2-1AEHfLlk&ab_channel=GoCodex
 
@@ -36,21 +35,10 @@ public class MetodosBD {
 			
 			resultado = ps.executeUpdate();
 			
+			
 		} catch (Exception e) {
 			System.out.println(e);
-		}finally {
-	        // Cierre de recursos en el bloque finally
-	        try {
-	            if (ps != null) {
-	                ps.close();
-	            }
-	            if (conexion != null) {
-	                conexion.close();
-	            }
-	        } catch (SQLException e) {
-	            System.out.println("Error al cerrar recursos: " + e.getMessage());
-	        }
-	    }
+		}
 		
 		return resultado;
 	}
@@ -69,14 +57,6 @@ public class MetodosBD {
 			usuarioBorrado = ps.executeUpdate();
 			ps.close();
 			
-			/*
-			if(resultado.next()) {
-				usuarioBorrado = "el usuario se ha borrado";
-			}else {
-				usuarioBorrado = "el usuario no se ha podido econtrar";
-			}
-			*/
-			
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -86,7 +66,7 @@ public class MetodosBD {
 	}
 	
 	public static int generarCod() {
-		double numero = 10000 + Math.random() * 90000;
+		double numero = Math.random() * 9000;
 		return (int) numero;
 	}
 	
