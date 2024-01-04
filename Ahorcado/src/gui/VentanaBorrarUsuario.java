@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import DataBase.MetodosBD;
+
 public class VentanaBorrarUsuario extends JFrame {
 	
 	private JButton volverInicio;
@@ -49,12 +51,22 @@ public class VentanaBorrarUsuario extends JFrame {
 		panelVolverBorrar.add(borrar);
 		panelVolverBorrar.add(volverInicio);
 		
+		MetodosBD metodos = new MetodosBD();
 		
 		borrar.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				String busquedaUsuario =  metodos.registeredUser(user.getText(), password.getText());
+				int i = metodos.borrarUsuario(busquedaUsuario);
+				
+				if (i > 0) {
+					String usuarioBusqueda = metodos.buscarUsuario(user.getText());
+					int usuarioBorrado = metodos.borrarUsuario(usuarioBusqueda);
+					JOptionPane.showMessageDialog(VentanaBorrarUsuario.this, "usuario borrado");
+				}else {
+					JOptionPane.showMessageDialog(VentanaBorrarUsuario.this, "usuario o contraseña incorrectos");
+				}
 				
 			}
 		});

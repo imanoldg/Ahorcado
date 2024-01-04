@@ -88,14 +88,14 @@ public class VentanaUsuarios extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				
 				VentanaError vError = new VentanaError();
-				String busquedaUsuaio = metodos.registeredUser(user.getText(), password.getText());
+				String busquedaUsuario = metodos.registeredUser(user.getText(), password.getText());
 				
 				if(user.getText().equals("root") && password.getText().equals("root")) {
 					JOptionPane.showMessageDialog(VentanaUsuarios.this, "has iniciado como admin");
 					
-				}else if (busquedaUsuaio.equals("usuario encontrado")) {
+				}else if (busquedaUsuario.equals(user.getText())) {
 					String usuarioBusqueda = metodos.buscarUsuario(user.getText());
-					JOptionPane.showMessageDialog(VentanaUsuarios.this, "Bienvenid@" );
+					JOptionPane.showMessageDialog(VentanaUsuarios.this, "Bienvenid@ " + usuarioBusqueda );
 					VentanaSelectorModo v = new VentanaSelectorModo();	
 					v.setVisible(true);
 					dispose();

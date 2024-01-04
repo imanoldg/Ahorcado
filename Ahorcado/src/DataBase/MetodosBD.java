@@ -3,6 +3,7 @@ package DataBase;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 // he aprendido ha guardar usuarios en la base de datos gracias a unos videos de YT: https://www.youtube.com/watch?v=V2-1AEHfLlk&ab_channel=GoCodex
 
@@ -34,13 +35,54 @@ public class MetodosBD {
 			ps.setInt(4, puntuacion);
 			
 			resultado = ps.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}finally {
+	        // Cierre de recursos en el bloque finally
+	        try {
+	            if (ps != null) {
+	                ps.close();
+	            }
+	            if (conexion != null) {
+	                conexion.close();
+	            }
+	        } catch (SQLException e) {
+	            System.out.println("Error al cerrar recursos: " + e.getMessage());
+	        }
+	    }
+		
+		return resultado;
+	}
+	
+	public static int borrarUsuario(String usuario) {
+		int usuarioBorrado = 0;
+		Connection conexion = null;
+		
+		String consulta = ("DELETE FROM Usuario WHERE nombre = ?");
+	
+		try {
+			conexion = ConnectDB.conectar();
+			ps = conexion.prepareStatement(consulta);
+			ps.setString(1, usuario);
+			
+			usuarioBorrado = ps.executeUpdate();
 			ps.close();
+			
+			/*
+			if(resultado.next()) {
+				usuarioBorrado = "el usuario se ha borrado";
+			}else {
+				usuarioBorrado = "el usuario no se ha podido econtrar";
+			}
+			*/
 			
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 		
-		return resultado;
+		return usuarioBorrado;
+		
 	}
 	
 	public static int generarCod() {
@@ -133,7 +175,7 @@ public class MetodosBD {
 			if(resultado.next()) {
 				String nombre1 = resultado.getString("nombre");
 				String pass = resultado.getString("contraseña");
-				usuarioBusqueda = (nombre1 + "" + pass);
+				usuarioBusqueda = (nombre1);
 
 				conn.close();
 			}
@@ -156,7 +198,7 @@ public class MetodosBD {
 			
 			resultado = ps.executeQuery();
 			if(resultado.next()) {
-				busquedaUsuario = "usuario encontrado";
+				busquedaUsuario = usuario;
 			}else {
 				busquedaUsuario = "usuario no encontrado";
 			}
@@ -168,4 +210,6 @@ public class MetodosBD {
 		
 		return busquedaUsuario;
 	}
+	
+	
 }
