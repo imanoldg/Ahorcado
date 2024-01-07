@@ -63,6 +63,7 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 
 			if (boton.getBackground() == Color.RED) {
 				contadorErrores++;
+				errores.setText("ERRORES: " + contadorErrores);
 				
 				if (contadorErrores == 1) {
 					etiquetaAhorcado.setIcon(Ahorcado_STAGE1);
@@ -81,12 +82,18 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 
 			if (hasGanado()) {
 				new VentanaHasGanadoContrarreloj();
+				contadorErrores = 0 ;
+				ejecutarHilo = false;
+				contador = 60;
 				dispose();
 
 			}
 
 			if (hasPerdido()) {
 				new VentanaHasPerdidoContrarreloj();
+				contadorErrores = 0;
+				ejecutarHilo = false;
+				contador = 60;
 				dispose();
 			}
 
@@ -112,6 +119,8 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 					etiqueta.setText("Tiempo restante: " + contador + " segundos"); // usar invoke later
 					if (contador == 0) {
 						ejecutarHilo = false;
+						new VentanaHasPerdidoContrarreloj();
+						dispose();
 					}
 					try {
 						Thread.sleep(1000);
@@ -157,6 +166,8 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new VentanaResolverContrarreloj();
+				ejecutarHilo = false;
+				contador = 60;
 				dispose();
 
 			}

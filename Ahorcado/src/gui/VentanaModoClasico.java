@@ -28,25 +28,26 @@ import io.CargarPalabras;
 
 public class VentanaModoClasico extends JFrame {
 
-	protected ImageIcon Ahorcado_STAGE0 = new ImageIcon("resources/images/Hangman_Picture_STAGE0.png");
-	protected ImageIcon Ahorcado_STAGE1 = new ImageIcon("resources/images/Hangman_Picture_STAGE1.png");
-	protected ImageIcon Ahorcado_STAGE2 = new ImageIcon("resources/images/Hangman_Picture_STAGE2.png");
-	protected ImageIcon Ahorcado_STAGE3 = new ImageIcon("resources/images/Hangman_Picture_STAGE3.png");
-	protected ImageIcon Ahorcado_STAGE4 = new ImageIcon("resources/images/Hangman_Picture_STAGE4.png");
-	protected ImageIcon Ahorcado_STAGE5 = new ImageIcon("resources/images/Hangman_Picture_STAGE5.png");
-	protected ImageIcon Ahorcado_STAGE6 = new ImageIcon("resources/images/Hangman_Picture_STAGE6.png");
+	protected  ImageIcon Ahorcado_STAGE0 = new ImageIcon("resources/images/Hangman_Picture_STAGE0.png");
+	protected  ImageIcon Ahorcado_STAGE1 = new ImageIcon("resources/images/Hangman_Picture_STAGE1.png");
+	protected  ImageIcon Ahorcado_STAGE2 = new ImageIcon("resources/images/Hangman_Picture_STAGE2.png");
+	protected  ImageIcon Ahorcado_STAGE3 = new ImageIcon("resources/images/Hangman_Picture_STAGE3.png");
+	protected  ImageIcon Ahorcado_STAGE4 = new ImageIcon("resources/images/Hangman_Picture_STAGE4.png");
+	protected  ImageIcon Ahorcado_STAGE5 = new ImageIcon("resources/images/Hangman_Picture_STAGE5.png");
+	protected  ImageIcon Ahorcado_STAGE6 = new ImageIcon("resources/images/Hangman_Picture_STAGE6.png");
 
-	protected JLabel etiquetaAhorcado = new JLabel(Ahorcado_STAGE0);
+	protected  JLabel etiquetaAhorcado = new JLabel(Ahorcado_STAGE0);
 	
+	protected static int contadorErrores = 0;
 	protected static JButton botonPalabraNueva = new JButton("  Palabra Nueva  ");
 	protected static JButton botonResolver = new JButton("  Resolver  ");
 	protected static String palabraSeleccionada = SeleccionarPalabra();
 	protected static StringBuilder textoLabel = ocultarPalabra(palabraSeleccionada);
 	protected static List<Character> letrasPalabra = new ArrayList<>(añadirLetras());
 	protected static JLabel palabraOculta = new JLabel(textoLabel.toString());
-	protected static JLabel errores = new JLabel("ERRORES:");
+	protected static JLabel errores = new JLabel("ERRORES: " + contadorErrores);
 	protected static JLabel palabra = new JLabel("PALABRA OCULTA:");
-	protected static int contadorErrores = 0;
+	
 
 	protected static JPanel panelGeneral = new JPanel();
 	protected static JPanel panelArriba = new JPanel();
@@ -161,6 +162,7 @@ public class VentanaModoClasico extends JFrame {
 
 			if (boton.getBackground() == Color.RED) {
 				contadorErrores++;
+				errores.setText("ERRORES: " + contadorErrores);
 				
 				if (contadorErrores == 1) {
 					etiquetaAhorcado.setIcon(Ahorcado_STAGE1);
@@ -174,17 +176,20 @@ public class VentanaModoClasico extends JFrame {
 					etiquetaAhorcado.setIcon(Ahorcado_STAGE5);
 				} else{
 					etiquetaAhorcado.setIcon(Ahorcado_STAGE6);
+					
 				}
 			}
 
 			if (hasGanado()) {
 				new VentanaHasGanadoClasico();
+				contadorErrores = 0;
 				dispose();
 
 			}
 
 			if (hasPerdido()) {
 				new VentanaHasPerdidoClasico();
+				contadorErrores = 0;
 				dispose();
 			}
 
@@ -193,6 +198,7 @@ public class VentanaModoClasico extends JFrame {
 	}
 
 	protected VentanaModoClasico() throws FileNotFoundException {
+		
 		panelGeneral.setLayout(new GridLayout(2, 1));
 		panelArriba.setLayout(new GridLayout(1, 2));
 		panelIzquierda.setLayout(new GridLayout(7, 1));
@@ -279,13 +285,6 @@ public class VentanaModoClasico extends JFrame {
 		
 		
 		panelDerecha.add(etiquetaAhorcado);
-		//panelDerecha.add(Ahorcado_STAGE1);
-		//panelDerecha.add(Ahorcado_STAGE2);
-		//panelDerecha.add(Ahorcado_STAGE3);
-		//panelDerecha.add(Ahorcado_STAGE4);
-		//panelDerecha.add(Ahorcado_STAGE5);
-		//panelDerecha.add(Ahorcado_STAGE6);
-
 		panelArriba.add(panelIzquierda, BorderLayout.WEST);
 		panelArriba.add(panelDerecha, BorderLayout.EAST);
 

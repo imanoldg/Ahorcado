@@ -10,6 +10,7 @@ public class VentanaHasGanadoContrarreloj extends VentanaHasGanadoClasico {
 		VentanaModoContrarreloj.panelAbecedario.removeAll();
 		VentanaModoContrarreloj.panelArriba.removeAll();
 		VentanaModoContrarreloj.panelIzquierda.removeAll();
+		VentanaModoContrarreloj.panelDerecha.removeAll();
 		VentanaModoContrarreloj.palabraSeleccionada = VentanaModoContrarreloj.SeleccionarPalabra();
 		VentanaModoContrarreloj.textoLabel = VentanaModoContrarreloj
 				.ocultarPalabra(VentanaModoContrarreloj.palabraSeleccionada);

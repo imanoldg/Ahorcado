@@ -14,6 +14,9 @@ public class VentanaHasPerdidoSubita extends VentanaHasPerdidoClasico{
 		VentanaModoMuerteSubita.palabraOculta.setText(VentanaModoMuerteSubita.textoLabel.toString());
 		VentanaModoMuerteSubita.panelAbecedario.removeAll();
 		VentanaModoMuerteSubita.adivinadasLabel.removeAll();
+		VentanaModoMuerteSubita.panelArriba.removeAll();
+		VentanaModoMuerteSubita.panelIzquierda.removeAll();
+		VentanaModoMuerteSubita.panelDerecha.removeAll();
 	}
 	
 	public VentanaHasPerdidoSubita() {

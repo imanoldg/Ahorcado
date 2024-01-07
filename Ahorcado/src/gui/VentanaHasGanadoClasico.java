@@ -25,11 +25,12 @@ public class VentanaHasGanadoClasico extends JFrame {
 		VentanaModoClasico.panelAbecedario.removeAll();
 		VentanaModoClasico.panelArriba.removeAll();
 		VentanaModoClasico.panelIzquierda.removeAll();
+		VentanaModoClasico.panelDerecha.removeAll();
 		VentanaModoClasico.palabraSeleccionada = VentanaModoClasico.SeleccionarPalabra();
 		VentanaModoClasico.textoLabel = VentanaModoClasico.ocultarPalabra(VentanaModoClasico.palabraSeleccionada);
 		VentanaModoClasico.letrasPalabra.clear();
 		VentanaModoClasico.letrasPalabra.addAll(VentanaModoClasico.añadirLetras());
-		VentanaModoClasico.palabraOculta.setText(VentanaModoClasico.textoLabel.toString());;
+		VentanaModoClasico.palabraOculta.setText(VentanaModoClasico.textoLabel.toString());
 	}
 	
 	public VentanaHasGanadoClasico() {

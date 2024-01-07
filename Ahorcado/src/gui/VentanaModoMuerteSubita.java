@@ -31,7 +31,7 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 	public static JLabel adivinadasLabel = new JLabel("Palabras adivinadas: " + adivinadas);
 	
 
-	public static void ReiniciarJuego() {
+	public void ReiniciarJuego() {
 		palabraSeleccionada = SeleccionarPalabra();
 		textoLabel = ocultarPalabra(palabraSeleccionada);
 		letrasPalabra.clear();
@@ -41,7 +41,8 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 		panelAbecedario.add(crearTeclado(new BotonSubitaListener()));
 	}
 	
-	public static class BotonSubitaListener implements ActionListener {
+	
+	public class BotonSubitaListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -68,6 +69,22 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 			
 			if (boton.getBackground() == Color.RED) {
 				contadorErrores++;
+				errores.setText("ERRORES: " + contadorErrores);
+				
+				if (contadorErrores == 1) {
+					etiquetaAhorcado.setIcon(Ahorcado_STAGE1);
+				}else if (contadorErrores == 2) {
+					etiquetaAhorcado.setIcon(Ahorcado_STAGE2);
+				} else if (contadorErrores == 3) {
+					etiquetaAhorcado.setIcon(Ahorcado_STAGE3);
+				} else if (contadorErrores == 4) {
+					etiquetaAhorcado.setIcon(Ahorcado_STAGE4);
+				} else if (contadorErrores == 5) {
+					etiquetaAhorcado.setIcon(Ahorcado_STAGE5);
+				} else{
+					etiquetaAhorcado.setIcon(Ahorcado_STAGE6);
+					
+				}
 			}
 			
 			if (hasGanado()) {
@@ -78,7 +95,10 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 			
 			if (hasPerdido()) {
 				new VentanaHasPerdidoSubita();
-				ReiniciarJuego();
+				contadorErrores = 0;
+				adivinadas = 0;
+				adivinadasLabel.setText("Palabras adivinadas: " + adivinadas);
+				dispose();
 			}
 			
 			
@@ -111,16 +131,6 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 		for (MouseListener mouseListener : mouseListeners) {
 			instrucciones.removeMouseListener(mouseListener);
 		}
-		
-		botonResolver.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new VentanaResolverSubita();
-				dispose();
-				
-			}
-		});
 		
 		instrucciones.addMouseListener(new MouseAdapter() {
 			@Override

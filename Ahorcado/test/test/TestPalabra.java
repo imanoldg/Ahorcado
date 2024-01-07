@@ -13,7 +13,7 @@ public class TestPalabra {
 	public void testGetPalabra() {
 		Palabra p = new Palabra("teclado", Dificultad.FACIL);
 		
-		assertEquals("teclado", p.getClass());
+		assertEquals("teclado", p.getPalabra());
 	}
 
 	@Test

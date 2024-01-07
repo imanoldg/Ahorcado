@@ -45,9 +45,8 @@ public class Ventana1vs1 extends VentanaModoClasico {
 	public static JPanel panelDerechaDerecha = new JPanel();
 	public static JPanel panelIzquierdaDerecha = new JPanel();
 	public static JPanel panelAbecedarioDerecha = new JPanel();
+	public static JLabel erroresDerechaLabel = new JLabel("ERRORES: " + erroresDerecha);
 
-	public JButton botonListoIzquierda = botonPalabraNueva;
-	public JButton botonListoDerecha = new JButton("  Listo  ");
 
 	public static int contador = 0;
 
@@ -70,6 +69,16 @@ public class Ventana1vs1 extends VentanaModoClasico {
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			JButton boton = (JButton) e.getSource();
+			contador++;
+
+			if (contador % 2 == 0) {
+				panelAbecedarioDerecha.setVisible(false);
+				panelAbecedarioIzquierda.setVisible(true);
+			} else {
+				panelAbecedarioIzquierda.setVisible(false);
+				panelAbecedarioDerecha.setVisible(true);
+			}
+
 
 			for (int j = 0; j < palabraSeleccionadaDerecha.length(); j++) {
 
@@ -92,6 +101,7 @@ public class Ventana1vs1 extends VentanaModoClasico {
 
 			if (boton.getBackground() == Color.RED) {
 				erroresDerecha++;
+				erroresDerechaLabel.setText("ERRORES: " + erroresDerecha);
 				
 				if (erroresDerecha == 1) {
 					etiquetaAhorcado2.setIcon(Ahorcado_STAGE1);
@@ -110,12 +120,16 @@ public class Ventana1vs1 extends VentanaModoClasico {
 
 			if (hasGanado1vs1()) {
 				new VentanaHasGanado1vs1();
+				contadorErrores = 0;
+				erroresDerecha = 0;
 				dispose();
 
 			}
 
 			if (hasPerdido1vs1()) {
 				new VentanaHasPerdido1vs1();
+				contadorErrores = 0;
+				erroresDerecha = 0;
 				dispose();
 			}
 		}
@@ -128,7 +142,16 @@ public class Ventana1vs1 extends VentanaModoClasico {
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			JButton boton = (JButton) e.getSource();
+			contador++;
 
+			if (contador % 2 == 0) {
+				panelAbecedarioDerecha.setVisible(false);
+				panelAbecedarioIzquierda.setVisible(true);
+			} else {
+				panelAbecedarioIzquierda.setVisible(false);
+				panelAbecedarioDerecha.setVisible(true);
+			}
+			
 			for (int j = 0; j < palabraSeleccionada.length(); j++) {
 
 				if (boton.getText().charAt(0) == palabraSeleccionada.charAt(j)) {
@@ -150,6 +173,7 @@ public class Ventana1vs1 extends VentanaModoClasico {
 
 			if (boton.getBackground() == Color.RED) {
 				contadorErrores++;
+				errores.setText("ERRORES: " + contadorErrores);
 				
 				if (contadorErrores == 1) {
 					etiquetaAhorcado.setIcon(Ahorcado_STAGE1);
@@ -168,12 +192,16 @@ public class Ventana1vs1 extends VentanaModoClasico {
 
 			if (hasGanado()) {
 				new VentanaHasGanado1vs1();
+				contadorErrores = 0;
+				erroresDerecha = 0;
 				dispose();
 
 			}
 
 			if (hasPerdido()) {
 				new VentanaHasPerdido1vs1();
+				contadorErrores = 0;
+				erroresDerecha = 0;
 				dispose();
 			}
 		}
@@ -183,6 +211,7 @@ public class Ventana1vs1 extends VentanaModoClasico {
 	public Ventana1vs1() throws FileNotFoundException {
 		
 		panelIzquierda.remove(botonResolver);
+		panelIzquierda.remove(botonPalabraNueva);
 		panelAbecedario.removeAll();
 		panelAbecedario.add(crearTeclado(new BotonDerechaListener()));
 
@@ -208,7 +237,6 @@ public class Ventana1vs1 extends VentanaModoClasico {
 			}
 		});
 
-		botonListoIzquierda.setText("Listo");
 
 		JPanel panelGeneral1vs1 = panelGeneral;
 		panelGeneral1vs1.setLayout(new GridLayout(1, 2));
@@ -226,75 +254,24 @@ public class Ventana1vs1 extends VentanaModoClasico {
 		panelAbecedarioDerecha.add(crearTeclado(new BotonIzquierdaListener()));
 
 		JLabel contadorErroresDerecha = new JLabel();
-		JLabel erroresDerecha = new JLabel("ERRORES:");
 		JLabel palabraDerecha = new JLabel("PALABRA OCULTA:");
 		contadorErroresDerecha.setHorizontalAlignment(SwingConstants.CENTER);
-		erroresDerecha.setHorizontalAlignment(SwingConstants.CENTER);
+		erroresDerechaLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		palabraOcultaDerecha.setHorizontalAlignment(SwingConstants.CENTER);
 		palabraDerecha.setHorizontalAlignment(SwingConstants.CENTER);
 
-		botonListoIzquierda.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				contador++;
-
-				if (contador % 2 == 0) {
-					panelAbecedarioDerecha.setVisible(false);
-					botonListoDerecha.setVisible(false);
-
-					panelAbecedarioIzquierda.setVisible(true);
-					botonListoIzquierda.setVisible(true);
-				} else {
-					panelAbecedarioIzquierda.setVisible(false);
-					botonListoIzquierda.setVisible(false);
-
-					panelAbecedarioDerecha.setVisible(true);
-					botonListoDerecha.setVisible(true);
-				}
-
-			}
-		});
-
-		botonListoDerecha.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				contador++;
-
-				if (contador % 2 == 0) {
-					panelAbecedarioDerecha.setVisible(false);
-					botonListoDerecha.setVisible(false);
-
-					panelAbecedarioIzquierda.setVisible(true);
-					botonListoIzquierda.setVisible(true);
-				} else {
-					panelAbecedarioIzquierda.setVisible(false);
-					botonListoIzquierda.setVisible(false);
-
-					panelAbecedarioDerecha.setVisible(true);
-					botonListoDerecha.setVisible(true);
-				}
-
-			}
-		});
-
 		panelAbecedarioDerecha.setVisible(false);
-		botonListoDerecha.setVisible(false);
-
 		panelAbecedarioIzquierda.setVisible(true);
-		botonListoIzquierda.setVisible(true);
-
+		
 		panelArribaIzquierda.add(panelIzquierdaIzquierda, BorderLayout.WEST);
 		panelArribaIzquierda.add(panelDerechaIzquierda, BorderLayout.EAST);
 
 		panelGeneralIzquierda.add(panelArribaIzquierda, BorderLayout.NORTH);
 		panelGeneralIzquierda.add(panelAbecedarioIzquierda, BorderLayout.SOUTH);
 
-		panelIzquierdaDerecha.add(botonListoDerecha);
 		panelIzquierdaDerecha.add(palabraDerecha);
 		panelIzquierdaDerecha.add(palabraOcultaDerecha);
-		panelIzquierdaDerecha.add(erroresDerecha);
+		panelIzquierdaDerecha.add(erroresDerechaLabel);
 		panelIzquierdaDerecha.add(contadorErroresDerecha);
 		
 		panelDerechaDerecha.add(etiquetaAhorcado2);

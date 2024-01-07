@@ -61,7 +61,7 @@ public class TestUsuario {
 	public void testGetPuntuacion() {
 		Usuario u = new Usuario(1,"Imanol", "test", 20);
 	
-		assertEquals(20, u.getContraseña());
+		assertEquals(20, u.getPuntuacion());
 	}
 	
 	@Test
