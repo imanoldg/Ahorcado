@@ -183,6 +183,7 @@ public class VentanaModoClasico extends JFrame {
 			if (hasGanado()) {
 				new VentanaHasGanadoClasico();
 				contadorErrores = 0;
+				errores.setText("ERRORES: " + contadorErrores);
 				dispose();
 
 			}
@@ -190,6 +191,7 @@ public class VentanaModoClasico extends JFrame {
 			if (hasPerdido()) {
 				new VentanaHasPerdidoClasico();
 				contadorErrores = 0;
+				errores.setText("ERRORES: " + contadorErrores);
 				dispose();
 			}
 

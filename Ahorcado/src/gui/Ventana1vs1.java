@@ -122,6 +122,8 @@ public class Ventana1vs1 extends VentanaModoClasico {
 				new VentanaHasGanado1vs1();
 				contadorErrores = 0;
 				erroresDerecha = 0;
+				erroresDerechaLabel.setText("ERRORES: " + erroresDerecha);
+				errores.setText("ERRORES: " + contadorErrores);
 				dispose();
 
 			}
@@ -130,6 +132,8 @@ public class Ventana1vs1 extends VentanaModoClasico {
 				new VentanaHasPerdido1vs1();
 				contadorErrores = 0;
 				erroresDerecha = 0;
+				erroresDerechaLabel.setText("ERRORES: " + erroresDerecha);
+				errores.setText("ERRORES: " + contadorErrores);
 				dispose();
 			}
 		}
@@ -194,6 +198,8 @@ public class Ventana1vs1 extends VentanaModoClasico {
 				new VentanaHasGanado1vs1();
 				contadorErrores = 0;
 				erroresDerecha = 0;
+				erroresDerechaLabel.setText("ERRORES: " + erroresDerecha);
+				errores.setText("ERRORES: " + contadorErrores);
 				dispose();
 
 			}
@@ -202,6 +208,8 @@ public class Ventana1vs1 extends VentanaModoClasico {
 				new VentanaHasPerdido1vs1();
 				contadorErrores = 0;
 				erroresDerecha = 0;
+				erroresDerechaLabel.setText("ERRORES: " + erroresDerecha);
+				errores.setText("ERRORES: " + contadorErrores);
 				dispose();
 			}
 		}

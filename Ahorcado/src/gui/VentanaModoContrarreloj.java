@@ -83,6 +83,7 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 			if (hasGanado()) {
 				new VentanaHasGanadoContrarreloj();
 				contadorErrores = 0 ;
+				errores.setText("ERRORES: " + contadorErrores);
 				ejecutarHilo = false;
 				contador = 60;
 				dispose();
@@ -92,6 +93,7 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 			if (hasPerdido()) {
 				new VentanaHasPerdidoContrarreloj();
 				contadorErrores = 0;
+				errores.setText("ERRORES: " + contadorErrores);
 				ejecutarHilo = false;
 				contador = 60;
 				dispose();

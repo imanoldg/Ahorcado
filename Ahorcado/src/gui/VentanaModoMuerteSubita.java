@@ -96,6 +96,7 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 			if (hasPerdido()) {
 				new VentanaHasPerdidoSubita();
 				contadorErrores = 0;
+				errores.setText("ERRORES: " + contadorErrores);
 				adivinadas = 0;
 				adivinadasLabel.setText("Palabras adivinadas: " + adivinadas);
 				dispose();
