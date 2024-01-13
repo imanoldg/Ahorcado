@@ -14,10 +14,9 @@ import domain.Palabra.Dificultad;
 
 public class CargarPalabras {
 	
-	private static Logger log = Logger.getLogger(LoggerReg.class.getName());
+	private static Logger log = LoggerReg.ejecutarLogger();
 	
 	public static List<Palabra> cargarPalabras(String fichero) {
-		
 		
 		List<Palabra> listaPalabras = new ArrayList<Palabra>();
 		List<String> lista = new ArrayList<>();

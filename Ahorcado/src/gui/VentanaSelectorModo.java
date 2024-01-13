@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
+import java.util.logging.Logger;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,8 +15,12 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import gui.VentanaModoMuerteSubita.BotonSubitaListener;
+import io.LoggerReg;
 
 public class VentanaSelectorModo extends JFrame{
+	
+	private static Logger log = LoggerReg.ejecutarLogger();
+	
 	private JButton modoContrarreloj = new JButton("Modo Contrarreloj");
 	private JButton modoMuerteSubita = new JButton("Modo Muerte Súbita");
 	private JButton modo1vs1 = new JButton("Modo 1vs1");
@@ -91,8 +96,11 @@ public class VentanaSelectorModo extends JFrame{
 					ReiniciarContrarreloj();
 					new VentanaModoContrarreloj();
 					dispose();
+					
+					log.info("Modo Contrarreloj reiniciado con exito");
+					
 				} catch (FileNotFoundException e1) {
-					// TODO Auto-generated catch block
+					log.warning(String.format("Error intentando reiniciar el Modo Contrarreloj",e1.getMessage()));
 				}
 				
 			}
@@ -106,8 +114,11 @@ public class VentanaSelectorModo extends JFrame{
 					ReiniciarSubita();
 					new VentanaModoMuerteSubita();
 					dispose();
+					
+					log.info("Modo Muerte Subita reiniciado con exito");
+					
 				} catch (FileNotFoundException e1) {
-					// TODO Auto-generated catch block
+					log.warning(String.format("Error intentando reiniciar el Modo Muerte Subita",e1.getMessage()));
 				}
 				
 			}
@@ -121,9 +132,11 @@ public class VentanaSelectorModo extends JFrame{
 					Reiniciar1vs1();
 					new Ventana1vs1();
 					dispose();
+					
+					log.info("Modo 1vs1 reiniciado con exito");
+					
 				} catch (FileNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					log.warning(String.format("Error intentando reiniciar el Modo 1vs1",e1.getMessage()));
 				}
 				
 			}
@@ -137,9 +150,11 @@ public class VentanaSelectorModo extends JFrame{
 					ReiniciarClasico();
 					new VentanaModoClasico();
 					dispose();
+					
+					log.info("Modo Clasico reiniciado con exito");
+					
 				} catch (FileNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					log.warning(String.format("Error intentando reiniciar el Modo Clasico",e1.getMessage()));
 				}
 				
 				

@@ -3,9 +3,14 @@ package gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
+import java.util.logging.Logger;
+
+import io.LoggerReg;
 
 public class VentanaHasGanadoContrarreloj extends VentanaHasGanadoClasico {
 
+	private static Logger log = LoggerReg.ejecutarLogger();
+	
 	private void ReiniciarJuego() {
 		VentanaModoContrarreloj.panelAbecedario.removeAll();
 		VentanaModoContrarreloj.panelArriba.removeAll();
@@ -35,9 +40,11 @@ public class VentanaHasGanadoContrarreloj extends VentanaHasGanadoClasico {
 					ReiniciarJuego();
 					new VentanaModoContrarreloj();
 					dispose();
+					
+					log.info("Modo Contrarreloj reiniciado con exito");
+					
 				} catch (FileNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					log.warning(String.format("Error reiniciando el Modo Contrarreloj: %s", e1.getMessage()));
 				}
 			}
 		});

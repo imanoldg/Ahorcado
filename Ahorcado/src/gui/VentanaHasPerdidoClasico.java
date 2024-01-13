@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
+import java.util.logging.Logger;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -12,8 +13,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import io.LoggerReg;
+
 public class VentanaHasPerdidoClasico extends JFrame{
 
+	private static Logger log = LoggerReg.ejecutarLogger();
+	
 	public static JButton botonCerrar = new JButton("  Cerrar el juego  ");
 	public static JButton botonVolverJugar = new JButton("  Volver a jugar  ");
 	
@@ -53,9 +58,11 @@ public class VentanaHasPerdidoClasico extends JFrame{
 					ReiniciarJuego();
 					new VentanaModoClasico();
 					dispose();
+					
+					log.info("Modo Clasico reiniciado con exito");
+					
 				} catch (FileNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					log.warning(String.format("Error reiniciando el Modo Clasico: %s", e1.getMessage()));
 				}
 				
 				

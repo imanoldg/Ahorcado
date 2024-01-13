@@ -11,7 +11,7 @@ public class LoggerReg {
 
 	private static Logger log = Logger.getLogger(LoggerReg.class.getName());
 		
-	public static void ejecutarLogger(){
+	public static Logger ejecutarLogger(){
 		try (FileInputStream fis = new FileInputStream("conf/reg.properties")){
 			LogManager.getLogManager().readConfiguration(fis);
 				
@@ -20,8 +20,8 @@ public class LoggerReg {
 			log.log(Level.SEVERE, "lectura fallida");
 			JOptionPane.showConfirmDialog(null, "no se ha podido leer fichero", "error", JOptionPane.PLAIN_MESSAGE);
 		}
+		
+		return log;
 	}
-	public static void añadirLogeo(Level lvl, String text) {
-		log.log(lvl, text);
-	}
+
 }

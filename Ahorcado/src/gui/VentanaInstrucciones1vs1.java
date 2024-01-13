@@ -20,7 +20,7 @@ public class VentanaInstrucciones1vs1 extends JFrame {
 				+ "<br>"
 				+ "<br>"
 				+ "Jugar: <br>"
-				+ "- Los jugadores pueden: Pedir una letra / Adivinar la palabra. <br>"
+				+ "- Los jugadores pueden: Pedir una letra <br>"
 				+ "-- Si la letra está, entonces el programa sustituye el espacio vacio por la letra en el lugar que ocupa en la palabra secreta. <br>"
 				+ "-- Si la letra no está, entonces el programa dibujará una parte del muñeco y apuntará un fallo. <br>"
 				+ "-- Este modo de juego va por turnos, por lo que en el primer turno se mostrara la interfaz del jugador 1 y en el siguiente la del jugador 2, y asi sucesivamente hasta que termine la partida. <br>"

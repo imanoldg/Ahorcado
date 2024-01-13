@@ -12,7 +12,7 @@ import io.LoggerReg;
 public class MetodosBD {
 	
 	public static ConnectDB conexion = new ConnectDB();
-	private static Logger log = Logger.getLogger(LoggerReg.class.getName());
+	private static Logger log = LoggerReg.ejecutarLogger();
 	
 	public static PreparedStatement ps;
 	public static ResultSet resultado;
@@ -32,10 +32,10 @@ public class MetodosBD {
 		try {
 			conexion = ConnectDB.conectar();
 			ps = conexion.prepareStatement(sentenciaGuardar);
-			ps.setInt(0, cod);
-			ps.setString(1, nombre);
-			ps.setString(2, password);
-			ps.setInt(3, puntuacion);
+			ps.setInt(1, cod);
+			ps.setString(2, nombre);
+			ps.setString(3, password);
+			ps.setInt(4, puntuacion);
 			
 			resultado = ps.executeUpdate();
 			
@@ -56,7 +56,7 @@ public class MetodosBD {
 		try {
 			conexion = ConnectDB.conectar();
 			ps = conexion.prepareStatement(consulta);
-			ps.setString(0, usuario);
+			ps.setString(1, usuario);
 			
 			usuarioBorrado = ps.executeUpdate();
 			ps.close();
@@ -91,7 +91,7 @@ public class MetodosBD {
 			conexion = ConnectDB.conectar();
 			String consulta = ("SELECT cod FROM Usuario WHERE cod = '" + randomCod + "'");
 			ps = conexion.prepareStatement(consulta);
-			ps.setInt(0, randomCod);
+			ps.setInt(1, randomCod);
 			resultado = ps.executeQuery();
 			
 			conexion.close();
@@ -111,7 +111,7 @@ public class MetodosBD {
 			conexion = ConnectDB.conectar();
 			String consulta = "SELECT cod FROM Usuario WHERE cod = ?";
 			ps = conexion.prepareStatement(consulta);
-			ps.setInt(0, codigo);
+			ps.setInt(1, codigo);
 			resultado = ps.executeQuery();
 			
 			conexion.close();
@@ -136,7 +136,7 @@ public class MetodosBD {
 			conexion = ConnectDB.conectar();
 			String consulta = "SELECT nombre FROM Usuario WHERE nombre = ?";
 			ps = conexion.prepareStatement(consulta);
-			ps.setString(0, nombre);
+			ps.setString(1, nombre);
 			resultado = ps.executeQuery();
 			
 			conexion.close();

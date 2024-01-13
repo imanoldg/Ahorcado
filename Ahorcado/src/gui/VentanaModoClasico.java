@@ -273,7 +273,6 @@ public class VentanaModoClasico extends JFrame {
 				letrasPalabra.clear();
 				letrasPalabra.addAll(añadirLetras());
 				palabraOculta.setText(textoLabel.toString());
-				;
 				panelAbecedario.removeAll();
 				panelAbecedario.add(crearTeclado(new BotonActionListener()));
 			}

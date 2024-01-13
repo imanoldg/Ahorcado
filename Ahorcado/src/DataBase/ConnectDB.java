@@ -11,7 +11,7 @@ import io.LoggerReg;
 
 public class ConnectDB {
 	
-	private static Logger log = Logger.getLogger(LoggerReg.class.getName());
+	private static Logger log = LoggerReg.ejecutarLogger();
 	public static String url = "jdbc:sqlite:resources/db/Usuarios.db";
 	public static String fn = "org.sqlite.JDBC";
 	public static Connection conectar() {
@@ -20,7 +20,6 @@ public class ConnectDB {
 		try {
 			Class.forName(fn);
 			conexion = DriverManager.getConnection(url);
-			System.out.println("conected");
 			
 			log.info("Conexion con la base de datos exitosa");
 		} catch (ClassNotFoundException | SQLException e) {

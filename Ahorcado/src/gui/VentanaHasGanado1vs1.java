@@ -3,9 +3,14 @@ package gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
+import java.util.logging.Logger;
+
+import io.LoggerReg;
 
 public class VentanaHasGanado1vs1 extends VentanaHasGanadoClasico {
 
+	private static Logger log = LoggerReg.ejecutarLogger();
+	
 	private void ReiniciarJuego() {
 		Ventana1vs1.panelGeneral.removeAll();
 		Ventana1vs1.panelAbecedarioDerecha.removeAll();
@@ -43,9 +48,11 @@ public class VentanaHasGanado1vs1 extends VentanaHasGanadoClasico {
 					ReiniciarJuego();
 					new Ventana1vs1();
 					dispose();
+					
+					log.info("Modo 1vs1 reiniciado con exito");
+					
 				} catch (FileNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					log.warning(String.format("Error intenando reiniciar el Modo 1vs1: %s", e1.getMessage()));
 				}
 			}
 		});

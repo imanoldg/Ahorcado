@@ -3,9 +3,14 @@ package gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
+import java.util.logging.Logger;
+
+import io.LoggerReg;
 
 public class VentanaHasPerdidoSubita extends VentanaHasPerdidoClasico{
 
+	private static Logger log = LoggerReg.ejecutarLogger();
+	
 	private void ReiniciarJuego() {
 		VentanaModoMuerteSubita.palabraSeleccionada = VentanaModoMuerteSubita.SeleccionarPalabra();
 		VentanaModoMuerteSubita.textoLabel = VentanaModoMuerteSubita.ocultarPalabra(VentanaModoMuerteSubita.palabraSeleccionada);
@@ -34,9 +39,11 @@ public class VentanaHasPerdidoSubita extends VentanaHasPerdidoClasico{
 					ReiniciarJuego();
 					new VentanaModoMuerteSubita();
 					dispose();
+					
+					log.info("Modo Muerte Subita reiniciado con exito");
+					
 				} catch (FileNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					log.warning(String.format("Error intentando reiniciar el Modo Muerte Subita: %s", e1.getMessage()));
 				}
 			}
 		});
