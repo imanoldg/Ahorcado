@@ -13,9 +13,10 @@ public class LoggerReg {
 		
 	public static void ejecutarLogger(){
 		try (FileInputStream fis = new FileInputStream("conf/reg.properties")){
-			LogManager.getLogManager().readConfiguration();
+			LogManager.getLogManager().readConfiguration(fis);
 				
 		} catch (IOException e) {
+			e.printStackTrace();
 			log.log(Level.SEVERE, "lectura fallida");
 			JOptionPane.showConfirmDialog(null, "no se ha podido leer fichero", "error", JOptionPane.PLAIN_MESSAGE);
 		}

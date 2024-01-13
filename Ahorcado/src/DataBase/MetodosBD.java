@@ -3,12 +3,16 @@ package DataBase;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.logging.Logger;
+
+import io.LoggerReg;
 
 // he aprendido ha guardar usuarios en la base de datos gracias a unos videos de YT: https://www.youtube.com/watch?v=V2-1AEHfLlk&ab_channel=GoCodex
 
 public class MetodosBD {
 	
 	public static ConnectDB conexion = new ConnectDB();
+	private static Logger log = Logger.getLogger(LoggerReg.class.getName());
 	
 	public static PreparedStatement ps;
 	public static ResultSet resultado;
@@ -28,16 +32,16 @@ public class MetodosBD {
 		try {
 			conexion = ConnectDB.conectar();
 			ps = conexion.prepareStatement(sentenciaGuardar);
-			ps.setInt(1, cod);
-			ps.setString(2, nombre);
-			ps.setString(3, password);
-			ps.setInt(4, puntuacion);
+			ps.setInt(0, cod);
+			ps.setString(1, nombre);
+			ps.setString(2, password);
+			ps.setInt(3, puntuacion);
 			
 			resultado = ps.executeUpdate();
 			
-			
+			log.info("Usuario guardado correctamente");
 		} catch (Exception e) {
-			System.out.println(e);
+			log.warning(String.format("%s   ->  Error guardando el usuario: %s", nombre, e.getMessage()));
 		}
 		
 		return resultado;
@@ -52,13 +56,15 @@ public class MetodosBD {
 		try {
 			conexion = ConnectDB.conectar();
 			ps = conexion.prepareStatement(consulta);
-			ps.setString(1, usuario);
+			ps.setString(0, usuario);
 			
 			usuarioBorrado = ps.executeUpdate();
 			ps.close();
 			
+			log.info("Usuario borrado");
+			
 		} catch (Exception e) {
-			System.out.println(e);
+			log.warning(String.format("Error borrando el usuario %s : %s", usuario, e.getMessage()));
 		}
 		
 		return usuarioBorrado;
@@ -85,13 +91,13 @@ public class MetodosBD {
 			conexion = ConnectDB.conectar();
 			String consulta = ("SELECT cod FROM Usuario WHERE cod = '" + randomCod + "'");
 			ps = conexion.prepareStatement(consulta);
-			ps.setInt(1, randomCod);
+			ps.setInt(0, randomCod);
 			resultado = ps.executeQuery();
 			
 			conexion.close();
-			
+			log.info("Codigo aleatorio generado");
 		} catch (Exception e) {
-			System.out.println(e);
+			log.warning(String.format("Error intenando generar codigo aleatorio: %s", e.getMessage()));;
 		}
 		
 		return randomCod;
@@ -105,15 +111,17 @@ public class MetodosBD {
 			conexion = ConnectDB.conectar();
 			String consulta = "SELECT cod FROM Usuario WHERE cod = ?";
 			ps = conexion.prepareStatement(consulta);
-			ps.setInt(1, codigo);
+			ps.setInt(0, codigo);
 			resultado = ps.executeQuery();
 			
 			conexion.close();
 			
+			log.info("Codigo encontrado con exito");
+			
 			return resultado.next();
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			log.warning(String.format("%s : Error encontrando el codigo: %s", codigo + "", e.getMessage()));
 			return false;
 		}
 		
@@ -128,15 +136,16 @@ public class MetodosBD {
 			conexion = ConnectDB.conectar();
 			String consulta = "SELECT nombre FROM Usuario WHERE nombre = ?";
 			ps = conexion.prepareStatement(consulta);
-			ps.setString(1, nombre);
+			ps.setString(0, nombre);
 			resultado = ps.executeQuery();
 			
 			conexion.close();
 			
+			log.info("Nombre encontrado con exito");
 			return resultado.next();
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			log.warning(String.format("%s : Error encontrando el nombre: %s", nombre, e.getMessage()));
 			return false;
 		}
 		
@@ -160,8 +169,11 @@ public class MetodosBD {
 				conn.close();
 			}
 			
+			log.info("Usuario encontrado con exito");
+			
 		} catch (Exception e) {
-			System.out.println(e);
+			
+			log.warning(String.format("%s : Error encontrando el usuario: %s", nombre, e.getMessage()));
 		}
 		
 		return usuarioBusqueda;
@@ -183,9 +195,12 @@ public class MetodosBD {
 				busquedaUsuario = "usuario no encontrado";
 			}
 			
+			log.info("Usuario registrado encontrado con exito");
+			
 			conexion.close();
 		} catch (Exception e) {
-			System.out.println(e);
+			log.warning(String.format("Error buscando al usuario registrado '%s' : %s", usuario, e.getMessage()));
+			
 		}
 		
 		return busquedaUsuario;
