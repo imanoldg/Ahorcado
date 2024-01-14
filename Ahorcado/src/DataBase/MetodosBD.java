@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Logger;
 
 import domain.Usuario;
@@ -211,7 +213,9 @@ public class MetodosBD {
 		return busquedaUsuario;
 	}
 	
-	public Usuario cargarUsuario(String usuario, String contra) {
+	public Map<String, Usuario> cargarUsuario(String usuario, String contra) {
+		
+		Map<String, Usuario> result = new HashMap<>();
 		Connection con = ConnectDB.conectar();
 		Usuario usuarioCargado = null;
 		
@@ -220,12 +224,14 @@ public class MetodosBD {
 			usuarioCargado = new Usuario(rs.getInt("cod"), rs.getString("nombre"), rs.getString("contraseña"), rs.getInt("puntuacionClasico"), 
 					rs.getInt("puntaucionContrarreloj"), rs.getInt("puntuacionSubita"));
 			
+			result.put(rs.getString("cod"), usuarioCargado);
+			
 			log.info("Usuario cargado correctamente");
 		} catch (SQLException e) {
 			log.warning(String.format("Error intentando cargar el usuario %s : %s", usuario, e.getMessage()));
 		}
 		
-		return usuarioCargado;
+		return result;
 	}
 	
 	

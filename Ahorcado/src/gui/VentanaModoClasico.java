@@ -77,11 +77,9 @@ public class VentanaModoClasico extends JFrame {
 		Random aleatorio = new Random();
 		int numeroAleatorio = aleatorio.nextInt(listaPalabras.size());
 
-		String palabra = listaPalabras.get(numeroAleatorio).getPalabra().toUpperCase();
-		
-		Palabra seleccion = new Palabra(palabra, listaPalabras.get(numeroAleatorio).getDificultad());
+		Palabra palabra = listaPalabras.get(numeroAleatorio);
 
-		return seleccion;
+		return palabra;
 	}
 
 	public static List<Character> añadirLetras() {

@@ -35,9 +35,9 @@ public class CargarPalabras {
 		
 		for (int i = 0; i < lista.size(); i++) {
 			if(i > 62) {
-				listaPalabras.add(new Palabra(lista.get(i),Dificultad.FACIL));
+				listaPalabras.add(new Palabra(lista.get(i).toUpperCase(),Dificultad.FACIL));
 			}else {
-				listaPalabras.add(new Palabra(lista.get(i),Dificultad.DIFICIL));
+				listaPalabras.add(new Palabra(lista.get(i).toUpperCase(),Dificultad.DIFICIL));
 			}
 		}
 		

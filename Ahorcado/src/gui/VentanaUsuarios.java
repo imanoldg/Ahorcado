@@ -1,11 +1,11 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Map;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,7 +15,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 
 import DataBase.MetodosBD;
 import domain.Usuario;
@@ -31,6 +30,7 @@ public class VentanaUsuarios extends JFrame{
 	private JButton singUp;
 	private JButton gestionarUsuario;
 	
+	public static Map<String, Usuario> mapaUsuario;
 	public static Usuario usuarioJugando;
 	
 	
@@ -103,7 +103,8 @@ public class VentanaUsuarios extends JFrame{
 					v.setVisible(true);
 					dispose();
 					
-					usuarioJugando = metodos.cargarUsuario(user.getText(), password.getText());
+					mapaUsuario = metodos.cargarUsuario(user.getText(), password.getText());
+					usuarioJugando = (Usuario) mapaUsuario.values();
 					
 				}else {
 					vError.setVisible(true);
