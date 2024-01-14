@@ -27,12 +27,15 @@ import javax.swing.event.MenuKeyEvent;
 import javax.swing.event.MenuKeyListener;
 
 import domain.Usuario;
+import domain.Palabra.Dificultad;
 import io.CargarPalabras;
 
 public class VentanaModoContrarreloj extends VentanaModoClasico {
 	private int contador;
 	private Thread hilo;
 	private boolean ejecutarHilo;
+	
+	public static int puntuacionContrarreloj = usuarioJugando.getPuntuacionContrarreloj();
 
 	public static JLabel etiqueta = new JLabel();
 
@@ -44,7 +47,7 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 
 			for (int j = 0; j < palabraSeleccionada.length(); j++) {
 
-				if (boton.getText().charAt(0) == palabraSeleccionada.charAt(j)) {
+				if (boton.getText().charAt(0) == palabraSeleccionada.getPalabra().charAt(j)) {
 					textoLabel.replace(j, j + 1, boton.getText());
 					palabraOculta.setText(textoLabel.toString());
 
@@ -53,7 +56,7 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 						boton.setEnabled(false);
 					}
 
-				} else if (palabraSeleccionada.charAt(j) != boton.getText().charAt(0)
+				} else if (palabraSeleccionada.getPalabra().charAt(j) != boton.getText().charAt(0)
 						&& boton.getBackground() != Color.GREEN) {
 					boton.setEnabled(false);
 					boton.setBackground(Color.RED);
@@ -86,8 +89,16 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 				errores.setText("ERRORES: " + contadorErrores);
 				ejecutarHilo = false;
 				contador = 60;
+				
+				if (palabraSeleccionada.getDificultad().equals(Dificultad.DIFICIL)) {
+					puntuacionContrarreloj = puntuacionContrarreloj + 50 + palabraSeleccionada.getPalabra().length();
+					usuarioJugando.setPuntuacionClasico(puntuacionContrarreloj);
+				} else {
+					puntuacionContrarreloj = puntuacionContrarreloj + 25 + palabraSeleccionada.getPalabra().length();
+					usuarioJugando.setPuntuacionClasico(puntuacionContrarreloj);
+				}
+				
 				dispose();
-
 			}
 
 			if (hasPerdido()) {

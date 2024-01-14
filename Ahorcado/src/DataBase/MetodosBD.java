@@ -227,4 +227,7 @@ public class MetodosBD {
 		
 		return usuarioCargado;
 	}
+	
+	
+	
 }

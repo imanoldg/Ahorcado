@@ -23,6 +23,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import domain.Palabra;
 import io.CargarPalabras;
 
 public class Ventana1vs1 extends VentanaModoClasico {
@@ -37,8 +38,8 @@ public class Ventana1vs1 extends VentanaModoClasico {
 	public static JPanel panelAbecedarioIzquierda = panelAbecedario;
 	public static JPanel panelDerechaIzquierda = panelDerecha;
 
-	public static String palabraSeleccionadaDerecha = SeleccionarPalabra();
-	public static StringBuilder textoLabelDerecha = ocultarPalabra(palabraSeleccionadaDerecha);
+	public static Palabra palabraSeleccionadaDerecha = SeleccionarPalabra();
+	public static StringBuilder textoLabelDerecha = ocultarPalabra(palabraSeleccionadaDerecha.getPalabra());
 	public static List<Character> letrasPalabraDerecha = new ArrayList<>(añadirLetras());
 	public static JLabel palabraOcultaDerecha = new JLabel(textoLabelDerecha.toString());
 	public static JPanel panelArribaDerecha = new JPanel();
@@ -82,7 +83,7 @@ public class Ventana1vs1 extends VentanaModoClasico {
 
 			for (int j = 0; j < palabraSeleccionadaDerecha.length(); j++) {
 
-				if (boton.getText().charAt(0) == palabraSeleccionadaDerecha.charAt(j)) {
+				if (boton.getText().charAt(0) == palabraSeleccionadaDerecha.getPalabra().charAt(j)) {
 					textoLabelDerecha.replace(j, j + 1, boton.getText());
 					palabraOcultaDerecha.setText(textoLabelDerecha.toString());
 
@@ -91,7 +92,7 @@ public class Ventana1vs1 extends VentanaModoClasico {
 						boton.setEnabled(false);
 					}
 
-				} else if (palabraSeleccionadaDerecha.charAt(j) != boton.getText().charAt(0)
+				} else if (palabraSeleccionadaDerecha.getPalabra().charAt(j) != boton.getText().charAt(0)
 						&& boton.getBackground() != Color.GREEN) {
 					boton.setEnabled(false);
 					boton.setBackground(Color.RED);
@@ -158,7 +159,7 @@ public class Ventana1vs1 extends VentanaModoClasico {
 			
 			for (int j = 0; j < palabraSeleccionada.length(); j++) {
 
-				if (boton.getText().charAt(0) == palabraSeleccionada.charAt(j)) {
+				if (boton.getText().charAt(0) == palabraSeleccionada.getPalabra().charAt(j)) {
 					textoLabel.replace(j, j + 1, boton.getText());
 					palabraOculta.setText(textoLabel.toString());
 
@@ -167,7 +168,7 @@ public class Ventana1vs1 extends VentanaModoClasico {
 						boton.setEnabled(false);
 					}
 
-				} else if (palabraSeleccionada.charAt(j) != boton.getText().charAt(0)
+				} else if (palabraSeleccionada.getPalabra().charAt(j) != boton.getText().charAt(0)
 						&& boton.getBackground() != Color.GREEN) {
 					boton.setEnabled(false);
 					boton.setBackground(Color.RED);

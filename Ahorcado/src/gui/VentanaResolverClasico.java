@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import domain.Palabra.Dificultad;
+
 public class VentanaResolverClasico extends JFrame{
 	public static JTextField textoResolver = new JTextField(25);
 	public static JButton botonAceptar = new JButton("Aceptar");
@@ -29,8 +31,17 @@ public class VentanaResolverClasico extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (VentanaModoClasico.palabraSeleccionada.toUpperCase().equals(textoResolver.getText().toUpperCase())) {
+				if (VentanaModoClasico.palabraSeleccionada.getPalabra().toUpperCase().equals(textoResolver.getText().toUpperCase())) {
 					new VentanaHasGanadoClasico();
+					
+					if (VentanaModoClasico.palabraSeleccionada.getDificultad().equals(Dificultad.DIFICIL)) {
+						VentanaModoClasico.puntuacionClasico = VentanaModoClasico.puntuacionClasico + 50 + VentanaModoClasico.palabraSeleccionada.getPalabra().length();
+						VentanaModoClasico.usuarioJugando.setPuntuacionClasico(VentanaModoClasico.puntuacionClasico);
+					} else {
+						VentanaModoClasico.puntuacionClasico = VentanaModoClasico.puntuacionClasico + 25 + VentanaModoClasico.palabraSeleccionada.getPalabra().length();
+						VentanaModoClasico.usuarioJugando.setPuntuacionClasico(VentanaModoClasico.puntuacionClasico);
+					}
+					
 					dispose();
 				} else {
 					new VentanaHasPerdidoClasico();

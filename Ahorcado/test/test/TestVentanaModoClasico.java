@@ -12,7 +12,7 @@ public class TestVentanaModoClasico {
 
 	@Test
 	public void testSeleccionarPalabra() {
-		String palabraSeleccionada = VentanaModoClasico.SeleccionarPalabra();
+		String palabraSeleccionada = VentanaModoClasico.SeleccionarPalabra().getPalabra();
 
         assertNotNull(palabraSeleccionada);
         assertFalse(palabraSeleccionada.isEmpty());

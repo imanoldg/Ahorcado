@@ -23,8 +23,8 @@ public class VentanaHasGanado1vs1 extends VentanaHasGanadoClasico {
 		Ventana1vs1.panelDerechaIzquierda.removeAll();
 		Ventana1vs1.palabraSeleccionadaDerecha = Ventana1vs1.SeleccionarPalabra();
 		Ventana1vs1.palabraSeleccionada = Ventana1vs1.SeleccionarPalabra();
-		Ventana1vs1.textoLabelDerecha = Ventana1vs1.ocultarPalabra(Ventana1vs1.palabraSeleccionadaDerecha);
-		Ventana1vs1.textoLabel = Ventana1vs1.ocultarPalabra(Ventana1vs1.palabraSeleccionada);
+		Ventana1vs1.textoLabelDerecha = Ventana1vs1.ocultarPalabra(Ventana1vs1.palabraSeleccionadaDerecha.getPalabra());
+		Ventana1vs1.textoLabel = Ventana1vs1.ocultarPalabra(Ventana1vs1.palabraSeleccionada.getPalabra());
 		Ventana1vs1.letrasPalabraDerecha.clear();
 		Ventana1vs1.letrasPalabraDerecha.addAll(Ventana1vs1.añadirLetras());
 		Ventana1vs1.letrasPalabra.clear();

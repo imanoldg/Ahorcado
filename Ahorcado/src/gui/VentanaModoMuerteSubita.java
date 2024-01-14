@@ -22,6 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import domain.Usuario;
+import domain.Palabra.Dificultad;
 import gui.VentanaModoClasico.BotonActionListener;
 import io.CargarPalabras;
 
@@ -30,10 +31,11 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 	public static int adivinadas = 0;
 	public static JLabel adivinadasLabel = new JLabel("Palabras adivinadas: " + adivinadas);
 	
+	private int puntuacionSubita = usuarioJugando.getPuntuacionSubita();
 
 	public void ReiniciarJuego() {
 		palabraSeleccionada = SeleccionarPalabra();
-		textoLabel = ocultarPalabra(palabraSeleccionada);
+		textoLabel = ocultarPalabra(palabraSeleccionada.getPalabra());
 		letrasPalabra.clear();
 		letrasPalabra.addAll(añadirLetras());
 		palabraOculta.setText(textoLabel.toString());;
@@ -50,7 +52,7 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 
 			for (int j = 0; j < palabraSeleccionada.length(); j++) {
 
-				if (boton.getText().charAt(0) == palabraSeleccionada.charAt(j)) {
+				if (boton.getText().charAt(0) == palabraSeleccionada.getPalabra().charAt(j)) {
 					textoLabel.replace(j, j + 1, boton.getText());
 					palabraOculta.setText(textoLabel.toString());
 
@@ -59,7 +61,7 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 						boton.setEnabled(false);
 					}
 
-				} else if (palabraSeleccionada.charAt(j) != boton.getText().charAt(0)
+				} else if (palabraSeleccionada.getPalabra().charAt(j) != boton.getText().charAt(0)
 						&& boton.getBackground() != Color.GREEN) {
 					boton.setEnabled(false);
 					boton.setBackground(Color.RED);
@@ -91,6 +93,13 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 				ReiniciarJuego();
 				adivinadas++;
 				adivinadasLabel.setText("Palabras adivinadas: " + adivinadas);
+				
+				if (palabraSeleccionada.getDificultad().equals(Dificultad.DIFICIL)) {
+					puntuacionSubita = puntuacionSubita + 50 + palabraSeleccionada.getPalabra().length();
+				} else {
+					puntuacionSubita = puntuacionSubita + 25 + palabraSeleccionada.getPalabra().length();
+				}
+				
 			}
 			
 			if (hasPerdido()) {
@@ -99,6 +108,9 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 				errores.setText("ERRORES: " + contadorErrores);
 				adivinadas = 0;
 				adivinadasLabel.setText("Palabras adivinadas: " + adivinadas);
+				
+				usuarioJugando.setPuntuacionSubita(puntuacionSubita);
+				
 				dispose();
 			}
 			

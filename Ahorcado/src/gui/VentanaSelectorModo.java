@@ -32,7 +32,7 @@ public class VentanaSelectorModo extends JFrame{
 		VentanaModoClasico.panelIzquierda.removeAll();
 		VentanaModoClasico.panelDerecha.removeAll();
 		VentanaModoClasico.palabraSeleccionada = VentanaModoClasico.SeleccionarPalabra();
-		VentanaModoClasico.textoLabel = VentanaModoClasico.ocultarPalabra(VentanaModoClasico.palabraSeleccionada);
+		VentanaModoClasico.textoLabel = VentanaModoClasico.ocultarPalabra(VentanaModoClasico.palabraSeleccionada.getPalabra());
 		VentanaModoClasico.letrasPalabra.clear();
 		VentanaModoClasico.letrasPalabra.addAll(VentanaModoClasico.añadirLetras());
 		VentanaModoClasico.palabraOculta.setText(VentanaModoClasico.textoLabel.toString());
@@ -40,7 +40,7 @@ public class VentanaSelectorModo extends JFrame{
 	
 	private void ReiniciarSubita() {
 		VentanaModoMuerteSubita.palabraSeleccionada = VentanaModoMuerteSubita.SeleccionarPalabra();
-		VentanaModoMuerteSubita.textoLabel = VentanaModoMuerteSubita.ocultarPalabra(VentanaModoMuerteSubita.palabraSeleccionada);
+		VentanaModoMuerteSubita.textoLabel = VentanaModoMuerteSubita.ocultarPalabra(VentanaModoMuerteSubita.palabraSeleccionada.getPalabra());
 		VentanaModoMuerteSubita.letrasPalabra.clear();
 		VentanaModoMuerteSubita.letrasPalabra.addAll(VentanaModoMuerteSubita.añadirLetras());
 		VentanaModoMuerteSubita.palabraOculta.setText(VentanaModoMuerteSubita.textoLabel.toString());
@@ -57,7 +57,7 @@ public class VentanaSelectorModo extends JFrame{
 		VentanaModoContrarreloj.panelIzquierda.removeAll();
 		VentanaModoContrarreloj.panelDerecha.removeAll();
 		VentanaModoContrarreloj.palabraSeleccionada = VentanaModoContrarreloj.SeleccionarPalabra();
-		VentanaModoContrarreloj.textoLabel = VentanaModoContrarreloj.ocultarPalabra(VentanaModoContrarreloj.palabraSeleccionada);
+		VentanaModoContrarreloj.textoLabel = VentanaModoContrarreloj.ocultarPalabra(VentanaModoContrarreloj.palabraSeleccionada.getPalabra());
 		VentanaModoContrarreloj.letrasPalabra.clear();
 		VentanaModoContrarreloj.letrasPalabra.addAll(VentanaModoContrarreloj.añadirLetras());
 		VentanaModoContrarreloj.palabraOculta.setText(VentanaModoContrarreloj.textoLabel.toString());
@@ -76,8 +76,8 @@ public class VentanaSelectorModo extends JFrame{
 		Ventana1vs1.panelDerechaIzquierda.removeAll();
 		Ventana1vs1.palabraSeleccionadaDerecha = Ventana1vs1.SeleccionarPalabra();
 		Ventana1vs1.palabraSeleccionada = Ventana1vs1.SeleccionarPalabra();
-		Ventana1vs1.textoLabelDerecha = Ventana1vs1.ocultarPalabra(Ventana1vs1.palabraSeleccionadaDerecha);
-		Ventana1vs1.textoLabel = Ventana1vs1.ocultarPalabra(Ventana1vs1.palabraSeleccionada);
+		Ventana1vs1.textoLabelDerecha = Ventana1vs1.ocultarPalabra(Ventana1vs1.palabraSeleccionadaDerecha.getPalabra());
+		Ventana1vs1.textoLabel = Ventana1vs1.ocultarPalabra(Ventana1vs1.palabraSeleccionada.getPalabra());
 		Ventana1vs1.letrasPalabraDerecha.clear();
 		Ventana1vs1.letrasPalabraDerecha.addAll(Ventana1vs1.añadirLetras());
 		Ventana1vs1.letrasPalabra.clear();

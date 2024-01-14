@@ -31,7 +31,7 @@ public class VentanaHasPerdidoClasico extends JFrame{
 		VentanaModoClasico.panelIzquierda.removeAll();
 		VentanaModoClasico.panelDerecha.removeAll();
 		VentanaModoClasico.palabraSeleccionada = VentanaModoClasico.SeleccionarPalabra();
-		VentanaModoClasico.textoLabel = VentanaModoClasico.ocultarPalabra(VentanaModoClasico.palabraSeleccionada);
+		VentanaModoClasico.textoLabel = VentanaModoClasico.ocultarPalabra(VentanaModoClasico.palabraSeleccionada.getPalabra());
 		VentanaModoClasico.letrasPalabra.clear();
 		VentanaModoClasico.letrasPalabra.addAll(VentanaModoClasico.añadirLetras());
 		VentanaModoClasico.palabraOculta.setText(VentanaModoClasico.textoLabel.toString());;

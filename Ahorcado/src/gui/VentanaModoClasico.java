@@ -24,12 +24,15 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import domain.Palabra;
+import domain.Palabra.Dificultad;
 import domain.Usuario;
 import io.CargarPalabras;
 
 public class VentanaModoClasico extends JFrame {
 
 	public static Usuario usuarioJugando = VentanaUsuarios.usuarioJugando;
+	
+	public static int puntuacionClasico = usuarioJugando.getPuntuacionClasico();
 	
 	protected  ImageIcon Ahorcado_STAGE0 = new ImageIcon("resources/images/Hangman_Picture_STAGE0.png");
 	protected  ImageIcon Ahorcado_STAGE1 = new ImageIcon("resources/images/Hangman_Picture_STAGE1.png");
@@ -44,8 +47,8 @@ public class VentanaModoClasico extends JFrame {
 	protected static int contadorErrores = 0;
 	protected static JButton botonPalabraNueva = new JButton("  Palabra Nueva  ");
 	protected static JButton botonResolver = new JButton("  Resolver  ");
-	protected static String palabraSeleccionada = SeleccionarPalabra();
-	protected static StringBuilder textoLabel = ocultarPalabra(palabraSeleccionada);
+	protected static Palabra palabraSeleccionada = SeleccionarPalabra();
+	protected static StringBuilder textoLabel = ocultarPalabra(palabraSeleccionada.getPalabra());
 	protected static List<Character> letrasPalabra = new ArrayList<>(añadirLetras());
 	protected static JLabel palabraOculta = new JLabel(textoLabel.toString());
 	protected static JLabel errores = new JLabel("ERRORES: " + contadorErrores);
@@ -68,22 +71,24 @@ public class VentanaModoClasico extends JFrame {
 	protected static JMenuItem ranking = new JMenu("Ranking");
 	protected static JMenuItem instrucciones = new JMenu("Instrucciones");
 
-	public static String SeleccionarPalabra() {
+	public static Palabra SeleccionarPalabra() {
 		List<Palabra> listaPalabras = CargarPalabras.cargarPalabras("resources/data/palabras.csv");
 
 		Random aleatorio = new Random();
 		int numeroAleatorio = aleatorio.nextInt(listaPalabras.size());
 
 		String palabra = listaPalabras.get(numeroAleatorio).getPalabra().toUpperCase();
+		
+		Palabra seleccion = new Palabra(palabra, listaPalabras.get(numeroAleatorio).getDificultad());
 
-		return palabra;
+		return seleccion;
 	}
 
 	public static List<Character> añadirLetras() {
 		List<Character> lista = new ArrayList<>();
 
 		for (int i = 0; i < palabraSeleccionada.length(); i++) {
-			char letra = palabraSeleccionada.charAt(i);
+			char letra = palabraSeleccionada.getPalabra().charAt(i);
 			lista.add(letra);
 		}
 
@@ -125,7 +130,7 @@ public class VentanaModoClasico extends JFrame {
 	}
 
 	public static boolean hasGanado() {
-		if (palabraOculta.getText().equals(palabraSeleccionada)) {
+		if (palabraOculta.getText().equals(palabraSeleccionada.getPalabra())) {
 			return true;
 		}
 
@@ -146,7 +151,7 @@ public class VentanaModoClasico extends JFrame {
 
 			for (int j = 0; j < palabraSeleccionada.length(); j++) {
 
-				if (boton.getText().charAt(0) == palabraSeleccionada.charAt(j)) {
+				if (boton.getText().charAt(0) == palabraSeleccionada.getPalabra().charAt(j)) {
 					textoLabel.replace(j, j + 1, boton.getText());
 					palabraOculta.setText(textoLabel.toString());
 
@@ -155,7 +160,7 @@ public class VentanaModoClasico extends JFrame {
 						boton.setEnabled(false);
 					}
 
-				} else if (palabraSeleccionada.charAt(j) != boton.getText().charAt(0)
+				} else if (palabraSeleccionada.getPalabra().charAt(j) != boton.getText().charAt(0)
 						&& boton.getBackground() != Color.GREEN) {
 					boton.setEnabled(false);
 					boton.setBackground(Color.RED);
@@ -187,6 +192,15 @@ public class VentanaModoClasico extends JFrame {
 				new VentanaHasGanadoClasico();
 				contadorErrores = 0;
 				errores.setText("ERRORES: " + contadorErrores);
+
+				if (palabraSeleccionada.getDificultad().equals(Dificultad.DIFICIL)) {
+					puntuacionClasico = puntuacionClasico + 50 + palabraSeleccionada.getPalabra().length();
+					usuarioJugando.setPuntuacionClasico(puntuacionClasico);
+				} else {
+					puntuacionClasico = puntuacionClasico + 25 + palabraSeleccionada.getPalabra().length();
+					usuarioJugando.setPuntuacionClasico(puntuacionClasico);
+				}
+				
 				dispose();
 			}
 
@@ -271,7 +285,7 @@ public class VentanaModoClasico extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				palabraSeleccionada = SeleccionarPalabra();
-				textoLabel = ocultarPalabra(palabraSeleccionada);
+				textoLabel = ocultarPalabra(palabraSeleccionada.getPalabra());
 				letrasPalabra.clear();
 				letrasPalabra.addAll(añadirLetras());
 				palabraOculta.setText(textoLabel.toString());
