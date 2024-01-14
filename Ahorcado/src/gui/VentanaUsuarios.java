@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import DataBase.MetodosBD;
+import domain.Usuario;
 
 public class VentanaUsuarios extends JFrame{
 	
@@ -29,6 +30,8 @@ public class VentanaUsuarios extends JFrame{
 	private JButton singIn;
 	private JButton singUp;
 	private JButton gestionarUsuario;
+	
+	public static Usuario usuarioJugando;
 	
 	
 	public VentanaUsuarios(){
@@ -99,6 +102,8 @@ public class VentanaUsuarios extends JFrame{
 					VentanaSelectorModo v = new VentanaSelectorModo();	
 					v.setVisible(true);
 					dispose();
+					
+					usuarioJugando = metodos.cargarUsuario(user.getText(), password.getText());
 					
 				}else {
 					vError.setVisible(true);

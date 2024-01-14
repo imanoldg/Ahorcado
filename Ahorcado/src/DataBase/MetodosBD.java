@@ -3,11 +3,14 @@ package DataBase;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Logger;
 
+import domain.Usuario;
 import io.LoggerReg;
 
-// he aprendido ha guardar usuarios en la base de datos gracias a unos videos de YT: https://www.youtube.com/watch?v=V2-1AEHfLlk&ab_channel=GoCodex
+// he aprendido a guardar usuarios en la base de datos gracias a unos videos de YT: https://www.youtube.com/watch?v=V2-1AEHfLlk&ab_channel=GoCodex
 
 public class MetodosBD {
 	
@@ -19,7 +22,7 @@ public class MetodosBD {
 	public static String sql;
 	public static int resultadoNumero = 0;
 	
-	public int guardar(int cod, String nombre, String password, int puntuacion) {
+	public int guardar(int cod, String nombre, String password, int puntuacionClasica, int puntuacionContrarreloj, int puntuacionSubita) {
 		int resultado = 0;
 		Connection conexion = null;
 		
@@ -27,7 +30,7 @@ public class MetodosBD {
 		        return resultado;
 		    }
 		
-		String sentenciaGuardar = ("INSERT INTO Usuario (cod, nombre, contraseña, puntuación) VALUES(?, ?, ?, ?)");
+		String sentenciaGuardar = ("INSERT INTO Usuario (cod, nombre, contraseña, puntuaciónClasico, puntuacionContrarreloj, puntuacionSubita) VALUES(?, ?, ?, ?, ?, ?)");
 		
 		try {
 			conexion = ConnectDB.conectar();
@@ -35,7 +38,9 @@ public class MetodosBD {
 			ps.setInt(1, cod);
 			ps.setString(2, nombre);
 			ps.setString(3, password);
-			ps.setInt(4, puntuacion);
+			ps.setInt(4, puntuacionClasica);
+			ps.setInt(5, puntuacionContrarreloj);
+			ps.setInt(6, puntuacionSubita);
 			
 			resultado = ps.executeUpdate();
 			
@@ -206,5 +211,20 @@ public class MetodosBD {
 		return busquedaUsuario;
 	}
 	
-	
+	public Usuario cargarUsuario(String usuario, String contra) {
+		Connection con = ConnectDB.conectar();
+		Usuario usuarioCargado = null;
+		
+		try (Statement st = con.createStatement()){
+			ResultSet rs = st.executeQuery(String.format("SELECT * FROM usuario WHERE nombre = '%s' AND contraseña = '%s'", usuarioCargado, contra));
+			usuarioCargado = new Usuario(rs.getInt("cod"), rs.getString("nombre"), rs.getString("contraseña"), rs.getInt("puntuacionClasico"), 
+					rs.getInt("puntaucionContrarreloj"), rs.getInt("puntuacionSubita"));
+			
+			log.info("Usuario cargado correctamente");
+		} catch (SQLException e) {
+			log.warning(String.format("Error intentando cargar el usuario %s : %s", usuario, e.getMessage()));
+		}
+		
+		return usuarioCargado;
+	}
 }

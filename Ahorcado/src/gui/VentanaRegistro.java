@@ -92,7 +92,7 @@ public class VentanaRegistro extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				int i = metodos.guardar(MetodosBD.generarNuevoCod(MetodosBD.generarCod()), textoUser.getText(), textoPassword1.getText(), 0);
+				int i = metodos.guardar(MetodosBD.generarNuevoCod(MetodosBD.generarCod()), textoUser.getText(), textoPassword1.getText(), 0, 0, 0);
 				
 				if (i > 0) {
 					JOptionPane.showMessageDialog(VentanaRegistro.this, "se ha guardado correctamente");

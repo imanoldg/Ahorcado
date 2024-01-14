@@ -24,10 +24,13 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import domain.Palabra;
+import domain.Usuario;
 import io.CargarPalabras;
 
 public class VentanaModoClasico extends JFrame {
 
+	public static Usuario usuarioJugando = VentanaUsuarios.usuarioJugando;
+	
 	protected  ImageIcon Ahorcado_STAGE0 = new ImageIcon("resources/images/Hangman_Picture_STAGE0.png");
 	protected  ImageIcon Ahorcado_STAGE1 = new ImageIcon("resources/images/Hangman_Picture_STAGE1.png");
 	protected  ImageIcon Ahorcado_STAGE2 = new ImageIcon("resources/images/Hangman_Picture_STAGE2.png");
@@ -185,7 +188,6 @@ public class VentanaModoClasico extends JFrame {
 				contadorErrores = 0;
 				errores.setText("ERRORES: " + contadorErrores);
 				dispose();
-
 			}
 
 			if (hasPerdido()) {
