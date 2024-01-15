@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import DataBase.MetodosBD;
 import io.LoggerReg;
 
 public class VentanaHasGanadoClasico extends JFrame {
@@ -49,7 +49,6 @@ public class VentanaHasGanadoClasico extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				
 			}
 		});
 		

@@ -14,6 +14,7 @@ public class ConnectDB {
 	private static Logger log = LoggerReg.ejecutarLogger();
 	public static String url = "jdbc:sqlite:resources/db/Usuarios.db";
 	public static String fn = "org.sqlite.JDBC";
+	
 	public static Connection conectar() {
 		Connection conexion = null;
 		

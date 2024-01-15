@@ -30,7 +30,6 @@ public class VentanaUsuarios extends JFrame{
 	private JButton singUp;
 	private JButton gestionarUsuario;
 	
-	public static Map<String, Usuario> mapaUsuario;
 	public static Usuario usuarioJugando;
 	
 	
@@ -87,6 +86,7 @@ public class VentanaUsuarios extends JFrame{
 		
 		singIn.addActionListener(new ActionListener() {
 			
+			@SuppressWarnings("deprecation")
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
@@ -103,8 +103,7 @@ public class VentanaUsuarios extends JFrame{
 					v.setVisible(true);
 					dispose();
 					
-					mapaUsuario = metodos.cargarUsuario(user.getText(), password.getText());
-					usuarioJugando = (Usuario) mapaUsuario.values();
+					usuarioJugando = metodos.cargarUsuario(user.getText(), password.getText());
 					
 				}else {
 					vError.setVisible(true);

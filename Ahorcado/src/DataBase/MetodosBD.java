@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import domain.Usuario;
+import gui.VentanaUsuarios;
 import io.LoggerReg;
 
 // he aprendido a guardar usuarios en la base de datos gracias a unos videos de YT: https://www.youtube.com/watch?v=V2-1AEHfLlk&ab_channel=GoCodex
@@ -32,7 +33,7 @@ public class MetodosBD {
 		        return resultado;
 		    }
 		
-		String sentenciaGuardar = ("INSERT INTO Usuario (cod, nombre, contraseña, puntuaciónClasico, puntuacionContrarreloj, puntuacionSubita) VALUES(?, ?, ?, ?, ?, ?)");
+		String sentenciaGuardar = ("INSERT INTO Usuario (cod, nombre, contraseña, puntuaciónClasico, puntuacionContrarreloj, puntuacionSubita) VALUES(?, ?, ?, ?, ?, ?) ;");
 		
 		try {
 			conexion = ConnectDB.conectar();
@@ -45,10 +46,11 @@ public class MetodosBD {
 			ps.setInt(6, puntuacionSubita);
 			
 			resultado = ps.executeUpdate();
+			conexion.close();
 			
 			log.info("Usuario guardado correctamente");
 		} catch (Exception e) {
-			log.warning(String.format("%s   ->  Error guardando el usuario: %s", nombre, e.getMessage()));
+			log.warning(String.format("%s   ->  Error guardando el usuario: %s ", nombre, e.getMessage()));
 		}
 		
 		return resultado;
@@ -58,7 +60,7 @@ public class MetodosBD {
 		int usuarioBorrado = 0;
 		Connection conexion = null;
 		
-		String consulta = ("DELETE FROM Usuario WHERE nombre = ?");
+		String consulta = ("DELETE FROM Usuario WHERE nombre = ? ;");
 	
 		try {
 			conexion = ConnectDB.conectar();
@@ -67,6 +69,7 @@ public class MetodosBD {
 			
 			usuarioBorrado = ps.executeUpdate();
 			ps.close();
+			conexion.close();
 			
 			log.info("Usuario borrado");
 			
@@ -96,15 +99,16 @@ public class MetodosBD {
 		
 		try {
 			conexion = ConnectDB.conectar();
-			String consulta = ("SELECT cod FROM Usuario WHERE cod = '" + randomCod + "'");
+			String consulta = ("SELECT cod FROM Usuario WHERE cod = '" + randomCod + "' ;");
 			ps = conexion.prepareStatement(consulta);
 			ps.setInt(1, randomCod);
 			resultado = ps.executeQuery();
 			
+			ps.close();
 			conexion.close();
 			log.info("Codigo aleatorio generado");
 		} catch (Exception e) {
-			log.warning(String.format("Error intenando generar codigo aleatorio: %s", e.getMessage()));;
+			log.warning(String.format("Error intenando generar codigo aleatorio: %s ;", e.getMessage()));;
 		}
 		
 		return randomCod;
@@ -116,11 +120,12 @@ public class MetodosBD {
 		
 		try {
 			conexion = ConnectDB.conectar();
-			String consulta = "SELECT cod FROM Usuario WHERE cod = ?";
+			String consulta = "SELECT cod FROM Usuario WHERE cod = ? ;";
 			ps = conexion.prepareStatement(consulta);
 			ps.setInt(1, codigo);
 			resultado = ps.executeQuery();
 			
+			ps.close();
 			conexion.close();
 			
 			log.info("Codigo encontrado con exito");
@@ -128,7 +133,7 @@ public class MetodosBD {
 			return resultado.next();
 			
 		} catch (Exception e) {
-			log.warning(String.format("%s : Error encontrando el codigo: %s", codigo + "", e.getMessage()));
+			log.warning(String.format("%s : Error encontrando el codigo: %s", codigo + " ;", e.getMessage()));
 			return false;
 		}
 		
@@ -141,11 +146,12 @@ public class MetodosBD {
 		
 		try {
 			conexion = ConnectDB.conectar();
-			String consulta = "SELECT nombre FROM Usuario WHERE nombre = ?";
+			String consulta = "SELECT nombre FROM Usuario WHERE nombre = ? ;";
 			ps = conexion.prepareStatement(consulta);
 			ps.setString(1, nombre);
 			resultado = ps.executeQuery();
 			
+			ps.close();
 			conexion.close();
 			
 			log.info("Nombre encontrado con exito");
@@ -164,7 +170,7 @@ public class MetodosBD {
 		
 		try {
 			conn = ConnectDB.conectar();
-			String buscar = ("SELECT nombre, contraseña FROM Usuario WHERE nombre = '" + nombre + "'");
+			String buscar = ("SELECT nombre, contraseña FROM Usuario WHERE nombre = '" + nombre + "' ;");
 			ps = conn.prepareStatement(buscar);
 			resultado = ps.executeQuery();
 			
@@ -173,6 +179,7 @@ public class MetodosBD {
 				String pass = resultado.getString("contraseña");
 				usuarioBusqueda = (nombre1);
 
+				ps.close();
 				conn.close();
 			}
 			
@@ -192,7 +199,7 @@ public class MetodosBD {
 		
 		try {
 			conexion = ConnectDB.conectar(); 
-			String sentenciaBuscarUsuario = ("SELECT nombre, contraseña FROM Usuario WHERE nombre = '" + usuario + "' AND contraseña = '" + pass + "'");
+			String sentenciaBuscarUsuario = ("SELECT nombre, contraseña FROM Usuario WHERE nombre = '" + usuario + "' AND contraseña = '" + pass + "' ;");
 			ps = conexion.prepareStatement(sentenciaBuscarUsuario);
 			
 			resultado = ps.executeQuery();
@@ -204,6 +211,7 @@ public class MetodosBD {
 			
 			log.info("Usuario registrado encontrado con exito");
 			
+			ps.close();
 			conexion.close();
 		} catch (Exception e) {
 			log.warning(String.format("Error buscando al usuario registrado '%s' : %s", usuario, e.getMessage()));
@@ -213,27 +221,45 @@ public class MetodosBD {
 		return busquedaUsuario;
 	}
 	
-	public Map<String, Usuario> cargarUsuario(String usuario, String contra) {
+	public Usuario cargarUsuario(String usuario, String contra) {
 		
-		Map<String, Usuario> result = new HashMap<>();
 		Connection con = ConnectDB.conectar();
 		Usuario usuarioCargado = null;
 		
 		try (Statement st = con.createStatement()){
-			ResultSet rs = st.executeQuery(String.format("SELECT * FROM usuario WHERE nombre = '%s' AND contraseña = '%s'", usuarioCargado, contra));
+			ResultSet rs = st.executeQuery(String.format("SELECT * FROM usuario WHERE nombre = '%s' AND contraseña = '%s' ;", usuarioCargado, contra));
 			usuarioCargado = new Usuario(rs.getInt("cod"), rs.getString("nombre"), rs.getString("contraseña"), rs.getInt("puntuacionClasico"), 
-					rs.getInt("puntaucionContrarreloj"), rs.getInt("puntuacionSubita"));
+					rs.getInt("puntuacionContrarreloj"), rs.getInt("puntuacionSubita"));
 			
-			result.put(rs.getString("cod"), usuarioCargado);
 			
-			log.info("Usuario cargado correctamente");
+			rs.close();
+			st.close();
+			con.close();
+			
+			
 		} catch (SQLException e) {
 			log.warning(String.format("Error intentando cargar el usuario %s : %s", usuario, e.getMessage()));
 		}
 		
-		return result;
+		log.info("Usuario cargado correctamente");
+		
+		return usuarioCargado;
 	}
 	
-	
+	public void actualizarPuntuacion(Usuario u) {
+		Connection con = ConnectDB.conectar();
+		
+		try (Statement st = con.createStatement()){
+			st.executeUpdate(String.format("UPDATE usuario SET puntuacionClasico = %d, puntuacionContrarreloj = %d, puntuacionSubita = %d WHERE cod = %d ;", 
+					u.getPuntuacionClasico(), u.getPuntuacionContrarreloj(), u.getPuntuacionSubita(), u.getCod()));
+			
+			log.info("Puntuacion actualizada con exito");
+			
+			st.close();
+			con.close();
+		} catch (SQLException e) {
+			log.warning(String.format("Error actualizando las puntuaciones: %s", e.getMessage()));
+		}
+	}
 	
 }

@@ -31,7 +31,7 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 	public static int adivinadas = 0;
 	public static JLabel adivinadasLabel = new JLabel("Palabras adivinadas: " + adivinadas);
 	
-	private int puntuacionSubita = usuarioJugando.getPuntuacionSubita();
+	private int puntuacionSubita = 0;
 
 	public void ReiniciarJuego() {
 		palabraSeleccionada = SeleccionarPalabra();
@@ -94,11 +94,7 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 				adivinadas++;
 				adivinadasLabel.setText("Palabras adivinadas: " + adivinadas);
 				
-				if (palabraSeleccionada.getDificultad().equals(Dificultad.DIFICIL)) {
-					puntuacionSubita = puntuacionSubita + 50 + palabraSeleccionada.getPalabra().length();
-				} else {
-					puntuacionSubita = puntuacionSubita + 25 + palabraSeleccionada.getPalabra().length();
-				}
+				puntuacionSubita++;
 				
 			}
 			
@@ -109,7 +105,10 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 				adivinadas = 0;
 				adivinadasLabel.setText("Palabras adivinadas: " + adivinadas);
 				
-				usuarioJugando.setPuntuacionSubita(puntuacionSubita);
+				if(puntuacionSubita > usuarioJugando.getPuntuacionSubita()) {
+					usuarioJugando.setPuntuacionSubita(puntuacionSubita);
+					metodos.actualizarPuntuacion(usuarioJugando);
+				}
 				
 				dispose();
 			}

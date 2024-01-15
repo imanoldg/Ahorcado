@@ -23,6 +23,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import DataBase.MetodosBD;
 import domain.Palabra;
 import domain.Palabra.Dificultad;
 import domain.Usuario;
@@ -30,6 +31,8 @@ import io.CargarPalabras;
 
 public class VentanaModoClasico extends JFrame {
 
+	public MetodosBD metodos = new MetodosBD();
+	
 	public static Usuario usuarioJugando = VentanaUsuarios.usuarioJugando;
 	
 	public static int puntuacionClasico = usuarioJugando.getPuntuacionClasico();
@@ -190,13 +193,18 @@ public class VentanaModoClasico extends JFrame {
 				new VentanaHasGanadoClasico();
 				contadorErrores = 0;
 				errores.setText("ERRORES: " + contadorErrores);
-
+				
+				
 				if (palabraSeleccionada.getDificultad().equals(Dificultad.DIFICIL)) {
 					puntuacionClasico = puntuacionClasico + 50 + palabraSeleccionada.getPalabra().length();
+					System.out.println(puntuacionClasico);
 					usuarioJugando.setPuntuacionClasico(puntuacionClasico);
+					metodos.actualizarPuntuacion(usuarioJugando);
 				} else {
 					puntuacionClasico = puntuacionClasico + 25 + palabraSeleccionada.getPalabra().length();
+					System.out.println(puntuacionClasico);
 					usuarioJugando.setPuntuacionClasico(puntuacionClasico);
+					metodos.actualizarPuntuacion(usuarioJugando);
 				}
 				
 				dispose();
@@ -314,11 +322,14 @@ public class VentanaModoClasico extends JFrame {
 		this.setVisible(true);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
+		
+		System.out.println(letrasPalabra);
+		System.out.println(puntuacionClasico);
 	}
 
 	public static void main(String[] args) throws FileNotFoundException {
 		new VentanaModoClasico();
-		System.out.println(letrasPalabra);
+		
 	}
 
 }
