@@ -5,12 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 import domain.Usuario;
-import gui.VentanaUsuarios;
 import io.LoggerReg;
 
 // he aprendido a guardar usuarios en la base de datos gracias a unos videos de YT: https://www.youtube.com/watch?v=V2-1AEHfLlk&ab_channel=GoCodex
@@ -268,10 +267,10 @@ public class MetodosBD {
 	
 	
 	//OBTIENE TODOS LOS USUARIOS DE LA BASE DE DATOS
-	public Map<Integer, Usuario> obtenerListaUsuarios(){
+	public List<Usuario> obtenerListaUsuarios(){
 		Connection con = ConnectDB.conectar();
 		
-		Map<Integer, Usuario> mapaUsuarios = new HashMap<>();
+		List<Usuario> usuarios = new ArrayList<>();
 		
 		try (Statement st = con.createStatement()){
 			ResultSet rs = st.executeQuery("SELECT * FROM usuario");
@@ -288,16 +287,14 @@ public class MetodosBD {
 				
 				usuario = new Usuario(cod, nombre, contra, puntuacionClasico, puntuacionContrarreloj, puntuacionSubita);
 				
-				if(!mapaUsuarios.containsKey(cod)) {
-					mapaUsuarios.put(cod, usuario);
-				}
+				usuarios.add(usuario);
 			}
 			
 		} catch (SQLException e) {
 			log.warning(String.format("Error al cargar la lista de usuarios: %s", e.getMessage()));;
 		}
 		
-		return mapaUsuarios;
+		return usuarios;
 	}
 	
 	//ACTUALIZA LAS PUNTUACIONES DE LA BASE DE DATOS
