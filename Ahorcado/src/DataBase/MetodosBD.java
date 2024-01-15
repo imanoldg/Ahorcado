@@ -26,6 +26,7 @@ public class MetodosBD {
 	public static int resultadoNumero = 0;
 
 	
+	//GUARDA UN USUARIO EN LA BASE DE DATOS
 	public int guardar(int cod, String nombre, String password, int puntuacionClasica, int puntuacionContrarreloj, int puntuacionSubita) {
 		int resultado = 0;
 		Connection conexion = null;
@@ -57,6 +58,7 @@ public class MetodosBD {
 		return resultado;
 	}
 	
+	//BORRA UN USUARIO DE LA BASE DE DATOS
 	public static int borrarUsuario(String usuario) {
 		int usuarioBorrado = 0;
 		Connection conexion = null;
@@ -82,6 +84,7 @@ public class MetodosBD {
 		
 	}
 	
+	//GENERA UN CODIGO ALEATORIO PARA GUARDAR UN USUARIO EN LA BASE DE DATOS
 	public static int generarCod() {
 		double numero = Math.random() * 9000;
 		return (int) numero;
@@ -116,6 +119,7 @@ public class MetodosBD {
 	}
 	
 	
+	//COMPRUEBA SI EL CODIGO INTRODUCIDO EXISTE EN LA BASE DE DATOS, SI ES ASI DEVUELVE FALSE
 	public static boolean existeCod(int codigo) {
 		Connection conexion = null;
 		
@@ -142,6 +146,7 @@ public class MetodosBD {
 	
 	
 	
+	//COMPRUEBA SI EL NOMBRE INTRODUCIDO EXISTE EN LA BASE DE DATOS, SI ES ASI DEVUELVE FALSE
 	public boolean existeNombre(String nombre) {
 		Connection conexion = null;
 		
@@ -165,6 +170,7 @@ public class MetodosBD {
 		
 	}
 	
+	//BUSCA UN USUARIO EN LA BASE DE DATOS Y DEVUELVE EL NOMBRE
 	public static String buscarUsuario(String nombre) {
 		String usuarioBusqueda = null;
 		Connection conn = null;
@@ -194,6 +200,7 @@ public class MetodosBD {
 		return usuarioBusqueda;
 	}
 	
+	//BUSCA SI UN USUARIO 
 	public static String registeredUser(String usuario, String pass) {
 		String busquedaUsuario = null;
 		Connection conexion = null;
@@ -222,6 +229,8 @@ public class MetodosBD {
 		return busquedaUsuario;
 	}
 	
+	
+	//OBTIENE EL USUARIO CON EL NOMBRE INTRODUCIDO
 	public Usuario obtenerUsuario(String usuario) {
 		
 		Connection con = ConnectDB.conectar();
@@ -258,6 +267,7 @@ public class MetodosBD {
 	}
 	
 	
+	//OBTIENE TODOS LOS USUARIOS DE LA BASE DE DATOS
 	public Map<Integer, Usuario> obtenerListaUsuarios(){
 		Connection con = ConnectDB.conectar();
 		
@@ -290,6 +300,7 @@ public class MetodosBD {
 		return mapaUsuarios;
 	}
 	
+	//ACTUALIZA LAS PUNTUACIONES DE LA BASE DE DATOS
 	public void actualizarPuntuacion(Usuario u) {
 		
 		
