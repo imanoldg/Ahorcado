@@ -42,9 +42,9 @@ public class TestMetodosBD {
 	
 	@Test
 	public void testCargarUsuarios() {
-		assertEquals("imanol", metodos.cargarUsuario("imanol").getNombre());
-		assertEquals("prueba", metodos.cargarUsuario("imanol").getContraseña());
-		assertEquals(0, metodos.cargarUsuario("imanol").getPuntuacionClasico());
+		assertEquals("imanol", metodos.obtenerUsuario("imanol").getNombre());
+		assertEquals("prueba", metodos.obtenerUsuario("imanol").getContraseña());
+		assertEquals(0, metodos.obtenerUsuario("imanol").getPuntuacionClasico());
 	}
 	
 	

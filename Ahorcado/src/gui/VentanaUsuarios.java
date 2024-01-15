@@ -103,7 +103,7 @@ public class VentanaUsuarios extends JFrame{
 					v.setVisible(true);
 					dispose();
 					
-					usuarioJugando = metodos.cargarUsuario(user.getText());
+					usuarioJugando = metodos.obtenerUsuario(user.getText());
 					
 				}else {
 					vError.setVisible(true);

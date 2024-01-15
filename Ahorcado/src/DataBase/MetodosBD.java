@@ -222,7 +222,7 @@ public class MetodosBD {
 		return busquedaUsuario;
 	}
 	
-	public Usuario cargarUsuario(String usuario) {
+	public Usuario obtenerUsuario(String usuario) {
 		
 		Connection con = ConnectDB.conectar();
 		
@@ -244,9 +244,6 @@ public class MetodosBD {
 				System.out.println("Usuario no encontrado");;
 			}
 			
-			
-			
-			
 			rs.close();
 			st.close();
 			con.close();
@@ -260,6 +257,38 @@ public class MetodosBD {
 		
 	}
 	
+	
+	public Map<Integer, Usuario> obtenerListaUsuarios(){
+		Connection con = ConnectDB.conectar();
+		
+		Map<Integer, Usuario> mapaUsuarios = new HashMap<>();
+		
+		try (Statement st = con.createStatement()){
+			ResultSet rs = st.executeQuery("SELECT * FROM usuario");
+			
+			Usuario usuario = null;
+			
+			while(rs.next()) {
+				int cod = rs.getInt("cod");
+				String nombre = rs.getString("nombre");
+				String contra = rs.getString("contraseña");
+				int puntuacionClasico = rs.getInt("puntuacionClasico");
+				int puntuacionContrarreloj = rs.getInt("puntuacionContrarreloj");
+				int puntuacionSubita = rs.getInt("puntuacionSubita");
+				
+				usuario = new Usuario(cod, nombre, contra, puntuacionClasico, puntuacionContrarreloj, puntuacionSubita);
+				
+				if(!mapaUsuarios.containsKey(cod)) {
+					mapaUsuarios.put(cod, usuario);
+				}
+			}
+			
+		} catch (SQLException e) {
+			log.warning(String.format("Error al cargar la lista de usuarios: %s", e.getMessage()));;
+		}
+		
+		return mapaUsuarios;
+	}
 	
 	public void actualizarPuntuacion(Usuario u) {
 		
