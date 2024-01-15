@@ -24,6 +24,7 @@ public class MetodosBD {
 	public static ResultSet resultado;
 	public static String sql;
 	public static int resultadoNumero = 0;
+
 	
 	public int guardar(int cod, String nombre, String password, int puntuacionClasica, int puntuacionContrarreloj, int puntuacionSubita) {
 		int resultado = 0;
@@ -141,7 +142,7 @@ public class MetodosBD {
 	
 	
 	
-	private boolean existeNombre(String nombre) {
+	public boolean existeNombre(String nombre) {
 		Connection conexion = null;
 		
 		try {
@@ -221,42 +222,59 @@ public class MetodosBD {
 		return busquedaUsuario;
 	}
 	
-	public Usuario cargarUsuario(String usuario, String contra) {
+	public Usuario cargarUsuario(String usuario) {
 		
 		Connection con = ConnectDB.conectar();
-		Usuario usuarioCargado = null;
 		
 		try (Statement st = con.createStatement()){
-			ResultSet rs = st.executeQuery(String.format("SELECT * FROM usuario WHERE nombre = '%s' AND contraseña = '%s' ;", usuarioCargado, contra));
-			usuarioCargado = new Usuario(rs.getInt("cod"), rs.getString("nombre"), rs.getString("contraseña"), rs.getInt("puntuacionClasico"), 
-					rs.getInt("puntuacionContrarreloj"), rs.getInt("puntuacionSubita"));
+			Usuario usuarioCargado = null;
+			ResultSet rs = st.executeQuery(String.format("SELECT * FROM usuario WHERE nombre = '%s' ;", usuario));
+			
+			
+			if(rs.next()) {
+				int cod = rs.getInt("cod");
+				String nombre = rs.getString("nombre");
+				String contra = rs.getString("contraseña");
+				int puntuacionClasico = rs.getInt("puntuacionClasico");
+				int puntuacionContrarreloj = rs.getInt("puntuacionContrarreloj");
+				int puntuacionSubita = rs.getInt("puntuacionSubita");
+				
+				usuarioCargado = new Usuario(cod, nombre, contra, puntuacionClasico, puntuacionContrarreloj, puntuacionSubita);
+			} else {
+				System.out.println("Usuario no encontrado");;
+			}
+			
+			
 			
 			
 			rs.close();
 			st.close();
 			con.close();
 			
-			
+			return usuarioCargado;
 		} catch (SQLException e) {
 			log.warning(String.format("Error intentando cargar el usuario %s : %s", usuario, e.getMessage()));
+			return null;
 		}
 		
-		log.info("Usuario cargado correctamente");
 		
-		return usuarioCargado;
 	}
 	
+	
 	public void actualizarPuntuacion(Usuario u) {
-		Connection con = ConnectDB.conectar();
 		
-		try (Statement st = con.createStatement()){
-			st.executeUpdate(String.format("UPDATE usuario SET puntuacionClasico = %d, puntuacionContrarreloj = %d, puntuacionSubita = %d WHERE cod = %d ;", 
-					u.getPuntuacionClasico(), u.getPuntuacionContrarreloj(), u.getPuntuacionSubita(), u.getCod()));
+		
+		try (Connection con = ConnectDB.conectar();
+			PreparedStatement st = con.prepareStatement("UPDATE usuario SET puntuacionClasico = puntuacionClasico + ?, puntuacionContrarreloj = puntuacionContrarreloj + ?, puntuacionSubita = ? WHERE cod = ?")){
+			st.setInt(1, u.getPuntuacionClasico());
+			st.setInt(2, u.getPuntuacionContrarreloj());
+			st.setInt(3, u.getPuntuacionSubita());
+			st.setInt(4, u.getCod());
+			
+			st.executeUpdate();
 			
 			log.info("Puntuacion actualizada con exito");
 			
-			st.close();
-			con.close();
 		} catch (SQLException e) {
 			log.warning(String.format("Error actualizando las puntuaciones: %s", e.getMessage()));
 		}

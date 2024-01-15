@@ -13,7 +13,7 @@ public class TestUsuario {
 	
 	@Before
 	public void setUp() {
-		u = new Usuario(1,"Imanol", "test", 20 , 40, 50);
+		u = new Usuario(1, "Imanol", "test", 20 , 40, 50);
 	}
 	
 	@Test

@@ -197,8 +197,8 @@ public class VentanaModoClasico extends JFrame {
 				
 				if (palabraSeleccionada.getDificultad().equals(Dificultad.DIFICIL)) {
 					puntuacionClasico = puntuacionClasico + 50 + palabraSeleccionada.getPalabra().length();
-					System.out.println(puntuacionClasico);
 					usuarioJugando.setPuntuacionClasico(puntuacionClasico);
+					System.out.println(usuarioJugando.getPuntuacionClasico());
 					metodos.actualizarPuntuacion(usuarioJugando);
 				} else {
 					puntuacionClasico = puntuacionClasico + 25 + palabraSeleccionada.getPalabra().length();
