@@ -34,7 +34,7 @@ public class MetodosBD {
 		        return resultado;
 		    }
 		
-		String sentenciaGuardar = ("INSERT INTO Usuario (cod, nombre, contraseña, puntuaciónClasico, puntuacionContrarreloj, puntuacionSubita) VALUES(?, ?, ?, ?, ?, ?) ;");
+		String sentenciaGuardar = ("INSERT INTO Usuario (cod, nombre, contraseña, puntuacionClasico, puntuacionContrarreloj, puntuacionSubita) VALUES(?, ?, ?, ?, ?, ?) ;");
 		
 		try {
 			conexion = ConnectDB.conectar();

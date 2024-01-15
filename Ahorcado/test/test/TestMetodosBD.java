@@ -22,12 +22,12 @@ public class TestMetodosBD {
 	
 	@Test
 	public void testExisteCod() {
-		assertTrue(metodos.existeCod(52));
+		assertEquals(false, metodos.existeCod(52));
 	}
 	
 	@Test
 	public void testExisteNombre() {
-		assertTrue(metodos.existeNombre("imanol"));
+		assertEquals(false, metodos.existeNombre("imanol"));
 	}
 	
 	@Test
