@@ -83,10 +83,6 @@ public class VentanaRankingClasico extends JFrame {
 		this.setResizable(false);
 	}
 
-	public static void main(String[] args) {
-		new VentanaRankingClasico();
-	}
-
 	class TableModelClasico extends AbstractTableModel {
 
 		

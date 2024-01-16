@@ -84,9 +84,6 @@ public class VentanaRankingSubita extends JFrame{
 		this.setResizable(false);
 	}
 
-	public static void main(String[] args) {
-		new VentanaRankingSubita();
-	}
 
 	class TableModelSubita extends AbstractTableModel {
 

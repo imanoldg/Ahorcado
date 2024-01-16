@@ -83,10 +83,6 @@ public class VentanaRankingContrarreloj extends JFrame{
 		this.setResizable(false);
 	}
 	
-	public static void main(String[] args) {
-		new VentanaRankingContrarreloj();
-	}
-	
 	class TableModelContrarreloj extends AbstractTableModel{
 
 		/**
