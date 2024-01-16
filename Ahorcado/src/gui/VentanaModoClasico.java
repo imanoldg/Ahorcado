@@ -83,7 +83,7 @@ public class VentanaModoClasico extends JFrame {
 	public static Palabra SeleccionarPalabra() {
 		List<Palabra> listaPalabras = CargarPalabras.cargarPalabras("resources/data/palabras.csv");
 
-		Random aleatorio = new Random();
+		Random aleatorio = new Random(); 
 		int numeroAleatorio = aleatorio.nextInt(listaPalabras.size());
 
 		Palabra palabra = listaPalabras.get(numeroAleatorio);
@@ -233,7 +233,7 @@ public class VentanaModoClasico extends JFrame {
 	}
 
 	//Inicializacion de la ventana
-	protected VentanaModoClasico() throws FileNotFoundException {
+	public VentanaModoClasico() throws FileNotFoundException {
 		
 		panelGeneral.setLayout(new GridLayout(2, 1));
 		panelArriba.setLayout(new GridLayout(1, 2));
@@ -347,5 +347,14 @@ public class VentanaModoClasico extends JFrame {
 		
 		System.out.println(letrasPalabra);
 		System.out.println(puntuacionClasico);
+	}
+	
+	public static void main(String[] args) {
+		try {
+			new VentanaModoClasico();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
