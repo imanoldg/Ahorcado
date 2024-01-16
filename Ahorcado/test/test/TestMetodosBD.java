@@ -40,7 +40,7 @@ public class TestMetodosBD {
 	public void testCargarUsuarios() {
 		assertEquals("imanol", metodos.obtenerUsuario("imanol").getNombre());
 		assertEquals("prueba", metodos.obtenerUsuario("imanol").getContraseña());
-		assertEquals(0, metodos.obtenerUsuario("imanol").getPuntuacionClasico());
+		assertEquals(30, metodos.obtenerUsuario("imanol").getPuntuacionClasico());
 	}
 	
 	

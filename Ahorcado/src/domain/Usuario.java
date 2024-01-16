@@ -13,6 +13,7 @@ public class Usuario {
 	public Usuario(int cod, String nombre, String contraseña, int puntuacionClasico, int puntuacionContrarreloj,
 			int puntuacionSubita) {
 		super();
+		this.cod = cod;
 		this.nombre = nombre;
 		this.contraseña = contraseña;
 		this.puntuacionClasico = puntuacionClasico;
