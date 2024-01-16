@@ -94,10 +94,10 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 				
 				if (palabraSeleccionada.getDificultad().equals(Dificultad.DIFICIL)) {
 					puntuacionContrarreloj = puntuacionContrarreloj + 50 + palabraSeleccionada.getPalabra().length();
-					usuarioJugando.setPuntuacionClasico(puntuacionContrarreloj);
+					usuarioJugando.setPuntuacionContrarreloj(puntuacionContrarreloj);
 				} else {
 					puntuacionContrarreloj = puntuacionContrarreloj + 25 + palabraSeleccionada.getPalabra().length();
-					usuarioJugando.setPuntuacionClasico(puntuacionContrarreloj);
+					usuarioJugando.setPuntuacionContrarreloj(puntuacionContrarreloj);
 				}
 				
 				dispose();

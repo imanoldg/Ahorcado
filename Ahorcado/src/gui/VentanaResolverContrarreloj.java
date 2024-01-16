@@ -25,11 +25,11 @@ public class VentanaResolverContrarreloj extends VentanaResolverClasico {
 					if (VentanaModoContrarreloj.palabraSeleccionada.getDificultad().equals(Dificultad.DIFICIL)) {
 						VentanaModoContrarreloj.puntuacionContrarreloj = VentanaModoContrarreloj.puntuacionContrarreloj + 50 + 
 								VentanaModoContrarreloj.palabraSeleccionada.getPalabra().length();
-						VentanaModoContrarreloj.usuarioJugando.setPuntuacionClasico(VentanaModoContrarreloj.puntuacionContrarreloj);
+						VentanaModoContrarreloj.usuarioJugando.setPuntuacionContrarreloj(VentanaModoContrarreloj.puntuacionContrarreloj);
 					} else {
 						VentanaModoContrarreloj.puntuacionContrarreloj = VentanaModoContrarreloj.puntuacionContrarreloj + 25 + 
 								VentanaModoContrarreloj. palabraSeleccionada.getPalabra().length();
-						VentanaModoContrarreloj.usuarioJugando.setPuntuacionClasico(VentanaModoContrarreloj.puntuacionContrarreloj);
+						VentanaModoContrarreloj.usuarioJugando.setPuntuacionContrarreloj(VentanaModoContrarreloj.puntuacionContrarreloj);
 					}
 					
 					dispose();
