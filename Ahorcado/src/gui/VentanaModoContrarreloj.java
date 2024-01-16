@@ -54,6 +54,7 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 					if (letrasPalabra.contains(boton.getText().charAt(0))) {
 						boton.setBackground(Color.GREEN);
 						boton.setEnabled(false);
+						contador = contador + 5;
 					}
 
 				} else if (palabraSeleccionada.getPalabra().charAt(j) != boton.getText().charAt(0)
@@ -67,6 +68,7 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 			if (boton.getBackground() == Color.RED) {
 				contadorErrores++;
 				errores.setText("ERRORES: " + contadorErrores);
+				contador = contador - 5;
 				
 				if (contadorErrores == 1) {
 					etiquetaAhorcado.setIcon(Ahorcado_STAGE1);
