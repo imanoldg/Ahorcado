@@ -79,7 +79,7 @@ public class VentanaModoClasico extends JFrame {
 	protected static JMenuItem ranking = new JMenu("Ranking");
 	protected static JMenuItem instrucciones = new JMenu("Instrucciones");
 
-	//Se selecciona una palabra aleatoria de la lista de palabras
+	//Se selecciona una palabra aleatoria de la lista de palabras 
 	public static Palabra SeleccionarPalabra() {
 		List<Palabra> listaPalabras = CargarPalabras.cargarPalabras("resources/data/palabras.csv");
 
