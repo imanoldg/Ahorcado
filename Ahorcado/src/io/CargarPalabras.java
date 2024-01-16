@@ -31,7 +31,7 @@ public class CargarPalabras {
 			scanner.close();
 		} catch (FileNotFoundException e) {
 			
-			System.out.println("El fichero no se ha abierto");
+			System.out.println("El fichero de palabras no se ha abierto");
 		}
 		
 		for (int i = 0; i < lista.size(); i++) {
