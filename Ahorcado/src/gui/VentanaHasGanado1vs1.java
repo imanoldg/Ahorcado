@@ -1,9 +1,12 @@
 package gui;
 
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.util.logging.Logger;
+
+import javax.swing.JDialog;
 
 import io.LoggerReg;
 
@@ -52,8 +55,17 @@ public class VentanaHasGanado1vs1 extends VentanaHasGanadoClasico {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					ReiniciarJuego();
-					new Ventana1vs1();
-					dispose();
+					Window[] windows = getWindows();
+
+				    for (Window window : windows)
+				    {
+				        if (window instanceof JDialog)
+				        {
+				            window.dispose();
+				        }
+				    }
+				    
+				    new Ventana1vs1();
 					
 					log.info("Modo 1vs1 reiniciado con exito");
 					

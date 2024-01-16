@@ -1,10 +1,19 @@
 package gui;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 import DataBase.MetodosBD;
 
@@ -82,9 +91,17 @@ public class VentanaBorrarUsuario extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaUsuarios user = new VentanaUsuarios();
-				user.setVisible(true);
-				dispose();
+				Window[] windows = getWindows();
+
+			    for (Window window : windows)
+			    {
+			        if (window instanceof JDialog)
+			        {
+			            window.dispose();
+			        }
+			    }
+			    
+			    new VentanaUsuarios();
 			}
 		});
 		

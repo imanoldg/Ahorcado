@@ -3,6 +3,7 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -15,6 +16,7 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -269,9 +271,14 @@ public class VentanaModoClasico extends JFrame {
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				new VentanaUsuarios();
-				dispose();
+				Window[] windows = getWindows();
 
+			    for (Window window : windows)
+			    {
+			            window.dispose();
+			        
+			    }
+				new VentanaUsuarios();
 			}
 		});
 

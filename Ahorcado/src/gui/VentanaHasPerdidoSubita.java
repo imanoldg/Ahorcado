@@ -1,9 +1,12 @@
 package gui;
 
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.util.logging.Logger;
+
+import javax.swing.JDialog;
 
 import io.LoggerReg;
 
@@ -43,8 +46,17 @@ public class VentanaHasPerdidoSubita extends VentanaHasPerdidoClasico{
 			public void actionPerformed(ActionEvent e) {
 				try {
 					ReiniciarJuego();
-					new VentanaModoMuerteSubita();
-					dispose();
+					Window[] windows = getWindows();
+
+				    for (Window window : windows)
+				    {
+				        if (window instanceof JDialog)
+				        {
+				            window.dispose();
+				        }
+				    }
+				    
+				    new VentanaModoMuerteSubita();
 					
 					log.info("Modo Muerte Subita reiniciado con exito");
 					

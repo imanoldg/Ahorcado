@@ -2,10 +2,14 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class VentanaGestionUsuario extends JFrame {
 
@@ -14,39 +18,32 @@ public class VentanaGestionUsuario extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JButton borrarUsuario;
-	private JButton cambiarUsuario;
 	
 	//Inicializacion de la ventana
 	public VentanaGestionUsuario(){
 		
 		JPanel panelBotones = new JPanel();
-		panelBotones.setLayout(new GridLayout(1,2));
+		panelBotones.setLayout(new GridLayout(1,1));
 	
 		
 		borrarUsuario = new JButton("Borrar usuario");
-		cambiarUsuario = new JButton("cambiar usuario");
 		panelBotones.add(borrarUsuario);
-		panelBotones.add(cambiarUsuario);
 		
 		borrarUsuario.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaBorrarUsuario delete = new VentanaBorrarUsuario();
-				delete.setVisible(true);
-				dispose();
+				Window[] windows = getWindows();
+
+			    for (Window window : windows)
+			    {
+			        if (window instanceof JDialog)
+			        {
+			            window.dispose();
+			        }
+			    }
 				
-			}
-		});
-		
-		cambiarUsuario.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				VentanaCambiarUsuario change = new VentanaCambiarUsuario();
-				change.setVisible(true);
-				dispose();
-				
+			    new VentanaBorrarUsuario();
 			}
 		});
 		
