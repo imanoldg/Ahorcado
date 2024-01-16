@@ -2,6 +2,7 @@ package gui;
 
 
 import java.awt.GridLayout;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
@@ -10,6 +11,7 @@ import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
 import io.LoggerReg;
 
 public class VentanaSelectorModo extends JFrame{
@@ -97,9 +99,17 @@ public class VentanaSelectorModo extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				try {
 					ReiniciarContrarreloj();
-					new VentanaModoContrarreloj();
-					dispose();
+					Window[] windows = getWindows();
+
+				    for (Window window : windows)
+				    {
+				        
+				            window.dispose();
+				        
+				    }
 					
+				    new VentanaModoContrarreloj();
+				    
 					log.info("Modo Contrarreloj reiniciado con exito");
 					
 				} catch (FileNotFoundException e1) {
@@ -115,8 +125,16 @@ public class VentanaSelectorModo extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				try {
 					ReiniciarSubita();
-					new VentanaModoMuerteSubita();
-					dispose();
+					Window[] windows = getWindows();
+
+				    for (Window window : windows)
+				    {
+				       
+				            window.dispose();
+				        
+				    }
+				    
+				    new VentanaModoMuerteSubita();
 					
 					log.info("Modo Muerte Subita reiniciado con exito");
 					
@@ -133,9 +151,17 @@ public class VentanaSelectorModo extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				try {
 					Reiniciar1vs1();
-					new Ventana1vs1();
-					dispose();
-					
+					Window[] windows = getWindows();
+
+				    for (Window window : windows)
+				    {
+				        
+				            window.dispose();
+				        
+				    }
+				    
+				    new Ventana1vs1();
+				    
 					log.info("Modo 1vs1 reiniciado con exito");
 					
 				} catch (FileNotFoundException e1) {
@@ -151,9 +177,17 @@ public class VentanaSelectorModo extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				try {
 					ReiniciarClasico();
-					new VentanaModoClasico();
-					dispose();
+					Window[] windows = getWindows();
+
+				    for (Window window : windows)
+				    {
+				        
+				            window.dispose();
+				        
+				    }
 					
+				    new VentanaModoClasico();
+				    
 					log.info("Modo Clasico reiniciado con exito");
 					
 				} catch (FileNotFoundException e1) {

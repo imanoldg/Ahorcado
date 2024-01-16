@@ -59,10 +59,9 @@ public class VentanaHasPerdido1vs1 extends VentanaHasPerdidoClasico{
 
 				    for (Window window : windows)
 				    {
-				        if (window instanceof JDialog)
-				        {
+				        
 				            window.dispose();
-				        }
+				        
 				    }
 				    
 				    new Ventana1vs1();

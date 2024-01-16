@@ -1,10 +1,12 @@
 package gui;
 
 
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -45,7 +47,14 @@ public class VentanaResolverClasico extends JFrame{
 						VentanaModoClasico.usuarioJugando.setPuntuacionClasico(VentanaModoClasico.puntuacionClasico);
 					}
 					
-					dispose();
+					Window[] windows = getWindows();
+
+				    for (Window window : windows)
+				    {
+				       
+				            window.dispose();
+				        
+				    }
 				} else {
 					new VentanaHasPerdidoClasico();
 				}

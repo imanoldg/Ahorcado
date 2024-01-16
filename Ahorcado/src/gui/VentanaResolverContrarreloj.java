@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -38,7 +39,14 @@ public class VentanaResolverContrarreloj extends VentanaResolverClasico {
 						VentanaModoContrarreloj.usuarioJugando.setPuntuacionContrarreloj(VentanaModoContrarreloj.puntuacionContrarreloj);
 					}
 					
-					dispose();
+					Window[] windows = getWindows();
+
+				    for (Window window : windows)
+				    {
+				        
+				            window.dispose();
+				        
+				    }
 				} else {
 					new VentanaHasPerdidoContrarreloj();
 				}

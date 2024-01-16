@@ -51,10 +51,9 @@ public class VentanaHasPerdidoContrarreloj extends VentanaHasPerdidoClasico{
 
 				    for (Window window : windows)
 				    {
-				        if (window instanceof JDialog)
-				        {
+				        
 				            window.dispose();
-				        }
+				        
 				    }
 				    
 				    new VentanaModoContrarreloj();

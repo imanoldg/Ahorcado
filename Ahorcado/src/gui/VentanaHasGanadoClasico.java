@@ -56,7 +56,15 @@ public class VentanaHasGanadoClasico extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				Window[] windows = getWindows();
+
+			    for (Window window : windows)
+			    {
+			        
+			            window.dispose();
+			        
+			    }
+			    
 			}
 		});
 		
@@ -70,10 +78,9 @@ public class VentanaHasGanadoClasico extends JFrame {
 
 				    for (Window window : windows)
 				    {
-				        if (window instanceof JDialog)
-				        {
+		
 				            window.dispose();
-				        }
+				        
 				    }
 				    
 				    new VentanaModoClasico();

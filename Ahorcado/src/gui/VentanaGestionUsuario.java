@@ -37,10 +37,9 @@ public class VentanaGestionUsuario extends JFrame {
 
 			    for (Window window : windows)
 			    {
-			        if (window instanceof JDialog)
-			        {
+			       
 			            window.dispose();
-			        }
+			        
 			    }
 				
 			    new VentanaBorrarUsuario();

@@ -69,10 +69,9 @@ public class VentanaHasPerdidoClasico extends JFrame{
 
 				    for (Window window : windows)
 				    {
-				        if (window instanceof JDialog)
-				        {
+				        
 				            window.dispose();
-				        }
+				        
 				    }
 				    
 				    new VentanaModoClasico();
