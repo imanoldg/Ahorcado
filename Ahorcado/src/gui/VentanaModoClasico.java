@@ -337,10 +337,4 @@ public class VentanaModoClasico extends JFrame {
 		System.out.println(letrasPalabra);
 		System.out.println(puntuacionClasico);
 	}
-
-	public static void main(String[] args) throws FileNotFoundException {
-		new VentanaModoClasico();
-		
-	}
-
 }

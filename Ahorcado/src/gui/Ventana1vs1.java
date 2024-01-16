@@ -297,8 +297,4 @@ public class Ventana1vs1 extends VentanaModoClasico {
 		setTitle("Modo 1 vs 1");
 		setVisible(true);
 	}
-
-	public static void main(String[] args) throws FileNotFoundException {
-		new Ventana1vs1();
-	}
 }

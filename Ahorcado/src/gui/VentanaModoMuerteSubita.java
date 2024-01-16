@@ -166,13 +166,4 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 		});
 	}
 
-	public static void main(String[] args) {
-		try {
-			new VentanaModoMuerteSubita();
-		} catch (FileNotFoundException e) {
-			System.out.println("Error: Archivo de palabras no encontrado");
-		}
-
-	}
-
 }

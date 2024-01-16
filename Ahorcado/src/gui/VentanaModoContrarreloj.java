@@ -118,6 +118,8 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 
 	public VentanaModoContrarreloj() throws FileNotFoundException {
 
+		System.out.println(letrasPalabra);
+		
 		panelAbecedario.removeAll();
 		panelAbecedario.add(crearTeclado(new BotonContrarrelojListener()));
 
@@ -206,8 +208,4 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 		setVisible(true);
 	}
 
-	public static void main(String[] args) throws FileNotFoundException {
-		new VentanaModoContrarreloj();
-		System.out.println(letrasPalabra);
-	}
 }

@@ -85,9 +85,6 @@ public class VentanaHasPerdidoClasico extends JFrame{
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 	}
-	
-	public static void main(String[] args) {
-		new VentanaHasPerdidoClasico();
-	}
+
 }
 
