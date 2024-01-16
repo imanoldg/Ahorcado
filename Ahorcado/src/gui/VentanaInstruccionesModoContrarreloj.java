@@ -6,11 +6,15 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
-import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 public class VentanaInstruccionesModoContrarreloj extends JFrame{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public VentanaInstruccionesModoContrarreloj() {
 		JLabel instrucciones = new JLabel("<html><body>Jugadores: 1. <br> "
 				+ "Objetivo: Descubrir el máximo número de palabras en el menor tiempo posible. <br>"

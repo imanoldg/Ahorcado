@@ -13,11 +13,15 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import DataBase.MetodosBD;
 import io.LoggerReg;
 
 public class VentanaHasGanadoClasico extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private static Logger log = LoggerReg.ejecutarLogger();
 	
 	public static JButton botonCerrar = new JButton("  Cerrar el juego  ");

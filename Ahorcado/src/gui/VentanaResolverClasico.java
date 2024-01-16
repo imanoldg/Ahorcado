@@ -1,9 +1,8 @@
 package gui;
 
-import java.awt.BorderLayout;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,6 +13,10 @@ import javax.swing.JTextField;
 import domain.Palabra.Dificultad;
 
 public class VentanaResolverClasico extends JFrame{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static JTextField textoResolver = new JTextField(25);
 	public static JButton botonAceptar = new JButton("Aceptar");
 	public static String palabra;

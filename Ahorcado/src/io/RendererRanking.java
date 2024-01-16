@@ -10,6 +10,11 @@ import javax.swing.table.TableCellRenderer;
 
 public class RendererRanking extends JLabel implements TableCellRenderer {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public RendererRanking() {
 		setOpaque(true);
 	}

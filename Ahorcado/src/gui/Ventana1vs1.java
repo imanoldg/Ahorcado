@@ -12,21 +12,19 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JColorChooser;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import domain.Palabra;
-import io.CargarPalabras;
 
 public class Ventana1vs1 extends VentanaModoClasico {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public static int erroresDerecha = 0;
 
@@ -58,7 +56,7 @@ public class Ventana1vs1 extends VentanaModoClasico {
 	}
 
 	public boolean hasGanado1vs1() {
-		if (palabraOcultaDerecha.getText().equals(palabraSeleccionadaDerecha)) {
+		if (palabraOcultaDerecha.getText().equals(palabraSeleccionadaDerecha.getPalabra())) {
 			return true;
 		}
 		return false;

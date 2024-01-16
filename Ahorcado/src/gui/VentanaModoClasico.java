@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +30,11 @@ import domain.Usuario;
 import io.CargarPalabras;
 
 public class VentanaModoClasico extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public MetodosBD metodos = new MetodosBD();
 	

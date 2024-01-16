@@ -58,7 +58,7 @@ public class MetodosBD {
 	}
 	
 	//BORRA UN USUARIO DE LA BASE DE DATOS
-	public static int borrarUsuario(String usuario) {
+	public int borrarUsuario(String usuario) {
 		int usuarioBorrado = 0;
 		Connection conexion = null;
 		
@@ -170,7 +170,7 @@ public class MetodosBD {
 	}
 	
 	//BUSCA UN USUARIO EN LA BASE DE DATOS Y DEVUELVE EL NOMBRE
-	public static String buscarUsuario(String nombre) {
+	public String buscarUsuario(String nombre) {
 		String usuarioBusqueda = null;
 		Connection conn = null;
 		
@@ -182,7 +182,6 @@ public class MetodosBD {
 			
 			if(resultado.next()) {
 				String nombre1 = resultado.getString("nombre");
-				String pass = resultado.getString("contraseña");
 				usuarioBusqueda = (nombre1);
 
 				ps.close();
@@ -200,7 +199,7 @@ public class MetodosBD {
 	}
 	
 	//BUSCA SI UN USUARIO 
-	public static String registeredUser(String usuario, String pass) {
+	public String registeredUser(String usuario, String pass) {
 		String busquedaUsuario = null;
 		Connection conexion = null;
 		

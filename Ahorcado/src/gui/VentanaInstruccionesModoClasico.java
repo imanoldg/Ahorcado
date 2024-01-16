@@ -1,16 +1,20 @@
 package gui;
 
-import java.awt.BorderLayout;
+
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
-import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 public class VentanaInstruccionesModoClasico extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public VentanaInstruccionesModoClasico() {
 		
 		//He sabido crear una nueva linea en el JLabel gracias a este foro de programación: https://www.lawebdelprogramador.com/foros/Java/612573-JLabel-con-varias-lineas.html

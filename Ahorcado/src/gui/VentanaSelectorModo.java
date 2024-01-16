@@ -1,24 +1,24 @@
 package gui;
 
 
-import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.util.logging.Logger;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-
-import gui.VentanaModoMuerteSubita.BotonSubitaListener;
 import io.LoggerReg;
 
 public class VentanaSelectorModo extends JFrame{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private static Logger log = LoggerReg.ejecutarLogger();
 	
 	private JButton modoContrarreloj = new JButton("Modo Contrarreloj");

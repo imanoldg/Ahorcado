@@ -6,11 +6,15 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
-import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 public class VentanaInstruccionesModoMuerteSubita extends JFrame{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public VentanaInstruccionesModoMuerteSubita() {
 		JLabel instrucciones = new JLabel("<html><body>Jugadores: 1. <br> "
 				+ "Objetivo: Descubrir el máximo número de palabras con el mínimo de fallos posibles. <br>"

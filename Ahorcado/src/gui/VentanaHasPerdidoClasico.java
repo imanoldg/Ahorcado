@@ -17,6 +17,11 @@ import io.LoggerReg;
 
 public class VentanaHasPerdidoClasico extends JFrame{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private static Logger log = LoggerReg.ejecutarLogger();
 	
 	public static JButton botonCerrar = new JButton("  Cerrar el juego  ");

@@ -9,6 +9,10 @@ import javax.swing.*;
 
 public class VentanaCambiarUsuario extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JButton volverInicio;
 	private JButton cambiar;
 	

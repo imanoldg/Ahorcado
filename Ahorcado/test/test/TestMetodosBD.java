@@ -1,25 +1,21 @@
 package test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Before;
 import org.junit.Test;
 
 import DataBase.MetodosBD;
-import domain.Usuario;
 
 public class TestMetodosBD {
 	
 	private MetodosBD metodos;
-	private Usuario usuario;
 	
 	@Before
 	public void setUp() {
 		metodos = new MetodosBD();
-		usuario = new Usuario(52, "imanol", "prueba", 100, 0, 0);
 	}
 	
+	@SuppressWarnings("static-access")
 	@Test
 	public void testExisteCod() {
 		assertEquals(false, metodos.existeCod(52));

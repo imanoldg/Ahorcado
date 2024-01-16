@@ -6,21 +6,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 
 import DataBase.MetodosBD;
 
 public class VentanaRegistro extends JFrame{
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JLabel titulo;
 	private JLabel user;
 	private JLabel password;
-	private JLabel repPassword;
-	private JLabel error;
 	private JTextField textoUser;
 	private JPasswordField textoPassword1;
-	private JPasswordField textoPassword2;
 	private JButton botonRegistrar;
 	private JButton returnSingIn;
 	
@@ -92,6 +92,7 @@ public class VentanaRegistro extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				@SuppressWarnings("deprecation")
 				int i = metodos.guardar(MetodosBD.generarNuevoCod(MetodosBD.generarCod()), textoUser.getText(), textoPassword1.getText(), 0, 0, 0);
 				
 				if (i > 0) {

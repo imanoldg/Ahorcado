@@ -18,13 +18,15 @@ import javax.swing.table.AbstractTableModel;
 
 import DataBase.MetodosBD;
 import domain.Usuario;
-import gui.VentanaRankingClasico.TableModelClasico;
-import io.ComparadorRankingClasico;
 import io.ComparadorRankingSubita;
 import io.RendererRanking;
 
 public class VentanaRankingSubita extends JFrame{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static MetodosBD metodos = new MetodosBD();
 	public static List<Usuario> listaUsuarios = metodos.obtenerListaUsuarios();
 	private JTable tabla;

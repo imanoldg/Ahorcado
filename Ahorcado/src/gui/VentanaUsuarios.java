@@ -5,7 +5,6 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Map;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -21,7 +20,10 @@ import domain.Usuario;
 
 public class VentanaUsuarios extends JFrame{
 	
-	private JLabel tituloJuego;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField user; 
 	private JPasswordField password;
 	private JLabel textoUser;
@@ -63,7 +65,7 @@ public class VentanaUsuarios extends JFrame{
         password.setBounds(142, 105, 150, 20); 
         panelSesion.add(password);
 		
-		singIn = new JButton("Inciar sesión");
+		singIn = new JButton("Iniciar sesión");
 		singUp = new JButton("Registrarse");
 		gestionarUsuario = new JButton("Gestionar");
 		inUp.add(singIn);

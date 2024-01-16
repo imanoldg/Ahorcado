@@ -6,10 +6,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
-import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 public class VentanaInstrucciones1vs1 extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public VentanaInstrucciones1vs1() {
 		JLabel instrucciones = new JLabel("<html><body>Jugadores: 2. <br> "
 				+ 	"Objetivo: Descubrir la palabra. <br>"

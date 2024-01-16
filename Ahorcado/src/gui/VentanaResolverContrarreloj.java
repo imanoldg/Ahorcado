@@ -7,6 +7,11 @@ import domain.Palabra.Dificultad;
 
 public class VentanaResolverContrarreloj extends VentanaResolverClasico {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public VentanaResolverContrarreloj() {
 		ActionListener[] listeners = botonAceptar.getActionListeners();
 

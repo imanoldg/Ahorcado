@@ -6,7 +6,11 @@ import javax.swing.*;
 
 public class VentanaError extends JFrame {
     
-    JLabel mensajeError;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	JLabel mensajeError;
     
     public VentanaError() {
         

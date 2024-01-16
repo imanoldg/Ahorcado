@@ -10,6 +10,10 @@ import DataBase.MetodosBD;
 
 public class VentanaBorrarUsuario extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JButton volverInicio;
 	private JButton borrar;
 
@@ -55,8 +59,10 @@ public class VentanaBorrarUsuario extends JFrame {
 		
 		borrar.addActionListener(new ActionListener() {
 			
+			@SuppressWarnings("unused")
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				@SuppressWarnings("deprecation")
 				String busquedaUsuario =  metodos.registeredUser(user.getText(), password.getText());
 				int i = metodos.borrarUsuario(busquedaUsuario);
 				

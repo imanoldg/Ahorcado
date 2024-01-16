@@ -9,6 +9,10 @@ import io.LoggerReg;
 
 public class VentanaHasPerdido1vs1 extends VentanaHasPerdidoClasico{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static Logger log = LoggerReg.ejecutarLogger();
 	
 	private void ReiniciarJuego() {

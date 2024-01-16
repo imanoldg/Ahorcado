@@ -9,6 +9,10 @@ import javax.swing.*;
 
 public class VentanaGestionUsuario extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JButton borrarUsuario;
 	private JButton cambiarUsuario;
 	
