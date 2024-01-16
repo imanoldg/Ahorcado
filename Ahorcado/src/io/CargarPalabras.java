@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 import domain.Palabra;
 import domain.Palabra.Dificultad;
 
-
+ 
 
 public class CargarPalabras {
 	
