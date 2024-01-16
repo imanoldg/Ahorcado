@@ -15,6 +15,7 @@ public class VentanaInstruccionesModoMuerteSubita extends JFrame{
 	 */
 	private static final long serialVersionUID = 1L;
 
+	//Inicializacion de la ventana de instrucciones del Modo Muerte Subita
 	public VentanaInstruccionesModoMuerteSubita() {
 		JLabel instrucciones = new JLabel("<html><body>Jugadores: 1. <br> "
 				+ "Objetivo: Descubrir el máximo número de palabras con el mínimo de fallos posibles. <br>"

@@ -48,6 +48,7 @@ public class VentanaRankingClasico extends JFrame {
 		
 	}
 	
+	//Inicializacion de la ventana
 	public VentanaRankingClasico() {
 		
 		JLabel label = new JLabel("Puntos del Jugador: ");
@@ -87,6 +88,7 @@ public class VentanaRankingClasico extends JFrame {
 		this.setResizable(false);
 	}
 
+	//Modelo de la tabla del Modo Clasico
 	class TableModelClasico extends AbstractTableModel {
 
 		

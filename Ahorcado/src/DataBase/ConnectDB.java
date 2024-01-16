@@ -13,6 +13,7 @@ public class ConnectDB {
 	public static String url = "jdbc:sqlite:resources/db/Usuarios.db";
 	public static String fn = "org.sqlite.JDBC";
 	
+	//Metodo para conectarse a la base de datos
 	public static Connection conectar() {
 		Connection conexion = null;
 		

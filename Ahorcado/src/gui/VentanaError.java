@@ -12,7 +12,8 @@ public class VentanaError extends JFrame {
 	private static final long serialVersionUID = 1L;
 	JLabel mensajeError;
     
-    public VentanaError() {
+    //Inicializacion de la ventana
+	public VentanaError() {
         
         JPanel panelPrincipal = new JPanel(new FlowLayout(FlowLayout.CENTER));
         

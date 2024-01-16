@@ -31,6 +31,7 @@ public class VentanaRankingSubita extends JFrame{
 	public static List<Usuario> listaUsuarios = metodos.obtenerListaUsuarios();
 	private JTable tabla;
 
+	//Metodo recursivo que busca la posicion del jugador del que se ha introducido la puntuacion
 	public int busquedaBinaria(List<Usuario> lista, int low, int high,  int target) {
 		
 		
@@ -47,6 +48,7 @@ public class VentanaRankingSubita extends JFrame{
 		
 	}
 	
+	//Se inicializa la ventana
 	public VentanaRankingSubita() {
 		
 		JLabel label = new JLabel("Puntos del Jugador: ");
@@ -87,6 +89,7 @@ public class VentanaRankingSubita extends JFrame{
 	}
 
 
+	//Modelo de la tabla para el ranking del Modo Muerte Subita
 	class TableModelSubita extends AbstractTableModel {
 
 		

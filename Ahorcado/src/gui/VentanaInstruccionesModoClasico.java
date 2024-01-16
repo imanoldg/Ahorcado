@@ -15,6 +15,7 @@ public class VentanaInstruccionesModoClasico extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	//Inicializacion de la ventana de instrucciones del Modo Clasico
 	public VentanaInstruccionesModoClasico() {
 		
 		//He sabido crear una nueva linea en el JLabel gracias a este foro de programación: https://www.lawebdelprogramador.com/foros/Java/612573-JLabel-con-varias-lineas.html

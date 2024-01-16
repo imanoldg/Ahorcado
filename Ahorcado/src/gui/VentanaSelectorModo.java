@@ -26,6 +26,7 @@ public class VentanaSelectorModo extends JFrame{
 	private JButton modo1vs1 = new JButton("Modo 1vs1");
 	private JButton modoClasico = new JButton("Modo Clasico");
 	
+	//Metodo para reiniciar el Modo Clasico
 	public static void ReiniciarClasico() {
 		VentanaModoClasico.panelAbecedario.removeAll();
 		VentanaModoClasico.panelArriba.removeAll();
@@ -37,7 +38,7 @@ public class VentanaSelectorModo extends JFrame{
 		VentanaModoClasico.letrasPalabra.addAll(VentanaModoClasico.añadirLetras());
 		VentanaModoClasico.palabraOculta.setText(VentanaModoClasico.textoLabel.toString());
 	}
-	
+	//Metodo para reiniciar el Modo Muerte Subita
 	private void ReiniciarSubita() {
 		VentanaModoMuerteSubita.palabraSeleccionada = VentanaModoMuerteSubita.SeleccionarPalabra();
 		VentanaModoMuerteSubita.textoLabel = VentanaModoMuerteSubita.ocultarPalabra(VentanaModoMuerteSubita.palabraSeleccionada.getPalabra());
@@ -50,7 +51,7 @@ public class VentanaSelectorModo extends JFrame{
 		VentanaModoMuerteSubita.panelIzquierda.removeAll();
 		VentanaModoMuerteSubita.panelDerecha.removeAll();
 	}
-
+	//Metodo para reiniciar el Modo Contrarreloj
 	private void ReiniciarContrarreloj() {
 		VentanaModoContrarreloj.panelAbecedario.removeAll();
 		VentanaModoContrarreloj.panelArriba.removeAll();
@@ -63,7 +64,7 @@ public class VentanaSelectorModo extends JFrame{
 		VentanaModoContrarreloj.palabraOculta.setText(VentanaModoContrarreloj.textoLabel.toString());
 		VentanaModoContrarreloj.etiqueta.removeAll();
 	}
-	
+	//Metodo para reiniciar el Modo 1vs1
 	private void Reiniciar1vs1(){
 		Ventana1vs1.panelGeneral.removeAll();
 		Ventana1vs1.panelAbecedarioDerecha.removeAll();
@@ -86,6 +87,7 @@ public class VentanaSelectorModo extends JFrame{
 		Ventana1vs1.palabraOculta.setText(Ventana1vs1.textoLabel.toString());
 	}
 	
+	//Se inicializa la ventana
 	public VentanaSelectorModo(){	
 		//ACCIONES DE CADA BOTON (PARA ABIR EL RESTO DE VENATANAS)
 		modoContrarreloj.addActionListener(new ActionListener() {

@@ -22,7 +22,7 @@ public class VentanaResolverClasico extends JFrame{
 	public static String palabra;
 	private JLabel labelResolver = new JLabel("Introduce la palabra: ");
 	
-	
+	//Se inicializa la ventana
 	public VentanaResolverClasico() {
 		JPanel panel = new JPanel();
 		

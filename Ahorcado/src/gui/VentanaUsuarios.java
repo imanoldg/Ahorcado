@@ -35,6 +35,7 @@ public class VentanaUsuarios extends JFrame{
 	public static Usuario usuarioJugando;
 	
 	
+	//Metodo para reiniciar el Modo Clasico
 	public VentanaUsuarios(){
 		
 		JPanel panelTitulo = new JPanel();

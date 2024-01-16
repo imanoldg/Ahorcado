@@ -31,6 +31,7 @@ public class VentanaRankingContrarreloj extends JFrame{
 	public static List<Usuario> listaUsuarios = metodos.obtenerListaUsuarios();
 	protected JTable tabla;
 	
+	//Metodo recursivo que busca la posicion del jugador del que se ha introducido la puntuacion
 	public int busquedaBinaria(List<Usuario> lista, int low, int high,  int target) {
 		
 		
@@ -47,6 +48,7 @@ public class VentanaRankingContrarreloj extends JFrame{
 		
 	}
 	
+	//Inicializacion de la ventana
 	public VentanaRankingContrarreloj() {
 		JLabel label = new JLabel("Puntos del Jugador: ");
 		JTextField textoPosicion= new JTextField(10);
@@ -85,6 +87,7 @@ public class VentanaRankingContrarreloj extends JFrame{
 		this.setResizable(false);
 	}
 	
+	//Modelo de la tabla del ranking del Modo Contrarreloj
 	class TableModelContrarreloj extends AbstractTableModel{
 
 		/**

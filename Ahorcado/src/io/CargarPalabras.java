@@ -16,6 +16,7 @@ public class CargarPalabras {
 	
 	private static Logger log = LoggerReg.ejecutarLogger();
 	
+	//Metodo para cargar las palabras del fichero
 	public static List<Palabra> cargarPalabras(String fichero) {
 		
 		List<Palabra> listaPalabras = new ArrayList<Palabra>();

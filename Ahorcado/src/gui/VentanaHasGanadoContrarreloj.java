@@ -15,6 +15,7 @@ public class VentanaHasGanadoContrarreloj extends VentanaHasGanadoClasico {
 	private static final long serialVersionUID = 1L;
 	private static Logger log = LoggerReg.ejecutarLogger();
 	
+	//Metodo para reiniciar el Modo Contrarreloj
 	private void ReiniciarJuego() {
 		VentanaModoContrarreloj.panelAbecedario.removeAll();
 		VentanaModoContrarreloj.panelArriba.removeAll();
@@ -29,6 +30,7 @@ public class VentanaHasGanadoContrarreloj extends VentanaHasGanadoClasico {
 		VentanaModoContrarreloj.etiqueta.removeAll();
 	}
 
+	//Inicializacion de la ventana
 	public VentanaHasGanadoContrarreloj() {
 		ActionListener[] listeners = botonVolverJugar.getActionListeners();
 

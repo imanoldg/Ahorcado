@@ -27,6 +27,7 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 
 	public static JLabel etiqueta = new JLabel();
 
+	//ActionListener de los botones del teclado
 	public class BotonContrarrelojListener implements ActionListener {
 
 		@Override
@@ -104,6 +105,7 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 
 	}
 
+	//Inicializacion de la ventana
 	public VentanaModoContrarreloj() throws FileNotFoundException {
 
 		System.out.println(letrasPalabra);

@@ -30,6 +30,7 @@ public class VentanaHasPerdidoClasico extends JFrame{
 	protected ImageIcon imagen = new ImageIcon("resources/images/HasPerdido.png");
 	protected JLabel labelImagen = new JLabel(imagen);
 	
+	//Metodo para reiniciar el Modo Clasico
 	private void ReiniciarJuego() {
 		VentanaModoClasico.panelAbecedario.removeAll();
 		VentanaModoClasico.panelArriba.removeAll();
@@ -42,6 +43,7 @@ public class VentanaHasPerdidoClasico extends JFrame{
 		VentanaModoClasico.palabraOculta.setText(VentanaModoClasico.textoLabel.toString());;
 	}
 	
+	//Inicializacion de la ventana
 	public VentanaHasPerdidoClasico() {
 		JPanel panelGeneral = new JPanel();
 		panelGeneral.setLayout(new GridLayout(2,1));

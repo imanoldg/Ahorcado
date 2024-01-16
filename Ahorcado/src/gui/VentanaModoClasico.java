@@ -79,6 +79,7 @@ public class VentanaModoClasico extends JFrame {
 	protected static JMenuItem ranking = new JMenu("Ranking");
 	protected static JMenuItem instrucciones = new JMenu("Instrucciones");
 
+	//Se selecciona una palabra aleatoria de la lista de palabras
 	public static Palabra SeleccionarPalabra() {
 		List<Palabra> listaPalabras = CargarPalabras.cargarPalabras("resources/data/palabras.csv");
 
@@ -90,6 +91,7 @@ public class VentanaModoClasico extends JFrame {
 		return palabra;
 	}
 
+	//Este metodo se implemento para facilitar las pruebas del programa en los casos de ganar y perder
 	public static List<Character> añadirLetras() {
 		List<Character> lista = new ArrayList<>();
 
@@ -101,6 +103,7 @@ public class VentanaModoClasico extends JFrame {
 		return lista;
 	}
 
+	//Se oculta la palabra seleccionada para añadirla al JLabel 
 	public static StringBuilder ocultarPalabra(String palabra) {
 		int longitud = palabra.length();
 		StringBuilder cadenaOculta = new StringBuilder("-".repeat(longitud));
@@ -108,6 +111,7 @@ public class VentanaModoClasico extends JFrame {
 		return cadenaOculta;
 	}
 
+	//Bucle for para la creacion del teclado
 	public static JPanel crearTeclado(ActionListener action) {
 		JPanel panelTeclado = new JPanel();
 		panelTeclado.setLayout(new GridLayout(3, 10));
@@ -135,6 +139,7 @@ public class VentanaModoClasico extends JFrame {
 		return panelTeclado;
 	}
 
+	
 	public static boolean hasGanado() {
 		if (palabraOculta.getText().equals(palabraSeleccionada.getPalabra())) {
 			return true;
@@ -149,6 +154,7 @@ public class VentanaModoClasico extends JFrame {
 		return false;
 	}
 
+	//Action listener de  los botones del teclado
 	public class BotonActionListener implements ActionListener {
 
 		@Override
@@ -226,6 +232,7 @@ public class VentanaModoClasico extends JFrame {
 
 	}
 
+	//Inicializacion de la ventana
 	protected VentanaModoClasico() throws FileNotFoundException {
 		
 		panelGeneral.setLayout(new GridLayout(2, 1));

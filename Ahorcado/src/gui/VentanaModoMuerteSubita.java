@@ -24,6 +24,7 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 	
 	private int puntuacionSubita = 0;
 
+	//Metodo para reiniciar le Modo Muerte Subita
 	public void ReiniciarJuego() {
 		palabraSeleccionada = SeleccionarPalabra();
 		textoLabel = ocultarPalabra(palabraSeleccionada.getPalabra());
@@ -34,7 +35,7 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 		panelAbecedario.add(crearTeclado(new BotonSubitaListener()));
 	}
 	
-	
+	//Action Listener de los botones del teclado
 	public class BotonSubitaListener implements ActionListener {
 
 		@Override
@@ -109,6 +110,7 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 
 	}
 
+	//Inicializacion de la ventana
 	public VentanaModoMuerteSubita() throws FileNotFoundException {
 		
 		adivinadasLabel.setHorizontalAlignment(SwingConstants.CENTER);

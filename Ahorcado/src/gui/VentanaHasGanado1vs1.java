@@ -15,6 +15,7 @@ public class VentanaHasGanado1vs1 extends VentanaHasGanadoClasico {
 	private static final long serialVersionUID = 1L;
 	private static Logger log = LoggerReg.ejecutarLogger();
 	
+	//Metodo para reiniciar el modo de 1vs1
 	private void ReiniciarJuego() {
 		Ventana1vs1.panelGeneral.removeAll();
 		Ventana1vs1.panelAbecedarioDerecha.removeAll();
@@ -37,6 +38,7 @@ public class VentanaHasGanado1vs1 extends VentanaHasGanadoClasico {
 		Ventana1vs1.palabraOculta.setText(Ventana1vs1.textoLabel.toString());
 	}
 
+	//Inicializacion de la ventana
 	public VentanaHasGanado1vs1() {
 		ActionListener[] listeners = botonVolverJugar.getActionListeners();
 

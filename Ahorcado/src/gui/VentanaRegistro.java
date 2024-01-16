@@ -26,6 +26,7 @@ public class VentanaRegistro extends JFrame{
 	
 	MetodosBD metodos = new MetodosBD();
 	
+	//Se inicializa la ventana
 	public VentanaRegistro() {
 		
 		JPanel panelTitulo = new JPanel();

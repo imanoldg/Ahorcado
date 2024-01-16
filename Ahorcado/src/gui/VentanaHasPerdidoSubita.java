@@ -15,6 +15,7 @@ public class VentanaHasPerdidoSubita extends VentanaHasPerdidoClasico{
 	private static final long serialVersionUID = 1L;
 	private static Logger log = LoggerReg.ejecutarLogger();
 	
+	//Metodo para reiniciar el Modo Muerte Subita
 	private void ReiniciarJuego() {
 		VentanaModoMuerteSubita.palabraSeleccionada = VentanaModoMuerteSubita.SeleccionarPalabra();
 		VentanaModoMuerteSubita.textoLabel = VentanaModoMuerteSubita.ocultarPalabra(VentanaModoMuerteSubita.palabraSeleccionada.getPalabra());
@@ -28,6 +29,7 @@ public class VentanaHasPerdidoSubita extends VentanaHasPerdidoClasico{
 		VentanaModoMuerteSubita.panelDerecha.removeAll();
 	}
 	
+	//Inicializacion de la ventana
 	public VentanaHasPerdidoSubita() {
 		ActionListener[] listeners = botonVolverJugar.getActionListeners();
 		

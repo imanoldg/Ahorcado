@@ -12,6 +12,7 @@ public class VentanaResolverContrarreloj extends VentanaResolverClasico {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	//Se inicializa la ventana
 	public VentanaResolverContrarreloj() {
 		ActionListener[] listeners = botonAceptar.getActionListeners();
 

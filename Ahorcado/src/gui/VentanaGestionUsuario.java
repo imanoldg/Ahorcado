@@ -16,6 +16,7 @@ public class VentanaGestionUsuario extends JFrame {
 	private JButton borrarUsuario;
 	private JButton cambiarUsuario;
 	
+	//Inicializacion de la ventana
 	public VentanaGestionUsuario(){
 		
 		JPanel panelBotones = new JPanel();

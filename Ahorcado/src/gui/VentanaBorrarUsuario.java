@@ -23,6 +23,7 @@ public class VentanaBorrarUsuario extends JFrame {
 	private JLabel textoPassword;
 	
 	
+	//Inicializacion de la ventana
 	public VentanaBorrarUsuario() {
 		
 		

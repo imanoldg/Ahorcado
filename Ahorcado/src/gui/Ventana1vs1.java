@@ -49,12 +49,14 @@ public class Ventana1vs1 extends VentanaModoClasico {
 
 	public static int contador = 0;
 
+	//Metodo para detectar si ha ganado
 	public boolean hasPerdido1vs1() {
 		if (erroresDerecha == 6)
 			return true;
 		return false;
 	}
 
+	//Metodo para detectar si ha perdido
 	public boolean hasGanado1vs1() {
 		if (palabraOcultaDerecha.getText().equals(palabraSeleccionadaDerecha.getPalabra())) {
 			return true;
@@ -62,6 +64,7 @@ public class Ventana1vs1 extends VentanaModoClasico {
 		return false;
 	}
 
+	//ActionListener de los botones del teclado
 	class BotonIzquierdaListener implements ActionListener {
 
 		@Override
@@ -139,6 +142,7 @@ public class Ventana1vs1 extends VentanaModoClasico {
 
 	}
 
+	//Segundo ActionListener para el segundo teclado
 	class BotonDerechaListener implements ActionListener {
 
 		@Override
@@ -215,6 +219,7 @@ public class Ventana1vs1 extends VentanaModoClasico {
 
 	}
 
+	//Inicializacion de la ventana
 	public Ventana1vs1() throws FileNotFoundException {
 		
 		panelIzquierda.remove(botonResolver);

@@ -21,6 +21,7 @@ public class VentanaCambiarUsuario extends JFrame {
 	private JLabel textoUser;
 	private JLabel textoPassword;
 	
+	//Inicializacion de la ventana
 	public VentanaCambiarUsuario() {
 		
 		JPanel panelSesion = new JPanel();
