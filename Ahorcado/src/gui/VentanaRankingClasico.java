@@ -25,7 +25,7 @@ public class VentanaRankingClasico extends JFrame {
 
 	/**
 	 * 
-	 */
+	 */ 
 	private static final long serialVersionUID = 1L;
 	private static MetodosBD metodos = new MetodosBD();
 	public static List<Usuario> listaUsuarios = metodos.obtenerListaUsuarios();
