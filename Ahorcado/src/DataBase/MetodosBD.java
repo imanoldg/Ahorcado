@@ -302,7 +302,7 @@ public class MetodosBD {
 		
 		
 		try (Connection con = ConnectDB.conectar();
-			PreparedStatement st = con.prepareStatement("UPDATE usuario SET puntuacionClasico = puntuacionClasico + ?, puntuacionContrarreloj = puntuacionContrarreloj + ?, puntuacionSubita = ? WHERE nombre = '?' ")){
+			PreparedStatement st = con.prepareStatement("UPDATE usuario SET puntuacionClasico = puntuacionClasico + ?, puntuacionContrarreloj = puntuacionContrarreloj + ?, puntuacionSubita = ? WHERE nombre = ? ")){
 			st.setInt(1, u.getPuntuacionClasico());
 			st.setInt(2, u.getPuntuacionContrarreloj());
 			st.setInt(3, u.getPuntuacionSubita());
