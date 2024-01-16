@@ -63,7 +63,6 @@ public class VentanaRankingClasico extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				busquedaBinaria(listaUsuarios, 0, listaUsuarios.size(), Integer.parseInt(textoPosicion.getText()));
-				System.out.println(listaUsuarios);
 				
 			}
 		});
