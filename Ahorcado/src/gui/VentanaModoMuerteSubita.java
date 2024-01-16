@@ -138,10 +138,15 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 			botonResolver.removeActionListener(actionListener);
 		}
 		
-		MouseListener[] mouseListeners = instrucciones.getMouseListeners();
+		MouseListener[] mouseListenersInstrucciones = instrucciones.getMouseListeners();
+		MouseListener[] mouseListenersRanking = ranking.getMouseListeners();
 		
-		for (MouseListener mouseListener : mouseListeners) {
+		for (MouseListener mouseListener : mouseListenersInstrucciones) {
 			instrucciones.removeMouseListener(mouseListener);
+		}
+		
+		for (MouseListener mouseListener : mouseListenersRanking) {
+			ranking.removeMouseListener(mouseListener);
 		}
 		
 		instrucciones.addMouseListener(new MouseAdapter() {
@@ -152,6 +157,13 @@ public class VentanaModoMuerteSubita extends VentanaModoClasico {
 			}
 		});
 		
+		ranking.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				new VentanaRankingSubita();
+				
+			}
+		});
 	}
 
 	public static void main(String[] args) {

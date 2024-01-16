@@ -12,25 +12,25 @@ import javax.swing.table.AbstractTableModel;
 
 import DataBase.MetodosBD;
 import domain.Usuario;
-import io.ComparadorRankingClasico;
+import io.ComparadorRankingContrarreloj;
 import io.RendererRanking;
 
-public class VentanaRankingClasico extends JFrame {
+public class VentanaRankingContrarreloj extends JFrame{
 
 	private static MetodosBD metodos = new MetodosBD();
 	public static List<Usuario> listaUsuarios = metodos.obtenerListaUsuarios();
-	private JTable tabla;
-
-	public VentanaRankingClasico() {
+	protected JTable tabla;
+	
+	public VentanaRankingContrarreloj() {
+		Collections.sort(listaUsuarios, new ComparadorRankingContrarreloj());
 		
-		Collections.sort(listaUsuarios, new ComparadorRankingClasico());
-		
-		tabla = new JTable(new TableModelClasico());
+		tabla = new JTable(new TableModelContrarreloj());
 		tabla.setDefaultRenderer(Object.class, new RendererRanking());
 		tabla.setRowHeight(70);
 
 		JScrollPane scrollpane = new JScrollPane(tabla);
-
+		
+		
 		this.add(scrollpane, BorderLayout.CENTER);
 		this.setTitle("Ranking del Modo Clasico");
 		this.pack();
@@ -39,14 +39,13 @@ public class VentanaRankingClasico extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 	}
-
+	
 	public static void main(String[] args) {
-		new VentanaRankingClasico();
+		new VentanaRankingContrarreloj();
 	}
+	
+	class TableModelContrarreloj extends AbstractTableModel{
 
-	class TableModelClasico extends AbstractTableModel {
-
-		
 		/**
 		 * 
 		 */
@@ -74,7 +73,7 @@ public class VentanaRankingClasico extends JFrame {
 			case 1:
 				return listaUsuarios.get(rowIndex).getNombre();
 			case 2:
-				return listaUsuarios.get(rowIndex).getPuntuacionClasico();
+				return listaUsuarios.get(rowIndex).getPuntuacionContrarreloj();
 			default:
 				return null;
 			}
@@ -85,14 +84,12 @@ public class VentanaRankingClasico extends JFrame {
 			// TODO Auto-generated method stub
 			return false;
 		}
-
+		
 		@Override
 		public String getColumnName(int column) {
 			return cabecera.get(column);
 			
 			}
-		}
-		
-		
 		
 	}
+}

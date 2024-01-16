@@ -155,11 +155,16 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 			}
 		});
 
-		MouseListener[] mouseListeners = instrucciones.getMouseListeners();
+		MouseListener[] mouseListenersInstrucciones = instrucciones.getMouseListeners();
+		MouseListener[] mouseListenersRanking = ranking.getMouseListeners();
 		ActionListener[] listeners = botonResolver.getActionListeners();
 
-		for (MouseListener mouseListener : mouseListeners) {
+		for (MouseListener mouseListener : mouseListenersInstrucciones) {
 			instrucciones.removeMouseListener(mouseListener);
+		}
+		
+		for (MouseListener mouseListener : mouseListenersRanking) {
+			ranking.removeMouseListener(mouseListener);
 		}
 
 		for (ActionListener actionListener : listeners) {
@@ -170,6 +175,14 @@ public class VentanaModoContrarreloj extends VentanaModoClasico {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				new VentanaInstruccionesModoContrarreloj();
+
+			}
+		});
+		
+		ranking.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				new VentanaRankingContrarreloj();
 
 			}
 		});

@@ -12,27 +12,27 @@ import javax.swing.table.AbstractTableModel;
 
 import DataBase.MetodosBD;
 import domain.Usuario;
-import io.ComparadorRankingClasico;
+import io.ComparadorRankingSubita;
 import io.RendererRanking;
 
-public class VentanaRankingClasico extends JFrame {
+public class VentanaRankingSubita extends JFrame{
 
 	private static MetodosBD metodos = new MetodosBD();
 	public static List<Usuario> listaUsuarios = metodos.obtenerListaUsuarios();
 	private JTable tabla;
 
-	public VentanaRankingClasico() {
+	public VentanaRankingSubita() {
 		
-		Collections.sort(listaUsuarios, new ComparadorRankingClasico());
+		Collections.sort(listaUsuarios, new ComparadorRankingSubita());
 		
-		tabla = new JTable(new TableModelClasico());
+		tabla = new JTable(new TableModelSubita());
 		tabla.setDefaultRenderer(Object.class, new RendererRanking());
 		tabla.setRowHeight(70);
 
 		JScrollPane scrollpane = new JScrollPane(tabla);
 
 		this.add(scrollpane, BorderLayout.CENTER);
-		this.setTitle("Ranking del Modo Clasico");
+		this.setTitle("Ranking del Modo Muerte Subita");
 		this.pack();
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setVisible(true);
@@ -41,10 +41,10 @@ public class VentanaRankingClasico extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new VentanaRankingClasico();
+		new VentanaRankingSubita();
 	}
 
-	class TableModelClasico extends AbstractTableModel {
+	class TableModelSubita extends AbstractTableModel {
 
 		
 		/**
@@ -74,7 +74,7 @@ public class VentanaRankingClasico extends JFrame {
 			case 1:
 				return listaUsuarios.get(rowIndex).getNombre();
 			case 2:
-				return listaUsuarios.get(rowIndex).getPuntuacionClasico();
+				return listaUsuarios.get(rowIndex).getPuntuacionSubita();
 			default:
 				return null;
 			}
@@ -92,7 +92,4 @@ public class VentanaRankingClasico extends JFrame {
 			
 			}
 		}
-		
-		
-		
-	}
+}
