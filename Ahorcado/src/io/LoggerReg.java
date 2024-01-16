@@ -18,7 +18,7 @@ public class LoggerReg {
 		} catch (IOException e) {
 			e.printStackTrace();
 			log.log(Level.SEVERE, "lectura fallida");
-			JOptionPane.showConfirmDialog(null, "no se ha podido leer fichero", "error", JOptionPane.PLAIN_MESSAGE);
+			JOptionPane.showConfirmDialog(null, "no se ha podido leer fichero de propiedades", "error", JOptionPane.PLAIN_MESSAGE);
 		}
 		
 		return log;
