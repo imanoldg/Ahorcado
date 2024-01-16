@@ -1,13 +1,19 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.AbstractTableModel;
 
 import DataBase.MetodosBD;
@@ -21,16 +27,54 @@ public class VentanaRankingClasico extends JFrame {
 	public static List<Usuario> listaUsuarios = metodos.obtenerListaUsuarios();
 	private JTable tabla;
 
+	//Metodo recursivo que busca la posicion del jugador del que se ha introducido la puntuacion
+	public int busquedaBinaria(List<Usuario> lista, int low, int high,  int target) {
+		
+		
+		int mid = (low + high)/2;
+		
+		if (target == lista.get(mid).getPuntuacionClasico()) {
+			System.out.println(mid + 1);
+			return mid + 1;
+		} else if (target > lista.get(mid).getPuntuacionClasico()) {
+			return busquedaBinaria(lista, low, mid -1, target);
+		} else {
+			return busquedaBinaria(lista, mid + 1,  high, target);
+		}
+		
+	}
+	
 	public VentanaRankingClasico() {
+		
+		JLabel label = new JLabel("Puntos del Jugador: ");
+		JTextField textoPosicion= new JTextField(10);
+		JButton boton = new JButton("Buscar");
+		
+		JPanel panel = new JPanel();
 		
 		Collections.sort(listaUsuarios, new ComparadorRankingClasico());
 		
 		tabla = new JTable(new TableModelClasico());
 		tabla.setDefaultRenderer(Object.class, new RendererRanking());
 		tabla.setRowHeight(70);
-
+		
+		boton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				busquedaBinaria(listaUsuarios, 0, listaUsuarios.size(), Integer.parseInt(textoPosicion.getText()));
+				System.out.println(listaUsuarios);
+				
+			}
+		});
+		
 		JScrollPane scrollpane = new JScrollPane(tabla);
-
+		
+		panel.add(label);
+		panel.add(textoPosicion);
+		panel.add(boton);
+		
+		this.add(panel, BorderLayout.SOUTH);
 		this.add(scrollpane, BorderLayout.CENTER);
 		this.setTitle("Ranking del Modo Clasico");
 		this.pack();
