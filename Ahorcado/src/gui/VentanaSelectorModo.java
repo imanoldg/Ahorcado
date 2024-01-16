@@ -27,7 +27,7 @@ public class VentanaSelectorModo extends JFrame{
 	private JButton modoClasico = new JButton("Modo Clasico");
 	
 	//Metodo para reiniciar el Modo Clasico
-	public static void ReiniciarClasico() {
+	public void ReiniciarClasico() {
 		VentanaModoClasico.panelAbecedario.removeAll();
 		VentanaModoClasico.panelArriba.removeAll();
 		VentanaModoClasico.panelIzquierda.removeAll();
@@ -38,6 +38,7 @@ public class VentanaSelectorModo extends JFrame{
 		VentanaModoClasico.letrasPalabra.addAll(VentanaModoClasico.añadirLetras());
 		VentanaModoClasico.palabraOculta.setText(VentanaModoClasico.textoLabel.toString());
 	}
+	
 	//Metodo para reiniciar el Modo Muerte Subita
 	private void ReiniciarSubita() {
 		VentanaModoMuerteSubita.palabraSeleccionada = VentanaModoMuerteSubita.SeleccionarPalabra();
