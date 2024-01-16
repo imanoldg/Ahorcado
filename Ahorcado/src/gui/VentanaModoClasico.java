@@ -16,7 +16,7 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
-import javax.swing.JDialog;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;

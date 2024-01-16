@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.util.logging.Logger;
 
-import javax.swing.JDialog;
+
 
 import io.LoggerReg;
 
