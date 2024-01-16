@@ -16,7 +16,7 @@ import javax.swing.table.TableCellRenderer;
 
 import DataBase.MetodosBD;
 import domain.Usuario;
-import io.ComparadorRanking;
+import io.ComparadorRankingClasico;
 
 public class VentanaRankingClasico extends JFrame {
 
@@ -25,7 +25,7 @@ public class VentanaRankingClasico extends JFrame {
 
 	public VentanaRankingClasico() {
 		
-		Collections.sort(listaUsuarios, new ComparadorRanking());
+		Collections.sort(listaUsuarios, new ComparadorRankingClasico());
 		
 		JTable tabla = new JTable(new TableModel());
 		tabla.setDefaultRenderer(Object.class, new Renderer());

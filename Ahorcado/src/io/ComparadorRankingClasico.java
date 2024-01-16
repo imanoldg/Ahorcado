@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 import domain.Usuario;
 
-public class ComparadorRanking implements Comparator<Usuario>{
+public class ComparadorRankingClasico implements Comparator<Usuario>{
 
 	@Override
 	public int compare(Usuario o1, Usuario o2) {
